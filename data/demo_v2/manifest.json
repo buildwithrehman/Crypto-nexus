@@ -1,0 +1,23 @@
+{
+    "dataset_version": "1.0",
+    "source": "blockchain.info raw blocks API",
+    "source_license": "Public Domain (Bitcoin Ledger)",
+    "block_start": 700000,
+    "block_end": 700022,
+    "blockchain_provenance": "PUBLIC_DERIVED",
+    "network_provenance": "SYNTHETIC",
+    "seed": 26146,
+    "transaction_count": 25649,
+    "observation_count": 59993,
+    "creation_parameters": {
+        "generator": "build_dataset.py",
+        "timestamp": "2026-09-22T16:54:08.477684Z"
+    },
+    "validation_summary": {
+        "total_source_tx": 25649,
+        "accepted": 25649,
+        "quarantined": 0,
+        "malformed": 0,
+        "duplicates": 0
+    }
+}

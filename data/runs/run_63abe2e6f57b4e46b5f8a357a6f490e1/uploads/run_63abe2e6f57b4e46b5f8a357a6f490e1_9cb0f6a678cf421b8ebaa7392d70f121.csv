@@ -1,0 +1,2 @@
+txid,timestamp,src_ip,dst_ip,src_port,dst_port,fee,input_addresses,output_addresses,input_amounts,output_amounts
+tx_valid_01,2026-09-27T00:00:00Z,192.168.1.1,192.168.1.2,80,443,0.01,addr1;addr2,addr3,1.0;0.5,1.49

@@ -1,0 +1,17 @@
+COPY addresses FROM 'export/addresses.parquet' (FORMAT 'parquet');
+COPY entity_clusters FROM 'export/entity_clusters.parquet' (FORMAT 'parquet');
+COPY ingestion_runs FROM 'export/ingestion_runs.parquet' (FORMAT 'parquet');
+COPY ip_enrichment FROM 'export/ip_enrichment.parquet' (FORMAT 'parquet');
+COPY pipeline_runs FROM 'export/pipeline_runs.parquet' (FORMAT 'parquet');
+COPY quarantine_errors FROM 'export/quarantine_errors.parquet' (FORMAT 'parquet');
+COPY raw_records FROM 'export/raw_records.parquet' (FORMAT 'parquet');
+COPY run_uploads FROM 'export/run_uploads.parquet' (FORMAT 'parquet');
+COPY cluster_members FROM 'export/cluster_members.parquet' (FORMAT 'parquet');
+COPY transactions FROM 'export/transactions.parquet' (FORMAT 'parquet');
+COPY tx_inputs FROM 'export/tx_inputs.parquet' (FORMAT 'parquet');
+COPY tx_outputs FROM 'export/tx_outputs.parquet' (FORMAT 'parquet');
+COPY alerts FROM 'export/alerts.parquet' (FORMAT 'parquet');
+COPY alert_evidence FROM 'export/alert_evidence.parquet' (FORMAT 'parquet');
+COPY alert_reasons FROM 'export/alert_reasons.parquet' (FORMAT 'parquet');
+COPY clustering_evidence FROM 'export/clustering_evidence.parquet' (FORMAT 'parquet');
+COPY network_obs FROM 'export/network_obs.parquet' (FORMAT 'parquet');

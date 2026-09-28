@@ -1,0 +1,686 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CryptoNexus — Investigation Queue</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-container": "#f99223",
+            "surface-container": "#efeee9",
+            "surface-container-low": "#f5f4ef",
+            "surface-bright": "#faf9f4",
+            "surface-tint": "#8c4f00",
+            "surface-variant": "#e3e3de",
+            "inverse-on-surface": "#f2f1ec",
+            "inverse-primary": "#ffb874",
+            "secondary-fixed": "#e5e2e1",
+            "inverse-surface": "#30312e",
+            "on-secondary-fixed-variant": "#474646",
+            "surface-container-high": "#e9e8e3",
+            "tertiary-fixed": "#ffdcc1",
+            "primary-fixed": "#ffdcbf",
+            "on-secondary": "#ffffff",
+            "secondary": "#5f5e5e",
+            "surface": "#faf9f4",
+            "tertiary-fixed-dim": "#ffb77a",
+            "surface-container-highest": "#e3e3de",
+            "tertiary": "#8f4e00",
+            "on-secondary-container": "#656464",
+            "on-primary": "#ffffff",
+            "on-background": "#1b1c19",
+            "on-error": "#ffffff",
+            "primary": "#8c4f00",
+            "secondary-fixed-dim": "#c9c6c5",
+            "on-surface": "#1b1c19",
+            "surface-dim": "#dbdad5",
+            "on-tertiary-fixed": "#2e1500",
+            "on-primary-fixed-variant": "#6b3b00",
+            "on-surface-variant": "#554335",
+            "on-tertiary-container": "#623400",
+            "on-primary-container": "#603500",
+            "primary-container": "#f7931a",
+            "on-error-container": "#93000a",
+            "secondary-container": "#e5e2e1",
+            "on-tertiary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "error": "#ba1a1a",
+            "outline-variant": "#dbc2ae",
+            "primary-fixed-dim": "#ffb874",
+            "on-primary-fixed": "#2d1600",
+            "outline": "#887362",
+            "on-secondary-fixed": "#1c1b1b",
+            "error-container": "#ffdad6",
+            "background": "#faf9f4",
+            "on-tertiary-fixed-variant": "#6c3a00"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-mobile": "1rem",
+            "space-sm": "0.5rem",
+            "gutter-loose": "1.5rem",
+            "margin": "1.5rem",
+            "space-md": "1rem",
+            "space-xl": "2.5rem",
+            "space-xs": "0.25rem",
+            "gutter": "0px",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "data-metric": ["Oswald"],
+            "headline-xl": ["Oswald"],
+            "headline-xl-mobile": ["Oswald"],
+            "headline-lg": ["Oswald"],
+            "body-md": ["Space Grotesk"],
+            "headline-sm": ["Oswald"],
+            "label-mono-sm": ["Space Mono"],
+            "body-lg": ["Space Grotesk"],
+            "label-mono-bold": ["Space Mono"],
+            "display-hero": ["Oswald"],
+            "headline-md": ["Oswald"],
+            "body-sm": ["Space Grotesk"],
+            "display-hero-mobile": ["Oswald"]
+          },
+          "fontSize": {
+            "data-metric": ["2.75rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-xl": ["3.5rem", { "lineHeight": "3.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-xl-mobile": ["2.25rem", { "lineHeight": "2.5rem", "letterSpacing": "0em", "fontWeight": "600" }],
+            "headline-lg": ["2.25rem", { "lineHeight": "2.5rem", "letterSpacing": "0em", "fontWeight": "600" }],
+            "body-md": ["0.9375rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-mono-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.05em", "fontWeight": "400" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }],
+            "label-mono-bold": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.08em", "fontWeight": "700" }],
+            "display-hero": ["5rem", { "lineHeight": "5rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["1.5rem", { "lineHeight": "1.875rem", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "body-sm": ["0.8125rem", { "lineHeight": "1.25rem", "fontWeight": "400" }],
+            "display-hero-mobile": ["3rem", { "lineHeight": "3.125rem", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Global Swiss/Neo-Brutalist resets */
+    * {
+      box-shadow: none !important;
+      border-radius: 0px !important;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      font-size: 16px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    /* Structural custom borders adhering to #121212 / strict rules */
+    .b-cell {
+      border: 1px solid #121212;
+    }
+    .b-t { border-top: 1px solid #121212; }
+    .b-b { border-bottom: 1px solid #121212; }
+    .b-l { border-left: 1px solid #121212; }
+    .b-r { border-right: 1px solid #121212; }
+  </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md antialiased selection:bg-primary-container selection:text-on-surface">
+<!-- TOP APP BAR / EDITORIAL MASTHEAD (SHARED COMPONENT) -->
+<header class="w-full bg-surface dark:bg-inverse-surface border-b border-on-surface dark:border-outline flex items-stretch justify-between px-6 py-0 sticky top-0 z-50">
+<!-- Brand Image Anchor -->
+<div class="flex items-center py-2 pr-6 border-r border-on-surface dark:border-outline">
+<img alt="CryptoNexus Brand Logo" class="h-10 w-auto object-contain" src="assets/image_1.png">
+</div>
+<!-- Center Navigation Links -->
+<nav class="hidden md:flex items-stretch gap-6 px-4">
+<a class="flex items-center text-secondary dark:text-secondary-fixed-dim font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:text-primary-container dark:hover:text-primary-fixed-dim transition-none" href="#">OVERVIEW</a>
+<!-- Active Link for Screen 2: INVESTIGATIONS -->
+<a class="flex items-center text-on-surface dark:text-inverse-on-surface font-label-mono-bold text-label-mono-bold border-b-2 border-primary-container pb-1 uppercase" href="#">INVESTIGATIONS</a>
+<a class="flex items-center text-secondary dark:text-secondary-fixed-dim font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:text-primary-container dark:hover:text-primary-fixed-dim transition-none" href="#">ANALYTICS</a>
+<a class="flex items-center text-secondary dark:text-secondary-fixed-dim font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:text-primary-container dark:hover:text-primary-fixed-dim transition-none" href="#">DOCUMENTATION</a>
+<a class="flex items-center text-secondary dark:text-secondary-fixed-dim font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:text-primary-container dark:hover:text-primary-fixed-dim transition-none" href="#">ABOUT</a>
+</nav>
+<!-- Trailing Actions & Indicators -->
+<div class="flex items-stretch">
+<div class="flex items-center px-4 border-l border-on-surface dark:border-outline text-secondary font-label-mono-sm text-label-mono-sm gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="search">search</span>
+<span class="hidden lg:inline uppercase font-label-mono-bold text-label-mono-bold text-on-surface">SEARCH</span>
+</div>
+<div class="flex items-center px-4 border-l border-on-surface dark:border-outline font-label-mono-bold text-label-mono-bold text-secondary">
+<span class="inline-block w-2 h-2 bg-primary-container mr-2"></span>
+        STATUS: LOCAL/OFFLINE
+      </div>
+<button class="bg-on-surface text-surface font-label-mono-bold text-label-mono-bold px-5 py-3 hover:bg-primary-container hover:text-on-surface transition-none flex items-center border-l border-on-surface dark:border-outline">
+        START INVESTIGATING ↗
+      </button>
+</div>
+</header>
+<!-- ACTIVE RUN METADATA RIBBON -->
+<section class="w-full bg-surface-container-low b-b overflow-x-auto whitespace-nowrap">
+<div class="max-w-[1440px] mx-auto px-6 py-2 flex items-center gap-6 font-label-mono-sm text-label-mono-sm text-on-surface">
+<div class="flex items-center gap-1.5 font-label-mono-bold text-label-mono-bold">
+<span class="bg-on-surface text-surface px-1.5 py-0.5">RUN ID</span>
+<span class="">[DYNAMIC RUN ID]</span>
+</div>
+<span class="text-outline">|</span>
+<div class=""><span class="text-secondary">SOURCE:</span> DEMO_V1</div>
+<span class="text-outline">|</span>
+<div class=""><span class="text-secondary">SOURCE BLOCKS:</span> 700000 → 700022</div>
+<span class="text-outline">|</span>
+<div class=""><span class="text-secondary">RUNTIME:</span> LOCAL / OFFLINE</div>
+<span class="text-outline">|</span>
+<div class=""><span class="text-secondary">MODEL:</span> ISOLATION FOREST</div>
+<span class="text-outline">|</span>
+<div class=""><span class="text-secondary">DATABASE:</span> DUCKDB</div>
+<span class="text-outline">|</span>
+<div class="flex items-center gap-1 font-label-mono-bold text-label-mono-bold">
+<span class="text-secondary">RUN STATUS:</span>
+<span class="text-primary-container bg-on-surface px-1.5 py-0.25">READY</span>
+</div>
+</div>
+</section>
+<!-- MAIN WORKSPACE MATRIX -->
+<main class="w-full max-w-[1440px] mx-auto px-6 py-8 flex-1">
+<!-- PAGE IDENTITY & TITLE BLOCK -->
+<div class="mb-6 flex flex-col md:flex-row md:items-end justify-between border-b pb-6 border-on-surface gap-4">
+<div>
+<div class="font-label-mono-bold text-label-mono-bold text-primary-container tracking-wider uppercase mb-1">
+          STRUCTURAL ANOMALY REVIEW
+        </div>
+<h1 class="font-headline-xl text-headline-xl uppercase text-on-surface tracking-tight leading-none">
+          INVESTIGATION QUEUE
+        </h1>
+<p class="font-body-md text-body-md text-secondary mt-2 max-w-2xl">
+          Review structural anomaly alerts surfaced by the active analysis run and inspect their supporting evidence.
+        </p>
+</div>
+<!-- Live Pipeline Telemetry Indicator -->
+<div class="b-cell bg-surface px-4 py-2 font-label-mono-sm text-label-mono-sm flex items-center gap-3"><span class="font-label-mono-bold text-label-mono-bold">ACTIVE RUN:</span> <span class="">[DYNAMIC RUN ID]</span></div>
+</div>
+<!-- PRIMARY QUEUE SUMMARY (Sharp 1px Matrix) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 b-cell mb-6 bg-surface">
+<!-- Stat 1 -->
+<div class="p-5 border-b sm:border-b-0 sm:border-r border-on-surface bg-primary-container text-on-surface">
+<div class="font-label-mono-bold text-label-mono-bold uppercase mb-1 text-on-surface">ANOMALY ALERTS</div>
+<div class="font-data-metric text-data-metric leading-none mb-1">1,283</div>
+<div class="font-label-mono-sm text-label-mono-sm uppercase text-on-surface tracking-wide">SURFACED IN ACTIVE QUEUE</div>
+</div>
+<!-- Stat 2 -->
+<div class="p-5 border-b sm:border-b-0 lg:border-r border-on-surface">
+<div class="font-label-mono-bold text-label-mono-bold uppercase mb-1 text-secondary">TRANSACTIONS ANALYZED</div>
+<div class="font-data-metric text-data-metric leading-none mb-1">25,649</div>
+<div class="font-label-mono-sm text-label-mono-sm uppercase text-secondary tracking-wide">SOURCE RANGE COVERAGE</div>
+</div>
+<!-- Stat 3 -->
+<div class="p-5 border-b sm:border-b-0 sm:border-r border-on-surface">
+<div class="font-label-mono-bold text-label-mono-bold uppercase mb-1 text-secondary">ANOMALY RATE</div>
+<div class="font-data-metric text-data-metric leading-none mb-1">5.001%</div>
+<div class="font-label-mono-sm text-label-mono-sm uppercase text-secondary tracking-wide">ANOMALY RATE IN ACTIVE RUN</div>
+</div>
+<!-- Stat 4 -->
+<div class="p-5 flex flex-col justify-between">
+<div>
+<div class="font-label-mono-bold text-label-mono-bold uppercase mb-1 text-secondary">ANOMALY MODEL</div>
+<div class="font-headline-md text-headline-md leading-tight uppercase font-bold text-on-surface">ISOLATION FOREST</div>
+</div>
+<div class="font-label-mono-sm text-label-mono-sm text-secondary uppercase tracking-tight mt-2">
+          Note: Structural rarity vs reference baseline.
+        </div>
+</div>
+</section>
+<!-- WORKFLOW NAVIGATION STEPPER -->
+<div class="w-full b-cell bg-surface-container-high px-4 py-2.5 mb-6 overflow-x-auto">
+<div class="flex items-center gap-2 font-label-mono-bold text-label-mono-bold text-label-mono-sm uppercase tracking-wider text-secondary whitespace-nowrap">
+<span class="bg-on-surface text-surface px-2 py-0.5 text-on-primary">1. ALERT QUEUE</span>
+<span class="">→</span>
+<span class="hover:text-on-surface cursor-pointer">2. ALERT INVESTIGATION</span>
+<span class="">→</span>
+<span class="hover:text-on-surface cursor-pointer">3. TRANSACTION INVESTIGATION</span>
+<span class="">→</span>
+<span class="hover:text-on-surface cursor-pointer">4. NETWORK GRAPH</span>
+<span class="">→</span>
+<span class="hover:text-on-surface cursor-pointer">5. EVIDENCE &amp; PROVENANCE</span>
+</div>
+</div>
+<!-- MAIN EDITORIAL ASYMMETRIC GRID (9:3 Desktop Split) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- LEFT PRIMARY DATA CANVAS (Col 9) -->
+<div class="lg:col-span-9 flex flex-col">
+<!-- FILTER & CONTROLS TOOLBAR -->
+<div class="b-cell bg-surface p-4 mb-0 border-b-0">
+<div class="flex flex-wrap items-center justify-between gap-4">
+<!-- TXID Search Field -->
+<div class="flex items-center flex-1 min-w-[280px]">
+<div class="relative w-full">
+<input class="w-full bg-surface-container-low b-cell px-3 py-2 font-label-mono-bold text-label-mono-bold placeholder:text-secondary text-on-surface focus:outline-none focus:border-on-surface uppercase text-xs" placeholder="ENTER TXID" type="text">
+</div>
+<button class="bg-on-surface text-surface font-label-mono-bold text-label-mono-bold text-xs px-4 py-2 hover:bg-primary-container hover:text-on-surface b-cell border-l-0 whitespace-nowrap">
+                SEARCH ↗
+              </button>
+</div>
+<!-- Filter Controls Matrix -->
+<div class="flex flex-wrap items-center gap-3">
+<!-- Evidence Tier Dropdown -->
+<div class="flex items-center b-cell bg-surface-container-low px-2 py-1">
+<span class="font-label-mono-sm text-label-mono-sm text-secondary mr-2 uppercase">TIER:</span>
+<select class="bg-transparent font-label-mono-bold text-label-mono-bold text-xs uppercase focus:outline-none border-0 p-0 text-on-surface pr-4">
+<option>ALL</option>
+<option>OBSERVED</option>
+<option>DERIVED</option>
+<option>HEURISTIC</option>
+<option>ML_DERIVED</option>
+<option>ENRICHED</option>
+</select>
+</div>
+<!-- Anomaly Strength Range -->
+<div class="flex items-center b-cell bg-surface-container-low px-3 py-1 gap-2"><span class="font-label-mono-sm text-label-mono-sm text-secondary uppercase">ANOMALY STRENGTH:</span><span class="font-label-mono-sm text-label-mono-sm text-secondary">0 ───────── 100</span></div>
+<!-- Network Timing -->
+<div class="flex items-center b-cell bg-surface-container-low px-2 py-1"><span class="font-label-mono-sm text-label-mono-sm text-secondary mr-2 uppercase">NETWORK TIMING:</span><select class="bg-transparent font-label-mono-bold text-label-mono-bold text-xs uppercase focus:outline-none border-0 p-0 text-on-surface pr-4"><option>ALL</option></select></div>
+<!-- Clear Filters -->
+<button class="b-cell px-3 py-1 font-label-mono-bold text-label-mono-bold text-xs text-secondary hover:text-on-surface hover:bg-surface-variant transition-none">
+                CLEAR FILTERS
+              </button>
+</div>
+</div>
+<!-- Queue State Sub-Strip -->
+<div class="mt-3 pt-3 border-t border-on-surface flex flex-wrap items-center justify-between font-label-mono-sm text-label-mono-sm text-secondary gap-2">
+<div class="">
+              QUEUE: <strong class="text-on-surface">1,283 ALERTS</strong> | ACTIVE RUN: <strong class="text-on-surface">[DYNAMIC RUN ID]</strong> | DATA: <strong class="text-on-surface">DEMO_V1</strong> | MODEL: <strong class="text-on-surface">ISOLATION FOREST</strong>
+</div>
+<div class="font-label-mono-bold text-label-mono-bold text-primary tracking-wider text-[10px] uppercase">
+              DYNAMIC BACKEND DATA — POPULATED VIA DUCKDB / API
+            </div>
+</div>
+</div>
+<!-- HIGH-DENSITY EDITORIAL DATA TABLE -->
+<div class="w-full overflow-x-auto b-cell bg-surface">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high border-b-2 border-on-surface font-label-mono-bold text-label-mono-bold text-xs text-on-surface uppercase">
+<th class="py-3 px-3 border-r border-on-surface w-12 text-center">#</th>
+<th class="py-3 px-4 border-r border-on-surface w-44">TXID</th>
+<th class="py-3 px-3 border-r border-on-surface w-36">
+                  ANOMALY STRENGTH
+                  <span class="block font-label-mono-sm text-[10px] text-secondary font-normal tracking-tight">STRUCTURAL RARITY</span>
+</th>
+<th class="py-3 px-3 border-r border-on-surface w-32">EVIDENCE TIER</th>
+<th class="py-3 px-3 border-r border-on-surface w-36">NETWORK TIMING</th>
+<th class="py-3 px-4 border-r border-on-surface">TOP STRUCTURAL REASON</th>
+<th class="py-3 px-3 text-right w-24">ACTION</th>
+</tr>
+</thead>
+<tbody class="font-label-mono-sm text-label-mono-sm divide-y divide-on-surface">
+<!-- ROW 1 -->
+<tr class="hover:bg-surface-container-low transition-none">
+<td class="py-2.5 px-3 border-r border-on-surface text-center font-label-mono-bold text-secondary">0001</td>
+<td class="py-2.5 px-4 border-r border-on-surface font-label-mono-bold text-on-surface">
+<span class="bg-surface-container px-1 py-0.5">[DYNAMIC TXID]</span>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface">
+<div class="flex items-center gap-1.5 font-label-mono-bold text-on-surface">
+<span class="inline-block w-2 h-2 bg-primary-container"></span>
+<span class="">[DYNAMIC]</span>
+</div>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface">
+<span class="b-cell px-1.5 py-0.5 bg-surface text-[10px] font-label-mono-bold uppercase">[DYNAMIC]</span>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface text-secondary">
+                  [DYNAMIC]
+                </td>
+<td class="py-2.5 px-4 border-r border-on-surface font-body-sm text-body-sm text-on-surface">
+                  [DYNAMIC BACKEND EVIDENCE]
+                </td>
+<td class="py-2.5 px-3 text-right">
+<button class="b-cell px-2 py-1 font-label-mono-bold text-[11px] bg-on-surface text-surface hover:bg-primary-container hover:text-on-surface transition-none whitespace-nowrap">
+                    INSPECT ↗
+                  </button>
+</td>
+</tr>
+<!-- ROW 2 -->
+<tr class="bg-surface-container-lowest hover:bg-surface-container-low transition-none">
+<td class="py-2.5 px-3 border-r border-on-surface text-center font-label-mono-bold text-secondary">0002</td>
+<td class="py-2.5 px-4 border-r border-on-surface font-label-mono-bold text-on-surface">
+<span class="bg-surface-container px-1 py-0.5">[DYNAMIC TXID]</span>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface">
+<div class="flex items-center gap-1.5 font-label-mono-bold text-on-surface">
+<span class="inline-block w-2 h-2 bg-on-surface"></span>
+<span class="">[DYNAMIC]</span>
+</div>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface">
+<span class="b-cell px-1.5 py-0.5 bg-surface text-[10px] font-label-mono-bold uppercase">[DYNAMIC]</span>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface text-secondary">
+                  [DYNAMIC]
+                </td>
+<td class="py-2.5 px-4 border-r border-on-surface font-body-sm text-body-sm text-on-surface">
+                  [DYNAMIC BACKEND EVIDENCE]
+                </td>
+<td class="py-2.5 px-3 text-right">
+<button class="b-cell px-2 py-1 font-label-mono-bold text-[11px] bg-on-surface text-surface hover:bg-primary-container hover:text-on-surface transition-none whitespace-nowrap">
+                    INSPECT ↗
+                  </button>
+</td>
+</tr>
+<!-- ROW 3 -->
+<tr class="hover:bg-surface-container-low transition-none">
+<td class="py-2.5 px-3 border-r border-on-surface text-center font-label-mono-bold text-secondary">0003</td>
+<td class="py-2.5 px-4 border-r border-on-surface font-label-mono-bold text-on-surface">
+<span class="bg-surface-container px-1 py-0.5">[DYNAMIC TXID]</span>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface">
+<div class="flex items-center gap-1.5 font-label-mono-bold text-on-surface">
+<span class="inline-block w-2 h-2 bg-primary-container"></span>
+<span class="">[DYNAMIC]</span>
+</div>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface">
+<span class="b-cell px-1.5 py-0.5 bg-surface text-[10px] font-label-mono-bold uppercase">[DYNAMIC]</span>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface text-secondary">
+                  [DYNAMIC]
+                </td>
+<td class="py-2.5 px-4 border-r border-on-surface font-body-sm text-body-sm text-on-surface">
+                  [DYNAMIC BACKEND EVIDENCE]
+                </td>
+<td class="py-2.5 px-3 text-right">
+<button class="b-cell px-2 py-1 font-label-mono-bold text-[11px] bg-on-surface text-surface hover:bg-primary-container hover:text-on-surface transition-none whitespace-nowrap">
+                    INSPECT ↗
+                  </button>
+</td>
+</tr>
+<!-- ROW 4 -->
+<tr class="bg-surface-container-lowest hover:bg-surface-container-low transition-none">
+<td class="py-2.5 px-3 border-r border-on-surface text-center font-label-mono-bold text-secondary">0004</td>
+<td class="py-2.5 px-4 border-r border-on-surface font-label-mono-bold text-on-surface">
+<span class="bg-surface-container px-1 py-0.5">[DYNAMIC TXID]</span>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface">
+<div class="flex items-center gap-1.5 font-label-mono-bold text-on-surface">
+<span class="inline-block w-2 h-2 bg-secondary"></span>
+<span class="">[DYNAMIC]</span>
+</div>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface">
+<span class="b-cell px-1.5 py-0.5 bg-surface text-[10px] font-label-mono-bold uppercase">[DYNAMIC]</span>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface text-secondary">
+                  [DYNAMIC]
+                </td>
+<td class="py-2.5 px-4 border-r border-on-surface font-body-sm text-body-sm text-on-surface">
+                  [DYNAMIC BACKEND EVIDENCE]
+                </td>
+<td class="py-2.5 px-3 text-right">
+<button class="b-cell px-2 py-1 font-label-mono-bold text-[11px] bg-on-surface text-surface hover:bg-primary-container hover:text-on-surface transition-none whitespace-nowrap">
+                    INSPECT ↗
+                  </button>
+</td>
+</tr>
+<!-- ROW 5 -->
+<tr class="hover:bg-surface-container-low transition-none">
+<td class="py-2.5 px-3 border-r border-on-surface text-center font-label-mono-bold text-secondary">0005</td>
+<td class="py-2.5 px-4 border-r border-on-surface font-label-mono-bold text-on-surface">
+<span class="bg-surface-container px-1 py-0.5">[DYNAMIC TXID]</span>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface">
+<div class="flex items-center gap-1.5 font-label-mono-bold text-on-surface">
+<span class="inline-block w-2 h-2 bg-primary-container"></span>
+<span class="">[DYNAMIC]</span>
+</div>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface">
+<span class="b-cell px-1.5 py-0.5 bg-surface text-[10px] font-label-mono-bold uppercase">[DYNAMIC]</span>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface text-secondary">
+                  [DYNAMIC]
+                </td>
+<td class="py-2.5 px-4 border-r border-on-surface font-body-sm text-body-sm text-on-surface">
+                  [DYNAMIC BACKEND EVIDENCE]
+                </td>
+<td class="py-2.5 px-3 text-right">
+<button class="b-cell px-2 py-1 font-label-mono-bold text-[11px] bg-on-surface text-surface hover:bg-primary-container hover:text-on-surface transition-none whitespace-nowrap">
+                    INSPECT ↗
+                  </button>
+</td>
+</tr>
+<!-- ROW 6 -->
+<tr class="bg-surface-container-lowest hover:bg-surface-container-low transition-none">
+<td class="py-2.5 px-3 border-r border-on-surface text-center font-label-mono-bold text-secondary">0006</td>
+<td class="py-2.5 px-4 border-r border-on-surface font-label-mono-bold text-on-surface">
+<span class="bg-surface-container px-1 py-0.5">[DYNAMIC TXID]</span>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface">
+<div class="flex items-center gap-1.5 font-label-mono-bold text-on-surface">
+<span class="inline-block w-2 h-2 bg-on-surface"></span>
+<span class="">[DYNAMIC]</span>
+</div>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface">
+<span class="b-cell px-1.5 py-0.5 bg-surface text-[10px] font-label-mono-bold uppercase">[DYNAMIC]</span>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface text-secondary">
+                  [DYNAMIC]
+                </td>
+<td class="py-2.5 px-4 border-r border-on-surface font-body-sm text-body-sm text-on-surface">
+                  [DYNAMIC BACKEND EVIDENCE]
+                </td>
+<td class="py-2.5 px-3 text-right">
+<button class="b-cell px-2 py-1 font-label-mono-bold text-[11px] bg-on-surface text-surface hover:bg-primary-container hover:text-on-surface transition-none whitespace-nowrap">
+                    INSPECT ↗
+                  </button>
+</td>
+</tr>
+<!-- ROW 7 -->
+<tr class="hover:bg-surface-container-low transition-none">
+<td class="py-2.5 px-3 border-r border-on-surface text-center font-label-mono-bold text-secondary">0007</td>
+<td class="py-2.5 px-4 border-r border-on-surface font-label-mono-bold text-on-surface">
+<span class="bg-surface-container px-1 py-0.5">[DYNAMIC TXID]</span>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface">
+<div class="flex items-center gap-1.5 font-label-mono-bold text-on-surface">
+<span class="inline-block w-2 h-2 bg-secondary"></span>
+<span class="">[DYNAMIC]</span>
+</div>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface">
+<span class="b-cell px-1.5 py-0.5 bg-surface text-[10px] font-label-mono-bold uppercase">[DYNAMIC]</span>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface text-secondary">
+                  [DYNAMIC]
+                </td>
+<td class="py-2.5 px-4 border-r border-on-surface font-body-sm text-body-sm text-on-surface">
+                  [DYNAMIC BACKEND EVIDENCE]
+                </td>
+<td class="py-2.5 px-3 text-right">
+<button class="b-cell px-2 py-1 font-label-mono-bold text-[11px] bg-on-surface text-surface hover:bg-primary-container hover:text-on-surface transition-none whitespace-nowrap">
+                    INSPECT ↗
+                  </button>
+</td>
+</tr>
+<!-- ROW 8 -->
+<tr class="bg-surface-container-lowest hover:bg-surface-container-low transition-none">
+<td class="py-2.5 px-3 border-r border-on-surface text-center font-label-mono-bold text-secondary">0008</td>
+<td class="py-2.5 px-4 border-r border-on-surface font-label-mono-bold text-on-surface">
+<span class="bg-surface-container px-1 py-0.5">[DYNAMIC TXID]</span>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface">
+<div class="flex items-center gap-1.5 font-label-mono-bold text-on-surface">
+<span class="inline-block w-2 h-2 bg-primary-container"></span>
+<span class="">[DYNAMIC]</span>
+</div>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface">
+<span class="b-cell px-1.5 py-0.5 bg-surface text-[10px] font-label-mono-bold uppercase">[DYNAMIC]</span>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface text-secondary">
+                  [DYNAMIC]
+                </td>
+<td class="py-2.5 px-4 border-r border-on-surface font-body-sm text-body-sm text-on-surface">
+                  [DYNAMIC BACKEND EVIDENCE]
+                </td>
+<td class="py-2.5 px-3 text-right">
+<button class="b-cell px-2 py-1 font-label-mono-bold text-[11px] bg-on-surface text-surface hover:bg-primary-container hover:text-on-surface transition-none whitespace-nowrap">
+                    INSPECT ↗
+                  </button>
+</td>
+</tr>
+<!-- ROW 9 -->
+<tr class="hover:bg-surface-container-low transition-none">
+<td class="py-2.5 px-3 border-r border-on-surface text-center font-label-mono-bold text-secondary">0009</td>
+<td class="py-2.5 px-4 border-r border-on-surface font-label-mono-bold text-on-surface">
+<span class="bg-surface-container px-1 py-0.5">[DYNAMIC TXID]</span>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface">
+<div class="flex items-center gap-1.5 font-label-mono-bold text-on-surface">
+<span class="inline-block w-2 h-2 bg-on-surface"></span>
+<span class="">[DYNAMIC]</span>
+</div>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface">
+<span class="b-cell px-1.5 py-0.5 bg-surface text-[10px] font-label-mono-bold uppercase">[DYNAMIC]</span>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface text-secondary">
+                  [DYNAMIC]
+                </td>
+<td class="py-2.5 px-4 border-r border-on-surface font-body-sm text-body-sm text-on-surface">
+                  [DYNAMIC BACKEND EVIDENCE]
+                </td>
+<td class="py-2.5 px-3 text-right">
+<button class="b-cell px-2 py-1 font-label-mono-bold text-[11px] bg-on-surface text-surface hover:bg-primary-container hover:text-on-surface transition-none whitespace-nowrap">
+                    INSPECT ↗
+                  </button>
+</td>
+</tr>
+<!-- ROW 10 -->
+<tr class="bg-surface-container-lowest hover:bg-surface-container-low transition-none">
+<td class="py-2.5 px-3 border-r border-on-surface text-center font-label-mono-bold text-secondary">0010</td>
+<td class="py-2.5 px-4 border-r border-on-surface font-label-mono-bold text-on-surface">
+<span class="bg-surface-container px-1 py-0.5">[DYNAMIC TXID]</span>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface">
+<div class="flex items-center gap-1.5 font-label-mono-bold text-on-surface">
+<span class="inline-block w-2 h-2 bg-primary-container"></span>
+<span class="">[DYNAMIC]</span>
+</div>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface">
+<span class="b-cell px-1.5 py-0.5 bg-surface text-[10px] font-label-mono-bold uppercase">[DYNAMIC]</span>
+</td>
+<td class="py-2.5 px-3 border-r border-on-surface text-secondary">
+                  [DYNAMIC]
+                </td>
+<td class="py-2.5 px-4 border-r border-on-surface font-body-sm text-body-sm text-on-surface">
+                  [DYNAMIC BACKEND EVIDENCE]
+                </td>
+<td class="py-2.5 px-3 text-right">
+<button class="b-cell px-2 py-1 font-label-mono-bold text-[11px] bg-on-surface text-surface hover:bg-primary-container hover:text-on-surface transition-none whitespace-nowrap">
+                    INSPECT ↗
+                  </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- PAGINATION & QUEUE STATUS FOOTER -->
+<div class="b-cell border-t-0 bg-surface-container-low p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="font-label-mono-sm text-label-mono-sm text-secondary uppercase">
+            SHOWING <strong class="text-on-surface">[DYNAMIC]</strong> OF 1,283 ALERTS (PAGE 1)
+          </div>
+<div class="flex items-center gap-1 font-label-mono-bold text-label-mono-bold text-xs">
+<button class="b-cell px-3 py-1.5 bg-surface text-secondary cursor-not-allowed">PREVIOUS</button>
+<button class="b-cell px-3 py-1.5 bg-on-surface text-surface">1</button>
+<button class="b-cell px-3 py-1.5 bg-surface hover:bg-surface-variant">2</button>
+<button class="b-cell px-3 py-1.5 bg-surface hover:bg-surface-variant">3</button>
+<span class="px-2 font-mono">...</span>
+<button class="b-cell px-3 py-1.5 bg-surface hover:bg-surface-variant">129</button>
+<button class="b-cell px-3 py-1.5 bg-surface hover:bg-primary-container hover:text-on-surface transition-none">NEXT</button>
+</div>
+</div>
+</div>
+<!-- RIGHT SIDE CONTEXT STRIP & EVIDENCE LEGEND (Col 3) -->
+<aside class="lg:col-span-3 space-y-6">
+<!-- CARD: WHAT IS AN ALERT -->
+<div class="b-cell bg-surface">
+<div class="bg-surface-container-high px-4 py-2 border-b border-on-surface font-label-mono-bold text-label-mono-bold text-xs uppercase flex items-center justify-between">
+<span class="">METHODOLOGICAL SCOPE</span>
+<span class="material-symbols-outlined text-sm" data-icon="help_center">help_center</span>
+</div>
+<div class="p-4 space-y-4">
+<div>
+<div class="font-headline-sm text-headline-sm uppercase font-semibold text-on-surface mb-1">WHAT IS AN ALERT?</div>
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed">
+                An alert identifies a transaction whose structural feature profile was flagged as anomalous by the active Isolation Forest model.
+              </p>
+</div>
+<div class="border-t border-on-surface pt-3">
+<div class="font-headline-sm text-headline-sm uppercase font-semibold text-on-surface mb-1">WHAT IT DOES NOT MEAN</div>
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed">
+                Anomaly does not establish identity, ownership, criminal intent, or criminal activity.
+              </p>
+</div>
+</div>
+</div>
+<!-- CARD: EVIDENCE TIER HIERARCHY -->
+<div class="b-cell bg-surface">
+<div class="bg-surface-container-high px-4 py-2 border-b border-on-surface font-label-mono-bold text-label-mono-bold text-xs uppercase flex items-center justify-between">
+<span class="">EVIDENCE TIER HIERARCHY</span>
+
+</div>
+<div class="p-4 space-y-3 font-label-mono-sm text-label-mono-sm"><div class="border-b border-dashed border-outline pb-2"><div class="font-label-mono-bold text-label-mono-bold text-on-surface">1. OBSERVED</div><p class="text-secondary text-[11px] mt-0.5 leading-tight">Directly recorded source observations.</p></div><div class="border-b border-dashed border-outline pb-2"><div class="font-label-mono-bold text-label-mono-bold text-on-surface">2. DERIVED</div><p class="text-secondary text-[11px] mt-0.5 leading-tight">Features calculated from source records.</p></div><div class="border-b border-dashed border-outline pb-2"><div class="font-label-mono-bold text-label-mono-bold text-on-surface">3. HEURISTIC</div><p class="text-secondary text-[11px] mt-0.5 leading-tight">Deterministic analytical rules.</p></div><div class="border-b border-dashed border-outline pb-2"><div class="font-label-mono-bold text-label-mono-bold text-on-surface">4. ML_DERIVED</div><p class="text-secondary text-[11px] mt-0.5 leading-tight">Outputs derived from the analytical model.</p></div><div><div class="font-label-mono-bold text-label-mono-bold text-on-surface">5. ENRICHED</div><p class="text-secondary text-[11px] mt-0.5 leading-tight">Additional contextual metadata.</p></div></div>
+</div>
+<!-- ENGINE SPECIFICATION BRIEF -->
+<div class="b-cell bg-surface-container-low p-4 font-label-mono-sm text-label-mono-sm"><div class="font-label-mono-bold text-label-mono-bold uppercase text-on-surface mb-2">ACTIVE RUN SPECIFICATION</div><table class="w-full text-secondary text-xs font-label-mono-sm"><tbody><tr class="border-b border-surface-variant py-1"><td class="py-1">DATASET:</td><td class="py-1 text-right text-on-surface font-label-mono-bold">DEMO_V1</td></tr><tr class="border-b border-surface-variant py-1"><td class="py-1">MODEL:</td><td class="py-1 text-right text-on-surface font-label-mono-bold">ISOLATION FOREST</td></tr><tr class="border-b border-surface-variant py-1"><td class="py-1">DATABASE:</td><td class="py-1 text-right text-on-surface font-label-mono-bold">DUCKDB</td></tr><tr class="border-b border-surface-variant py-1"><td class="py-1">FEATURES:</td><td class="py-1 text-right text-on-surface font-label-mono-bold">17 CANONICAL</td></tr><tr><td class="py-1">GEOIP:</td><td class="py-1 text-right text-on-surface font-label-mono-bold">ENRICHMENT PENDING</td></tr></tbody></table></div>
+</aside>
+</div>
+<!-- EPISTEMIC BOUNDARY & LEGAL NOTICE (INVERTED HIGH-CONTRAST BANNER) -->
+<section class="mt-8 bg-inverse-surface text-inverse-on-surface b-cell p-5 flex flex-col md:flex-row items-center gap-5">
+<div class="bg-primary-container p-2 text-on-surface flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl font-bold" data-icon="policy">policy</span>
+</div>
+<div class="flex-1">
+<div class="font-headline-sm text-headline-sm uppercase text-primary-container font-semibold tracking-wider mb-1">
+          EPISTEMIC BOUNDARY &amp; LEGAL SAFEGUARD STATEMENT
+        </div>
+<p class="font-body-md text-body-md text-surface-variant leading-relaxed">Structural anomaly does not mean criminal activity. CryptoNexus surfaces patterns for human investigation. It does not determine identity, ownership or criminal intent.</p>
+</div>
+
+</section>
+</main>
+<!-- EDITORIAL LEDGER FOOTER (SHARED COMPONENT) -->
+<footer class="w-full border-t border-on-surface dark:border-outline px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4 bg-surface dark:bg-inverse-surface mt-auto">
+<!-- Brand Image Anchor in Footer -->
+<div class="flex items-center gap-3">
+<img alt="CryptoNexus Logo" class="h-8 w-auto object-contain" src="assets/image_0.png">
+
+</div>
+<!-- Copyright Text -->
+<div class="font-label-mono-sm text-label-mono-sm text-secondary dark:text-secondary-fixed-dim text-center max-w-xl">
+      © 2026 CRYPTONEXUS. BITCOIN INTELLIGENCE PLATFORM. LOCAL / OFFLINE.
+    </div>
+<!-- Footer Links -->
+<div class="flex items-center gap-6 font-label-mono-sm text-label-mono-sm uppercase text-secondary dark:text-secondary-fixed-dim">
+<a class="hover:text-primary-container dark:hover:text-primary-fixed-dim transition-none underline underline-offset-4" href="#">DISCLAIMER</a>
+<a class="hover:text-primary-container dark:hover:text-primary-fixed-dim transition-none underline underline-offset-4" href="#">METHODOLOGY</a>
+<a class="hover:text-primary-container dark:hover:text-primary-fixed-dim transition-none underline underline-offset-4" href="#">ABOUT</a>
+</div>
+</footer>
+
+
+</body></html>

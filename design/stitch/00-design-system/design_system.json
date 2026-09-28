@@ -1,0 +1,180 @@
+{
+  "designSystems": [
+    {
+      "name": "assets/fa0f2d78373549b0bef0703d1dbf0e4f",
+      "designSystem": {
+        "displayName": "Swiss Modernist Neo-Brutalist Intelligence",
+        "styleGuidelines": "## Brand & Style\n\nThis design system fuses International Typographic Style (Swiss Modernism) with the uncompromising structural clarity of Neo-Brutalism. Built for institutional-grade Bitcoin intelligence, macro market research, and on-chain analytics, it rejects decorative tech tropes: no blurred glassmorphism, no artificial gradients, no floating ambient shadows, and no generic neon glow.\n\nInstead, the UI asserts authority through strict structural geometry, mathematical alignment, heavy condensed typography, and an editorial print aesthetic. The emotional tone is authoritative, analytical, rigorous, and architectural\u2014evoking archival economic broadsheets, mid-century Basel posters, and terminal precision. Surfaces are physical, solid, and bound by hairline architectural rules.\n\n## Layout & Spacing\n\nThe layout model is governed by a **Strict Modular Editorial Matrix**. \n\n- **Border-Collapse Grid**: Default internal columns touch with a `0px` gutter and are bounded by structural `1px solid #121212` rules. Every module shares walls with adjacent units, creating a tactile newspaper or dossier ledger aesthetic.\n- **Column System**: A 12-column foundation on desktop (`>= 1280px`), transitioning to 6 columns on tablet (`768px - 1279px`), and a single monolithic stack on mobile (`< 768px`).\n- **Asymmetric Partitioning**: Primary layout sections prefer deliberate editorial ratios (e.g., 8:4 or 9:3 splits for market commentary vs. live order flow, rather than symmetrical splits).\n- **Rhythm & Padding**: All inner cell padding relies on the strict `space-*` tokens. Elements never drift without anchoring lines; visual breathing room is carved out strictly within the bounding borders.\n\n## Elevation & Depth\n\nThis system operates entirely on **Flat Structural Geometry**. \n\n- **Shadows**: Disallowed entirely (`box-shadow: none`). Zero ambient, zero tinted, and zero soft-drop elevations.\n- **Tonal Contrast**: Depth and focus are communicated through surface inversion: a primary panel sits on `#F9F8F3`, while a high-priority intelligence alert flips to `#0D0D0D` with `#F9F8F3` text and `#F7931A` framing.\n- **Hairline Delimitation**: Every element separation is achieved via `1px solid #121212`. For subtle sub-item separation inside tables, use `1px dashed #5A5852`.\n- **Z-Index Layering**: Overlays, modals, and sticky tickers retain flat borders with an opaque canvas fill and an offset hard-edge border technique (e.g., `outline: 2px solid #0D0D0D`) if stacked over active data tables.\n\n## Components\n\n### Buttons\n- **Primary Action**: Sharp rect, solid `#0D0D0D` fill, text `#F9F8F3`, `1px solid #121212`. Hover state: fill flips instantly to `#F7931A` with `#0D0D0D` text. Transition: 0ms (instantaneous mechanical click feedback).\n- **Accent Action**: Solid `#F7931A` fill, `#0D0D0D` text, `1px solid #121212`. Hover state: `#E5820D` fill.\n- **Outline Action**: Transparent fill, `#0D0D0D` text, `1px solid #121212`. Hover: `#F4F1EA` fill.\n\n### Cards & Intelligence Panels\n- Unibody containers constructed with `1px solid #121212` on all four edges.\n- Headers are marked by an integrated top banner: a distinct cell divided by a horizontal `1px solid #121212` rule, with title in `Oswald` and category label in uppercase `Space Mono`.\n- Sub-cards or metrics within a panel connect seamlessly with shared interior 1px boundary walls.\n\n### Data Metric Callouts\n- Large numbers set in `data-metric` (`Oswald`), paired with a top-aligned or bottom-aligned micro-label in `label-mono-bold` (`Space Mono`).\n- Positive movements marked by a solid pill-free tag: `[ +4.82% ]` in `#0D0D0D` with a subtle `#F7931A` underline.\n\n### Inputs & Search Bars\n- Solid `#F9F8F3` background with `1px solid #121212`.\n- Text in `Space Grotesk`, placeholder text in `Space Mono` (`#5A5852`).\n- Focus state: `2px solid #0D0D0D` or a solid `#F7931A` outline without outer glow or shadow.\n\n### Chips & Badges\n- Zero border radius. \n- Format: `1px solid #121212`, uppercase `Space Mono` typography, padding `0.125rem 0.375rem`.\n- Active state: `#0D0D0D` fill with `#F9F8F3` text; or `#F7931A` fill with `#0D0D0D` text for critical alert states.\n\n### Data Tables & Hash Trackers\n- Border-collapse grid layout. Alternating row fills (`#F9F8F3` and `#F4F1EA`).\n- Column headers: heavy uppercase `Space Mono`, pinned with a `2px solid #121212` bottom divider.\n- Hashes and wallet strings: truncated with ellipsis in `Space Mono`, fully copyable via raw hover indicator.\n\n### Checkboxes & Radios\n- Square 14px boxes (`0px` radius) with `1px solid #121212`. Checked state: solid `#0D0D0D` fill with an inset `#F7931A` square center.",
+        "theme": {
+          "colorMode": "LIGHT",
+          "font": "OSWALD",
+          "customColor": "#f7931a",
+          "headlineFont": "OSWALD",
+          "bodyFont": "SPACE_GROTESK",
+          "labelFont": "SPACE_MONO",
+          "namedColors": {
+            "inverse_surface": "#30312e",
+            "secondary_fixed_dim": "#c9c6c5",
+            "error": "#ba1a1a",
+            "on_primary_fixed": "#2d1600",
+            "surface_container": "#efeee9",
+            "tertiary_container": "#f99223",
+            "inverse_primary": "#ffb874",
+            "surface_dim": "#dbdad5",
+            "inverse_on_surface": "#f2f1ec",
+            "on_error_container": "#93000a",
+            "primary_container": "#f7931a",
+            "primary": "#8c4f00",
+            "on_tertiary_fixed": "#2e1500",
+            "tertiary": "#8f4e00",
+            "outline": "#887362",
+            "on_secondary_container": "#656464",
+            "on_surface": "#1b1c19",
+            "secondary_fixed": "#e5e2e1",
+            "tertiary_fixed_dim": "#ffb77a",
+            "on_background": "#1b1c19",
+            "surface_container_highest": "#e3e3de",
+            "on_tertiary_container": "#623400",
+            "surface_container_lowest": "#ffffff",
+            "outline_variant": "#dbc2ae",
+            "surface_container_low": "#f5f4ef",
+            "on_tertiary": "#ffffff",
+            "primary_fixed": "#ffdcbf",
+            "on_surface_variant": "#554335",
+            "surface_bright": "#faf9f4",
+            "error_container": "#ffdad6",
+            "surface_container_high": "#e9e8e3",
+            "background": "#faf9f4",
+            "surface_tint": "#8c4f00",
+            "primary_fixed_dim": "#ffb874",
+            "on_primary": "#ffffff",
+            "surface": "#faf9f4",
+            "on_error": "#ffffff",
+            "secondary_container": "#e5e2e1",
+            "surface_variant": "#e3e3de",
+            "secondary": "#5f5e5e",
+            "on_tertiary_fixed_variant": "#6c3a00",
+            "on_primary_fixed_variant": "#6b3b00",
+            "on_primary_container": "#603500",
+            "tertiary_fixed": "#ffdcc1",
+            "on_secondary": "#ffffff",
+            "on_secondary_fixed_variant": "#474646",
+            "on_secondary_fixed": "#1c1b1b"
+          },
+          "designMd": "---\nname: Swiss Modernist Neo-Brutalist Intelligence\ncolors:\n  surface: '#faf9f4'\n  surface-dim: '#dbdad5'\n  surface-bright: '#faf9f4'\n  surface-container-lowest: '#ffffff'\n  surface-container-low: '#f5f4ef'\n  surface-container: '#efeee9'\n  surface-container-high: '#e9e8e3'\n  surface-container-highest: '#e3e3de'\n  on-surface: '#1b1c19'\n  on-surface-variant: '#554335'\n  inverse-surface: '#30312e'\n  inverse-on-surface: '#f2f1ec'\n  outline: '#887362'\n  outline-variant: '#dbc2ae'\n  surface-tint: '#8c4f00'\n  primary: '#8c4f00'\n  on-primary: '#ffffff'\n  primary-container: '#f7931a'\n  on-primary-container: '#603500'\n  inverse-primary: '#ffb874'\n  secondary: '#5f5e5e'\n  on-secondary: '#ffffff'\n  secondary-container: '#e5e2e1'\n  on-secondary-container: '#656464'\n  tertiary: '#8f4e00'\n  on-tertiary: '#ffffff'\n  tertiary-container: '#f99223'\n  on-tertiary-container: '#623400'\n  error: '#ba1a1a'\n  on-error: '#ffffff'\n  error-container: '#ffdad6'\n  on-error-container: '#93000a'\n  primary-fixed: '#ffdcbf'\n  primary-fixed-dim: '#ffb874'\n  on-primary-fixed: '#2d1600'\n  on-primary-fixed-variant: '#6b3b00'\n  secondary-fixed: '#e5e2e1'\n  secondary-fixed-dim: '#c9c6c5'\n  on-secondary-fixed: '#1c1b1b'\n  on-secondary-fixed-variant: '#474646'\n  tertiary-fixed: '#ffdcc1'\n  tertiary-fixed-dim: '#ffb77a'\n  on-tertiary-fixed: '#2e1500'\n  on-tertiary-fixed-variant: '#6c3a00'\n  background: '#faf9f4'\n  on-background: '#1b1c19'\n  surface-variant: '#e3e3de'\ntypography:\n  display-hero:\n    fontFamily: Oswald\n    fontSize: 5rem\n    fontWeight: '700'\n    lineHeight: 5rem\n    letterSpacing: -0.02em\n  display-hero-mobile:\n    fontFamily: Oswald\n    fontSize: 3rem\n    fontWeight: '700'\n    lineHeight: 3.125rem\n    letterSpacing: -0.01em\n  headline-xl:\n    fontFamily: Oswald\n    fontSize: 3.5rem\n    fontWeight: '600'\n    lineHeight: 3.75rem\n    letterSpacing: -0.01em\n  headline-xl-mobile:\n    fontFamily: Oswald\n    fontSize: 2.25rem\n    fontWeight: '600'\n    lineHeight: 2.5rem\n    letterSpacing: 0em\n  headline-lg:\n    fontFamily: Oswald\n    fontSize: 2.25rem\n    fontWeight: '600'\n    lineHeight: 2.5rem\n    letterSpacing: 0em\n  headline-md:\n    fontFamily: Oswald\n    fontSize: 1.5rem\n    fontWeight: '500'\n    lineHeight: 1.875rem\n    letterSpacing: 0.01em\n  headline-sm:\n    fontFamily: Oswald\n    fontSize: 1.125rem\n    fontWeight: '500'\n    lineHeight: 1.5rem\n    letterSpacing: 0.02em\n  body-lg:\n    fontFamily: Space Grotesk\n    fontSize: 1.125rem\n    fontWeight: '400'\n    lineHeight: 1.75rem\n  body-md:\n    fontFamily: Space Grotesk\n    fontSize: 0.9375rem\n    fontWeight: '400'\n    lineHeight: 1.5rem\n  body-sm:\n    fontFamily: Space Grotesk\n    fontSize: 0.8125rem\n    fontWeight: '400'\n    lineHeight: 1.25rem\n  data-metric:\n    fontFamily: Oswald\n    fontSize: 2.75rem\n    fontWeight: '700'\n    lineHeight: 2.75rem\n    letterSpacing: -0.02em\n  label-mono-bold:\n    fontFamily: Space Mono\n    fontSize: 0.75rem\n    fontWeight: '700'\n    lineHeight: 1rem\n    letterSpacing: 0.08em\n  label-mono-sm:\n    fontFamily: Space Mono\n    fontSize: 0.6875rem\n    fontWeight: '400'\n    lineHeight: 0.875rem\n    letterSpacing: 0.05em\nspacing:\n  gutter: 0px\n  gutter-loose: 1.5rem\n  margin: 1.5rem\n  margin-mobile: 1rem\n  space-xs: 0.25rem\n  space-sm: 0.5rem\n  space-md: 1rem\n  space-lg: 1.5rem\n  space-xl: 2.5rem\n---\n\n## Brand & Style\n\nThis design system fuses International Typographic Style (Swiss Modernism) with the uncompromising structural clarity of Neo-Brutalism. Built for institutional-grade Bitcoin intelligence, macro market research, and on-chain analytics, it rejects decorative tech tropes: no blurred glassmorphism, no artificial gradients, no floating ambient shadows, and no generic neon glow.\n\nInstead, the UI asserts authority through strict structural geometry, mathematical alignment, heavy condensed typography, and an editorial print aesthetic. The emotional tone is authoritative, analytical, rigorous, and architectural\u2014evoking archival economic broadsheets, mid-century Basel posters, and terminal precision. Surfaces are physical, solid, and bound by hairline architectural rules.\n\n## Colors\n\nThe palette establishes an ink-on-paper editorial dynamic paired with the kinetic energy of foundational Bitcoin amber.\n\n- **Primary (`#F7931A`)**: Pure Bitcoin Amber/Gold. Used deliberately for primary interactive execution points, real-time alert markers, active tab state indicators, and focal data metrics.\n- **Secondary (`#0D0D0D`)**: Dense Carbon Black. Powers the structural lattice, 1px dividing rules, high-impact condensed headlines, and dark inverted intelligence dossiers.\n- **Tertiary (`#E5820D`)**: Deep Amber Ochre. Used for secondary accents, warning thresholds, hover transitions, and intermediate data visualizations.\n- **Neutral (`#F9F8F3`)**: Warm Ivory Canvas. Evokes archival newsprint and untreated paper stock, reducing terminal eye strain while keeping reading contrast razor sharp.\n\nSupporting tones:\n- **Surface Accent / Subtle Contrast (`#F4F1EA`)**: Secondary background layer for table striping, nested panels, and metadata chips.\n- **Structural Border (`#121212`)**: True 1px structural framing line.\n- **Muted Ink (`#5A5852`)**: Subordinate metadata, labels, and secondary context copy.\n\n## Typography\n\nThe typographic hierarchy implements three distinct functional registers:\n\n1. **Condensed Display (`Oswald`)**: Inspired by Josef M\u00fcller-Brockmann posters and classic financial broadsheet headlines. Rendered uppercase for top-tier metrics, section anchors, and dramatic editorial title blocks.\n2. **Structural Body (`Space Grotesk`)**: Provides geometric clarity, readability, and a technical edge for research briefs, analysis paragraphs, and long-form dossiers.\n3. **Monospaced Data Layer (`Space Mono`)**: Dedicated to immutable cryptographic data\u2014block heights, tx hashes, wallet stems, timestamps, and columnar table figures. Always uppercase for metadata labels.\n\n## Layout & Spacing\n\nThe layout model is governed by a **Strict Modular Editorial Matrix**. \n\n- **Border-Collapse Grid**: Default internal columns touch with a `0px` gutter and are bounded by structural `1px solid #121212` rules. Every module shares walls with adjacent units, creating a tactile newspaper or dossier ledger aesthetic.\n- **Column System**: A 12-column foundation on desktop (`>= 1280px`), transitioning to 6 columns on tablet (`768px - 1279px`), and a single monolithic stack on mobile (`< 768px`).\n- **Asymmetric Partitioning**: Primary layout sections prefer deliberate editorial ratios (e.g., 8:4 or 9:3 splits for market commentary vs. live order flow, rather than symmetrical splits).\n- **Rhythm & Padding**: All inner cell padding relies on the strict `space-*` tokens. Elements never drift without anchoring lines; visual breathing room is carved out strictly within the bounding borders.\n\n## Elevation & Depth\n\nThis system operates entirely on **Flat Structural Geometry**. \n\n- **Shadows**: Disallowed entirely (`box-shadow: none`). Zero ambient, zero tinted, and zero soft-drop elevations.\n- **Tonal Contrast**: Depth and focus are communicated through surface inversion: a primary panel sits on `#F9F8F3`, while a high-priority intelligence alert flips to `#0D0D0D` with `#F9F8F3` text and `#F7931A` framing.\n- **Hairline Delimitation**: Every element separation is achieved via `1px solid #121212`. For subtle sub-item separation inside tables, use `1px dashed #5A5852`.\n- **Z-Index Layering**: Overlays, modals, and sticky tickers retain flat borders with an opaque canvas fill and an offset hard-edge border technique (e.g., `outline: 2px solid #0D0D0D`) if stacked over active data tables.\n\n## Shapes\n\nThe geometry of this design system is **pure Sharp Brutalism (`0px`)**. \n\n- Every corner on every button, chip, input field, modal, card, and image frame is strictly rectangular (`border-radius: 0px`).\n- Corners must never be smoothed or rounded. This hard-edge geometry emphasizes the architectural integrity, cryptographic finality, and Swiss precision of the product.\n\n## Components\n\n### Buttons\n- **Primary Action**: Sharp rect, solid `#0D0D0D` fill, text `#F9F8F3`, `1px solid #121212`. Hover state: fill flips instantly to `#F7931A` with `#0D0D0D` text. Transition: 0ms (instantaneous mechanical click feedback).\n- **Accent Action**: Solid `#F7931A` fill, `#0D0D0D` text, `1px solid #121212`. Hover state: `#E5820D` fill.\n- **Outline Action**: Transparent fill, `#0D0D0D` text, `1px solid #121212`. Hover: `#F4F1EA` fill.\n\n### Cards & Intelligence Panels\n- Unibody containers constructed with `1px solid #121212` on all four edges.\n- Headers are marked by an integrated top banner: a distinct cell divided by a horizontal `1px solid #121212` rule, with title in `Oswald` and category label in uppercase `Space Mono`.\n- Sub-cards or metrics within a panel connect seamlessly with shared interior 1px boundary walls.\n\n### Data Metric Callouts\n- Large numbers set in `data-metric` (`Oswald`), paired with a top-aligned or bottom-aligned micro-label in `label-mono-bold` (`Space Mono`).\n- Positive movements marked by a solid pill-free tag: `[ +4.82% ]` in `#0D0D0D` with a subtle `#F7931A` underline.\n\n### Inputs & Search Bars\n- Solid `#F9F8F3` background with `1px solid #121212`.\n- Text in `Space Grotesk`, placeholder text in `Space Mono` (`#5A5852`).\n- Focus state: `2px solid #0D0D0D` or a solid `#F7931A` outline without outer glow or shadow.\n\n### Chips & Badges\n- Zero border radius. \n- Format: `1px solid #121212`, uppercase `Space Mono` typography, padding `0.125rem 0.375rem`.\n- Active state: `#0D0D0D` fill with `#F9F8F3` text; or `#F7931A` fill with `#0D0D0D` text for critical alert states.\n\n### Data Tables & Hash Trackers\n- Border-collapse grid layout. Alternating row fills (`#F9F8F3` and `#F4F1EA`).\n- Column headers: heavy uppercase `Space Mono`, pinned with a `2px solid #121212` bottom divider.\n- Hashes and wallet strings: truncated with ellipsis in `Space Mono`, fully copyable via raw hover indicator.\n\n### Checkboxes & Radios\n- Square 14px boxes (`0px` radius) with `1px solid #121212`. Checked state: solid `#0D0D0D` fill with an inset `#F7931A` square center.",
+          "colorVariant": "FIDELITY",
+          "overridePrimaryColor": "#f7931a",
+          "overrideSecondaryColor": "#0d0d0d",
+          "overrideTertiaryColor": "#e5820d",
+          "overrideNeutralColor": "#f9f8f3",
+          "spacingScale": 2,
+          "typography": {
+            "display-hero": {
+              "fontFamily": "Oswald",
+              "fontSize": "5rem",
+              "fontWeight": "700",
+              "lineHeight": "5rem",
+              "letterSpacing": "-0.02em"
+            },
+            "body-lg": {
+              "fontFamily": "Space Grotesk",
+              "fontSize": "1.125rem",
+              "fontWeight": "400",
+              "lineHeight": "1.75rem"
+            },
+            "body-md": {
+              "fontFamily": "Space Grotesk",
+              "fontSize": "0.9375rem",
+              "fontWeight": "400",
+              "lineHeight": "1.5rem"
+            },
+            "data-metric": {
+              "fontFamily": "Oswald",
+              "fontSize": "2.75rem",
+              "fontWeight": "700",
+              "lineHeight": "2.75rem",
+              "letterSpacing": "-0.02em"
+            },
+            "label-mono-bold": {
+              "fontFamily": "Space Mono",
+              "fontSize": "0.75rem",
+              "fontWeight": "700",
+              "lineHeight": "1rem",
+              "letterSpacing": "0.08em"
+            },
+            "label-mono-sm": {
+              "fontFamily": "Space Mono",
+              "fontSize": "0.6875rem",
+              "fontWeight": "400",
+              "lineHeight": "0.875rem",
+              "letterSpacing": "0.05em"
+            },
+            "headline-xl-mobile": {
+              "fontFamily": "Oswald",
+              "fontSize": "2.25rem",
+              "fontWeight": "600",
+              "lineHeight": "2.5rem",
+              "letterSpacing": "0em"
+            },
+            "headline-sm": {
+              "fontFamily": "Oswald",
+              "fontSize": "1.125rem",
+              "fontWeight": "500",
+              "lineHeight": "1.5rem",
+              "letterSpacing": "0.02em"
+            },
+            "headline-xl": {
+              "fontFamily": "Oswald",
+              "fontSize": "3.5rem",
+              "fontWeight": "600",
+              "lineHeight": "3.75rem",
+              "letterSpacing": "-0.01em"
+            },
+            "body-sm": {
+              "fontFamily": "Space Grotesk",
+              "fontSize": "0.8125rem",
+              "fontWeight": "400",
+              "lineHeight": "1.25rem"
+            },
+            "headline-lg": {
+              "fontFamily": "Oswald",
+              "fontSize": "2.25rem",
+              "fontWeight": "600",
+              "lineHeight": "2.5rem",
+              "letterSpacing": "0em"
+            },
+            "headline-md": {
+              "fontFamily": "Oswald",
+              "fontSize": "1.5rem",
+              "fontWeight": "500",
+              "lineHeight": "1.875rem",
+              "letterSpacing": "0.01em"
+            },
+            "display-hero-mobile": {
+              "fontFamily": "Oswald",
+              "fontSize": "3rem",
+              "fontWeight": "700",
+              "lineHeight": "3.125rem",
+              "letterSpacing": "-0.01em"
+            }
+          },
+          "spacing": {
+            "space-xl": "2.5rem",
+            "gutter": "0px",
+            "space-sm": "0.5rem",
+            "margin": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "gutter-loose": "1.5rem"
+          },
+          "headlineFontFamily": "Oswald",
+          "bodyFontFamily": "Space Grotesk",
+          "labelFontFamily": "Space Mono"
+        }
+      },
+      "version": "1"
+    }
+  ]
+}

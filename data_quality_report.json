@@ -1,0 +1,15 @@
+{
+    "total": 25649,
+    "accepted": 25649,
+    "quarantined": 0,
+    "malformed": 0,
+    "duplicates": 0,
+    "min_inputs": 1,
+    "max_inputs": 671,
+    "avg_inputs": 3.1628913407930135,
+    "min_outputs": 1,
+    "max_outputs": 691,
+    "avg_outputs": 3.359000350890873,
+    "obs_count": 59993,
+    "avg_obs": 2.3389995711333773
+}

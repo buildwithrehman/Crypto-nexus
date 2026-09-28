@@ -1,0 +1,715 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CryptoNexus — Alert Investigation</title>
+<!-- Google Fonts: Oswald, Space Grotesk, Space Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-variant": "#e3e3de",
+            "on-primary": "#ffffff",
+            "surface-bright": "#faf9f4",
+            "on-secondary-fixed-variant": "#474646",
+            "on-surface": "#1b1c19",
+            "on-background": "#1b1c19",
+            "primary-fixed": "#ffdcbf",
+            "on-tertiary-fixed": "#2e1500",
+            "on-secondary": "#ffffff",
+            "background": "#faf9f4",
+            "inverse-surface": "#30312e",
+            "on-tertiary-fixed-variant": "#6c3a00",
+            "on-error-container": "#93000a",
+            "inverse-on-surface": "#f2f1ec",
+            "inverse-primary": "#ffb874",
+            "surface-container-lowest": "#ffffff",
+            "surface-tint": "#8c4f00",
+            "surface-container-low": "#f5f4ef",
+            "tertiary": "#8f4e00",
+            "surface-container-highest": "#e3e3de",
+            "surface-dim": "#dbdad5",
+            "on-tertiary-container": "#623400",
+            "secondary": "#5f5e5e",
+            "primary-fixed-dim": "#ffb874",
+            "on-secondary-fixed": "#1c1b1b",
+            "on-primary-fixed-variant": "#6b3b00",
+            "primary-container": "#f7931a",
+            "surface-container-high": "#e9e8e3",
+            "error": "#ba1a1a",
+            "secondary-container": "#e5e2e1",
+            "on-surface-variant": "#554335",
+            "on-error": "#ffffff",
+            "on-primary-fixed": "#2d1600",
+            "tertiary-container": "#f99223",
+            "secondary-fixed-dim": "#c9c6c5",
+            "surface-container": "#efeee9",
+            "outline": "#887362",
+            "tertiary-fixed": "#ffdcc1",
+            "on-secondary-container": "#656464",
+            "tertiary-fixed-dim": "#ffb77a",
+            "outline-variant": "#dbc2ae",
+            "on-tertiary": "#ffffff",
+            "error-container": "#ffdad6",
+            "primary": "#8c4f00",
+            "surface": "#faf9f4",
+            "secondary-fixed": "#e5e2e1",
+            "on-primary-container": "#603500"
+          },
+          "borderRadius": {
+            "DEFAULT": "0px",
+            "lg": "0px",
+            "xl": "0px",
+            "full": "0px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "margin": "1.5rem",
+            "margin-mobile": "1rem",
+            "gutter-loose": "1.5rem",
+            "space-sm": "0.5rem",
+            "gutter": "0px",
+            "space-xl": "2.5rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "display-hero": ["Oswald"],
+            "headline-md": ["Oswald"],
+            "label-mono-sm": ["Space Mono"],
+            "body-lg": ["Space Grotesk"],
+            "headline-lg": ["Oswald"],
+            "headline-sm": ["Oswald"],
+            "headline-xl-mobile": ["Oswald"],
+            "body-sm": ["Space Grotesk"],
+            "display-hero-mobile": ["Oswald"],
+            "body-md": ["Space Grotesk"],
+            "label-mono-bold": ["Space Mono"],
+            "data-metric": ["Oswald"],
+            "headline-xl": ["Oswald"]
+          },
+          "fontSize": {
+            "display-hero": ["5rem", { "lineHeight": "5rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["1.5rem", { "lineHeight": "1.875rem", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "label-mono-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.05em", "fontWeight": "400" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }],
+            "headline-lg": ["2.25rem", { "lineHeight": "2.5rem", "letterSpacing": "0em", "fontWeight": "600" }],
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-xl-mobile": ["2.25rem", { "lineHeight": "2.5rem", "letterSpacing": "0em", "fontWeight": "600" }],
+            "body-sm": ["0.8125rem", { "lineHeight": "1.25rem", "fontWeight": "400" }],
+            "display-hero-mobile": ["3rem", { "lineHeight": "3.125rem", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-md": ["0.9375rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+            "label-mono-bold": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.08em", "fontWeight": "700" }],
+            "data-metric": ["2.75rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-xl": ["3.5rem", { "lineHeight": "3.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    * {
+      border-radius: 0px !important;
+      box-shadow: none !important;
+    }
+    body {
+      background-color: #faf9f4;
+      color: #1b1c19;
+      font-family: 'Space Grotesk', sans-serif;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .structural-rule {
+      border-color: #121316;
+    }
+    .structural-border {
+      border: 1px solid #121316;
+    }
+    .dashed-rule {
+      border-color: #5A5852;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      font-size: 16px;
+      vertical-align: middle;
+    }
+    button, a {
+      transition: none !important;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col selection:bg-primary-container selection:text-on-surface">
+<!-- 1. GLOBAL HEADER -->
+<header class="w-full bg-surface border-b structural-rule flex items-stretch justify-between px-6 py-0 h-16 sticky top-0 z-50">
+<!-- Left: Brand / Logo Image -->
+<div class="flex items-center gap-4 py-2 pr-6 border-r structural-rule">
+<img alt="CryptoNexus Logo" class="h-8 object-contain" src="assets/image_0.png">
+</div>
+<!-- Center Navigation Links (Exact Shared Component Logic: INVESTIGATIONS is Active) -->
+<nav class="hidden md:flex items-stretch space-x-8 px-6">
+<a class="flex items-center text-secondary font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:text-primary-container" href="#">OVERVIEW</a>
+<a class="flex items-center text-on-surface font-label-mono-bold text-label-mono-bold border-b-2 border-primary-container pb-1 uppercase" href="#">INVESTIGATIONS</a>
+<a class="flex items-center text-secondary font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:text-primary-container" href="#">ANALYTICS</a>
+<a class="flex items-center text-secondary font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:text-primary-container" href="#">DOCUMENTATION</a>
+<a class="flex items-center text-secondary font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:text-primary-container" href="#">ABOUT</a>
+</nav>
+<!-- Right Side Actions -->
+<div class="flex items-stretch">
+<div class="hidden lg:flex items-center px-4 border-l structural-rule text-secondary font-label-mono-sm text-label-mono-sm gap-2">
+<span class="material-symbols-outlined text-on-surface" data-icon="search">search</span>
+<span class="text-on-surface">SEARCH</span>
+</div>
+<div class="hidden sm:flex items-center px-4 border-l structural-rule text-secondary font-label-mono-sm text-label-mono-sm">
+<span class="inline-block w-2 h-2 bg-primary-container mr-2"></span>
+        STATUS: LOCAL/OFFLINE
+      </div>
+<a class="flex items-center px-5 bg-on-surface text-background font-label-mono-bold text-label-mono-bold hover:bg-primary-container hover:text-on-surface border-l structural-rule" href="#">
+        START INVESTIGATING ↗
+      </a>
+</div>
+</header>
+<!-- 2. ACTIVE RUN RIBBON -->
+<div class="w-full bg-surface-container border-b structural-rule px-6 py-2">
+<div class="flex flex-wrap items-center gap-y-1 gap-x-3 font-label-mono-sm text-label-mono-sm text-on-surface">
+<span class="bg-on-surface text-background px-1.5 py-0.5 font-bold">RUN ID: [DYNAMIC RUN ID]</span>
+<span class="text-secondary">|</span>
+<span class="">SOURCE: <strong class="font-bold text-on-surface">DEMO_V1</strong></span>
+<span class="text-secondary">|</span>
+<span class="">SOURCE BLOCKS: <strong class="font-bold text-on-surface">700000 → 700022</strong></span>
+<span class="text-secondary">|</span>
+<span class="">RUNTIME: <strong class="font-bold text-on-surface">LOCAL / OFFLINE</strong></span>
+<span class="text-secondary">|</span>
+<span class="">MODEL: <strong class="font-bold text-on-surface">ISOLATION FOREST</strong></span>
+<span class="text-secondary">|</span>
+<span class="">DATABASE: <strong class="font-bold text-on-surface">DUCKDB</strong></span>
+<span class="text-secondary">|</span>
+<span class="text-primary font-bold">RUN STATUS: READY</span>
+</div>
+</div>
+<!-- 3. INVESTIGATION BREADCRUMB / STEPPER -->
+<div class="w-full bg-surface-container-low border-b structural-rule px-6 py-2.5 flex items-center justify-between">
+<div class="flex items-center space-x-2 font-label-mono-bold text-label-mono-bold">
+<span class="text-secondary">INVESTIGATIONS</span>
+<span class="text-secondary">→</span>
+<a class="text-secondary hover:text-on-surface" href="#">ALERT QUEUE</a>
+<span class="text-secondary">→</span>
+<span class="text-on-surface bg-surface border structural-rule px-2 py-0.5 border-b-2 border-b-primary-container">ALERT INVESTIGATION</span>
+</div>
+<div class="hidden sm:block font-label-mono-sm text-label-mono-sm text-secondary">ACTIVE RUN: [DYNAMIC RUN ID]</div>
+</div>
+<!-- MAIN CANVAS WRAPPER -->
+<main class="w-full max-w-[1440px] mx-auto px-6 py-6 flex-grow space-y-6">
+<!-- 4. PAGE IDENTITY -->
+<div class="flex flex-col md:flex-row md:items-end justify-between pb-4 border-b structural-rule gap-4">
+<div>
+<div class="font-label-mono-bold text-label-mono-bold uppercase tracking-widest text-primary mb-1">
+          STRUCTURAL ANOMALY REVIEW
+        </div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight uppercase">
+          ALERT INVESTIGATION
+        </h1>
+<p class="font-body-md text-body-md text-secondary mt-1">
+          Inspect the structural evidence and model-derived drivers associated with the selected alert.
+        </p>
+</div>
+<div class="flex items-center self-start md:self-end">
+<div class="bg-surface-container border structural-rule px-3 py-2 font-label-mono-bold text-label-mono-bold text-on-surface text-right">
+<div class="text-secondary font-label-mono-sm text-label-mono-sm">ACTIVE INVESTIGATION RECORD</div>
+<div class="">ALERT ID: <span class="text-primary">[DYNAMIC ALERT ID]</span> &nbsp;|&nbsp; ACTIVE RUN: [DYNAMIC RUN ID]</div>
+</div>
+</div>
+</div>
+<!-- 5. PRIMARY ALERT HEADER & EPISTEMIC MICRO-NOTICE -->
+<div class="border structural-rule bg-surface">
+<div class="grid grid-cols-1 lg:grid-cols-12 border-b structural-rule">
+<!-- Left: Alert Details -->
+<div class="lg:col-span-8 p-5 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-on-surface text-background font-label-mono-bold text-label-mono-bold px-2 py-0.5 uppercase">
+                SELECTED ALERT
+              </span>
+
+</div>
+<div class="font-headline-sm text-headline-sm uppercase text-on-surface tracking-tight mt-1">
+              TXID: <span class="font-label-mono-bold text-body-lg text-on-surface">[DYNAMIC TXID]</span>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 pt-3 border-t dashed-rule">
+<div class="font-label-mono-sm text-label-mono-sm">
+<span class="text-secondary block">NETWORK TIMING:</span>
+<span class="font-bold text-on-surface">[DYNAMIC NETWORK TIMING]</span>
+</div>
+<div class="font-label-mono-sm text-label-mono-sm">
+<span class="text-secondary block">EVIDENCE TIER:</span>
+<span class="font-bold text-on-surface">[DYNAMIC EVIDENCE TIER]</span>
+</div>
+</div>
+</div>
+<!-- Right: Bitcoin Gold Callout Block -->
+<div class="lg:col-span-4 bg-primary-container text-on-surface p-5 border-t lg:border-t-0 lg:border-l structural-rule flex flex-col justify-between">
+<div>
+<div class="font-label-mono-bold text-label-mono-bold text-on-primary-container tracking-wider uppercase">
+              STRUCTURAL RARITY
+            </div>
+<div class="font-data-metric text-data-metric text-on-surface my-1">
+              [DYNAMIC 0–100]
+            </div>
+</div>
+<div class="font-label-mono-sm text-label-mono-sm text-on-primary-container pt-2 border-t border-on-surface">
+            ANOMALY STRENGTH INDEX. Structural rarity relative to the model reference population.
+          </div>
+</div>
+</div>
+<!-- Epistemic Micro-Notice Strip -->
+<div class="bg-surface-container-high px-4 py-2 flex items-center gap-3">
+<span class="bg-on-surface text-background font-label-mono-bold text-label-mono-sm px-1.5 py-0.5">NOTICE</span>
+<p class="font-label-mono-bold text-label-mono-sm text-on-surface">
+          STRUCTURAL ANOMALY ≠ CRIMINAL ACTIVITY — CryptoNexus surfaces patterns for human investigation. It does not determine identity, ownership or criminal intent.
+        </p>
+</div>
+</div>
+<!-- 6. MAIN INVESTIGATION GRID (8:4 ASYMMETRIC SPLIT) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- LEFT COLUMN (~8 cols - Analytical Evidence Chain) -->
+<div class="lg:col-span-8 space-y-6">
+<!-- 6.A: WHY THIS ALERT WAS SURFACED // SHAP DRIVERS -->
+<div class="border structural-rule bg-surface">
+<div class="bg-surface-container px-4 py-3 border-b structural-rule flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 bg-primary-container inline-block"></span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface uppercase">
+                WHY THIS ALERT WAS SURFACED // SHAP DRIVERS
+              </h2>
+</div>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary">
+              CANONICAL FEATURE CONTRIBUTION
+            </span>
+</div>
+<div class="p-4 border-b dashed-rule bg-surface-container-low">
+<p class="font-body-sm text-body-sm text-secondary">Model-derived structural drivers associated with this alert.</p>
+</div>
+<!-- SHAP Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container font-label-mono-bold text-label-mono-sm text-on-surface border-b-2 structural-rule">
+<th class="p-3">FEATURE</th>
+<th class="p-3">DIR</th>
+<th class="p-3 w-48">SHAP CONTRIBUTION</th>
+<th class="p-3">SEMANTIC INTERPRETATION</th>
+</tr>
+</thead>
+<tbody class="divide-y structural-rule font-body-sm text-body-sm"><tr class="hover:bg-surface-container-low">
+<td class="p-3 font-label-mono-bold text-label-mono-sm">[DYNAMIC FEATURE]</td>
+<td class="p-3 font-label-mono-bold text-on-surface">[DYNAMIC]</td>
+<td class="p-3">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-surface-variant h-3 relative">
+<div class="bg-primary-container h-3" style="width: 50%;"></div>
+</div>
+<span class="font-label-mono-sm text-label-mono-sm">[DYNAMIC SHAP VALUE]</span>
+</div>
+</td>
+<td class="p-3 text-secondary">[DYNAMIC INTERPRETATION]</td>
+</tr>
+<tr class="hover:bg-surface-container-low bg-surface-container-lowest">
+<td class="p-3 font-label-mono-bold text-label-mono-sm">[DYNAMIC FEATURE]</td>
+<td class="p-3 font-label-mono-bold text-secondary">[DYNAMIC]</td>
+<td class="p-3">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-surface-variant h-3 relative">
+<div class="bg-secondary h-3" style="width: 50%;"></div>
+</div>
+<span class="font-label-mono-sm text-label-mono-sm">[DYNAMIC SHAP VALUE]</span>
+</div>
+</td>
+<td class="p-3 text-secondary">[DYNAMIC INTERPRETATION]</td>
+</tr>
+<tr class="hover:bg-surface-container-low">
+<td class="p-3 font-label-mono-bold text-label-mono-sm">[DYNAMIC FEATURE]</td>
+<td class="p-3 font-label-mono-bold text-on-surface">[DYNAMIC]</td>
+<td class="p-3">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-surface-variant h-3 relative">
+<div class="bg-primary-container h-3" style="width: 50%;"></div>
+</div>
+<span class="font-label-mono-sm text-label-mono-sm">[DYNAMIC SHAP VALUE]</span>
+</div>
+</td>
+<td class="p-3 text-secondary">[DYNAMIC INTERPRETATION]</td>
+</tr>
+<tr class="hover:bg-surface-container-low bg-surface-container-lowest">
+<td class="p-3 font-label-mono-bold text-label-mono-sm">[DYNAMIC FEATURE]</td>
+<td class="p-3 font-label-mono-bold text-on-surface">[DYNAMIC]</td>
+<td class="p-3">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-surface-variant h-3 relative">
+<div class="bg-primary-container h-3" style="width: 50%;"></div>
+</div>
+<span class="font-label-mono-sm text-label-mono-sm">[DYNAMIC SHAP VALUE]</span>
+</div>
+</td>
+<td class="p-3 text-secondary">[DYNAMIC INTERPRETATION]</td>
+</tr>
+<tr class="hover:bg-surface-container-low">
+<td class="p-3 font-label-mono-bold text-label-mono-sm">[DYNAMIC FEATURE]</td>
+<td class="p-3 font-label-mono-bold text-secondary">[DYNAMIC]</td>
+<td class="p-3">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-surface-variant h-3 relative">
+<div class="bg-secondary h-3" style="width: 50%;"></div>
+</div>
+<span class="font-label-mono-sm text-label-mono-sm">[DYNAMIC SHAP VALUE]</span>
+</div>
+</td>
+<td class="p-3 text-secondary">[DYNAMIC INTERPRETATION]</td>
+</tr>
+<tr class="hover:bg-surface-container-low bg-surface-container-lowest">
+<td class="p-3 font-label-mono-bold text-label-mono-sm">[DYNAMIC FEATURE]</td>
+<td class="p-3 font-label-mono-bold text-on-surface">[DYNAMIC]</td>
+<td class="p-3">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-surface-variant h-3 relative">
+<div class="bg-primary-container h-3" style="width: 50%;"></div>
+</div>
+<span class="font-label-mono-sm text-label-mono-sm">[DYNAMIC SHAP VALUE]</span>
+</div>
+</td>
+<td class="p-3 text-secondary">[DYNAMIC INTERPRETATION]</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<!-- 6.B: FEATURE SEMANTICS PANEL -->
+<div class="border structural-rule bg-surface">
+<div class="bg-surface-container px-4 py-3 border-b structural-rule flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-on-surface uppercase">
+              FEATURE SEMANTICS PANEL
+            </h2>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary">
+              SYSTEM MEASUREMENT SPECIFICATIONS
+            </span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low font-label-mono-bold text-label-mono-sm text-on-surface border-b structural-rule">
+<th class="p-3">FEATURE</th>
+<th class="p-3">WHAT IT MEASURES</th>
+<th class="p-3">EVIDENCE TYPE</th>
+<th class="p-3">SOURCE</th>
+</tr>
+</thead>
+<tbody class="divide-y dashed-rule font-body-sm text-body-sm"><tr>
+<td class="p-3 font-label-mono-bold text-label-mono-sm">[DYNAMIC FEATURE]</td>
+<td class="p-3">[DYNAMIC FEATURE SEMANTIC]</td>
+<td class="p-3 font-label-mono-sm text-label-mono-sm">[DYNAMIC EVIDENCE TIER]</td>
+<td class="p-3 font-label-mono-sm text-label-mono-sm">[DYNAMIC SOURCE]</td>
+</tr>
+<tr class="bg-surface-container-lowest">
+<td class="p-3 font-label-mono-bold text-label-mono-sm">[DYNAMIC FEATURE]</td>
+<td class="p-3">[DYNAMIC FEATURE SEMANTIC]</td>
+<td class="p-3 font-label-mono-sm text-label-mono-sm">[DYNAMIC EVIDENCE TIER]</td>
+<td class="p-3 font-label-mono-sm text-label-mono-sm">[DYNAMIC SOURCE]</td>
+</tr>
+<tr>
+<td class="p-3 font-label-mono-bold text-label-mono-sm">[DYNAMIC FEATURE]</td>
+<td class="p-3">[DYNAMIC FEATURE SEMANTIC]</td>
+<td class="p-3 font-label-mono-sm text-label-mono-sm">[DYNAMIC EVIDENCE TIER]</td>
+<td class="p-3 font-label-mono-sm text-label-mono-sm">[DYNAMIC SOURCE]</td>
+</tr>
+<tr class="bg-surface-container-lowest">
+<td class="p-3 font-label-mono-bold text-label-mono-sm">[DYNAMIC FEATURE]</td>
+<td class="p-3">[DYNAMIC FEATURE SEMANTIC]</td>
+<td class="p-3 font-label-mono-sm text-label-mono-sm">[DYNAMIC EVIDENCE TIER]</td>
+<td class="p-3 font-label-mono-sm text-label-mono-sm">[DYNAMIC SOURCE]</td>
+</tr>
+<tr>
+<td class="p-3 font-label-mono-bold text-label-mono-sm">[DYNAMIC FEATURE]</td>
+<td class="p-3">[DYNAMIC FEATURE SEMANTIC]</td>
+<td class="p-3 font-label-mono-sm text-label-mono-sm">[DYNAMIC EVIDENCE TIER]</td>
+<td class="p-3 font-label-mono-sm text-label-mono-sm">[DYNAMIC SOURCE]</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<!-- 6.C: EVIDENCE AGGREGATION MATRIX -->
+<div class="border structural-rule bg-surface">
+<div class="bg-surface-container px-4 py-3 border-b structural-rule flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-on-surface uppercase">
+              EVIDENCE AGGREGATION MATRIX
+            </h2>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary">
+              MULTI-VECTOR EVIDENCE AUDIT
+            </span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low font-label-mono-bold text-label-mono-sm text-on-surface border-b structural-rule">
+<th class="p-3">EVIDENCE CATEGORY</th>
+<th class="p-3">TYPE</th>
+<th class="p-3">STATUS</th>
+<th class="p-3">SOURCE</th>
+</tr>
+</thead>
+<tbody class="divide-y dashed-rule font-body-sm text-body-sm"><tr>
+<td class="p-3 font-medium">Network observation</td>
+<td class="p-3"><span class="border structural-rule px-1.5 py-0.5 font-label-mono-sm text-label-mono-sm">[DYNAMIC]</span></td>
+<td class="p-3 font-label-mono-bold text-label-mono-sm text-on-surface">[DYNAMIC]</td>
+<td class="p-3 font-label-mono-sm text-label-mono-sm text-secondary">[DYNAMIC PROVENANCE]</td>
+</tr>
+<tr class="bg-surface-container-lowest">
+<td class="p-3 font-medium">Transaction structure</td>
+<td class="p-3"><span class="border structural-rule px-1.5 py-0.5 font-label-mono-sm text-label-mono-sm">[DYNAMIC]</span></td>
+<td class="p-3 font-label-mono-bold text-label-mono-sm text-on-surface">[DYNAMIC]</td>
+<td class="p-3 font-label-mono-sm text-label-mono-sm text-secondary">[DYNAMIC PROVENANCE]</td>
+</tr>
+<tr>
+<td class="p-3 font-medium">Address relationship</td>
+<td class="p-3"><span class="border structural-rule px-1.5 py-0.5 font-label-mono-sm text-label-mono-sm">[DYNAMIC]</span></td>
+<td class="p-3 font-label-mono-bold text-label-mono-sm text-on-surface">[DYNAMIC]</td>
+<td class="p-3 font-label-mono-sm text-label-mono-sm text-secondary">[DYNAMIC PROVENANCE]</td>
+</tr>
+<tr class="bg-surface-container-lowest">
+<td class="p-3 font-medium">Graph structure</td>
+<td class="p-3"><span class="border structural-rule px-1.5 py-0.5 font-label-mono-sm text-label-mono-sm">[DYNAMIC]</span></td>
+<td class="p-3 font-label-mono-bold text-label-mono-sm text-on-surface">[DYNAMIC]</td>
+<td class="p-3 font-label-mono-sm text-label-mono-sm text-secondary">[DYNAMIC PROVENANCE]</td>
+</tr>
+<tr>
+<td class="p-3 font-medium">Model-derived feature</td>
+<td class="p-3"><span class="border structural-rule px-1.5 py-0.5 font-label-mono-sm text-label-mono-sm bg-surface-container">[DYNAMIC]</span></td>
+<td class="p-3 font-label-mono-bold text-label-mono-sm text-primary">[DYNAMIC]</td>
+<td class="p-3 font-label-mono-sm text-label-mono-sm text-secondary">[DYNAMIC PROVENANCE]</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<!-- 6.D: ANALYTICAL INTERPRETATION & INVESTIGATIVE LEAD -->
+<div class="space-y-4">
+<!-- Analytical Interpretation -->
+<div class="border structural-rule bg-surface p-4"><div class="flex items-center justify-between pb-2 border-b structural-rule mb-3">
+<span class="font-label-mono-bold text-label-mono-bold uppercase tracking-wider text-on-surface">
+                ANALYTICAL INTERPRETATION
+              </span>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary">
+                MODEL INFERENCE ENGINE
+              </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+              [DYNAMIC INTERPRETATION]
+            </p>
+<div class="mt-4 pt-3 border-t dashed-rule font-label-mono-sm text-label-mono-sm text-secondary">
+              INTERPRETATION BASIS: <span class="text-on-surface font-bold">[DYNAMIC EVIDENCE BASIS]</span>
+</div></div>
+<!-- Investigative Lead -->
+<div class="border structural-rule bg-surface-container-low p-4">
+<div class="flex items-center justify-between pb-2 border-b structural-rule mb-3">
+<span class="font-label-mono-bold text-label-mono-bold uppercase tracking-wider text-primary">
+                INVESTIGATIVE LEAD
+              </span>
+<span class="bg-on-surface text-background font-label-mono-bold text-label-mono-sm px-2 py-0.5">
+                LEAD STATUS: REQUIRES HUMAN REVIEW
+              </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">[DYNAMIC HUMAN-READABLE LEAD]</p>
+</div>
+</div>
+<!-- 6.E: CAVEATS & LIMITATIONS -->
+<div class="border structural-rule bg-surface p-4">
+<div class="flex items-center gap-2 pb-2 border-b structural-rule mb-3">
+<span class="material-symbols-outlined text-secondary">warning</span>
+<span class="font-label-mono-bold text-label-mono-bold uppercase tracking-wider text-on-surface">
+              CAVEATS &amp; STRUCTURAL LIMITATIONS
+            </span>
+</div>
+<div class="font-body-sm text-body-sm text-secondary space-y-2">
+<p class="">[DYNAMIC CAVEATS]</p>
+<div class="p-3 bg-surface-container border dashed-rule font-label-mono-sm text-label-mono-sm text-on-surface leading-normal">
+<strong>CONCEPTUAL BOUNDARIES:</strong> Bitcoin addresses are pseudonymous identifiers. Address ≠ wallet ≠ entity. IP association ≠ ownership. GeoIP is enrichment, not identity. Network observation time is sensor observation time. Anomaly ≠ crime.
+            </div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN (~4 cols - Analyst Reference Rail & Controls) -->
+<div class="lg:col-span-4 space-y-6">
+<!-- 6.A: ALERT RECORD CARD -->
+<div class="border structural-rule bg-surface">
+<div class="bg-on-surface text-background px-4 py-2.5 flex items-center justify-between">
+<span class="font-label-mono-bold text-label-mono-bold uppercase tracking-wider">
+              ALERT RECORD LEDGER
+            </span>
+<span class="w-2 h-2 bg-primary-container"></span>
+</div>
+<div class="p-4 space-y-3 font-label-mono-sm text-label-mono-sm">
+<div class="pb-2 border-b dashed-rule flex justify-between">
+<span class="text-secondary">ALERT ID:</span>
+<span class="font-bold text-on-surface">[DYNAMIC ALERT ID]</span>
+</div>
+<div class="pb-2 border-b dashed-rule">
+<span class="text-secondary block mb-0.5">TXID:</span>
+<span class="font-bold text-on-surface break-all">[DYNAMIC TXID]</span>
+</div>
+<div class="pb-2 border-b dashed-rule flex justify-between items-center">
+<span class="text-secondary">ANOMALY STRENGTH:</span>
+<span class="bg-primary-container text-on-surface font-bold px-1.5 py-0.5">[DYNAMIC 0–100]</span>
+</div>
+<div class="pb-2 border-b dashed-rule flex justify-between">
+<span class="text-secondary">EVIDENCE TIER:</span>
+<span class="font-bold text-on-surface">[DYNAMIC EVIDENCE TIER]</span>
+</div>
+<div class="pb-2 border-b dashed-rule flex justify-between">
+<span class="text-secondary">NETWORK TIMING:</span>
+<span class="font-bold text-on-surface">[DYNAMIC NETWORK TIMING]</span>
+</div>
+<div class="pb-2 border-b dashed-rule flex justify-between">
+<span class="text-secondary">ACTIVE RUN:</span>
+<span class="font-bold text-on-surface">[DYNAMIC RUN ID]</span>
+</div>
+<div class="pb-2 border-b dashed-rule flex justify-between">
+<span class="text-secondary">MODEL:</span>
+<span class="font-bold text-on-surface">ISOLATION FOREST</span>
+</div>
+<div class="flex justify-between">
+<span class="text-secondary">DATASET:</span>
+<span class="font-bold text-on-surface">DEMO_V1</span>
+</div>
+</div>
+</div>
+<!-- 6.B: PROVENANCE & AUDIT TRACEABILITY -->
+<div class="border structural-rule bg-surface">
+<div class="bg-surface-container px-4 py-2.5 border-b structural-rule flex items-center justify-between">
+<span class="font-label-mono-bold text-label-mono-bold uppercase tracking-wider text-on-surface">
+              AUDIT TRACEABILITY
+            </span>
+<span class="text-secondary font-label-mono-sm text-label-mono-sm">LOCAL DUCKDB</span>
+</div>
+<div class="p-4 space-y-3 font-label-mono-sm text-label-mono-sm"><div class="pb-2 border-b dashed-rule">
+<span class="text-secondary block">SOURCE RECORDS:</span>
+<span class="font-bold text-on-surface">[DYNAMIC]</span>
+</div>
+<div class="pb-2 border-b dashed-rule">
+<span class="text-secondary block">SOURCE FILE:</span>
+<span class="font-bold text-on-surface break-all">[DYNAMIC]</span>
+</div>
+<div class="pb-2 border-b dashed-rule">
+<span class="text-secondary block">SOURCE ROW / RECORD:</span>
+<span class="font-bold text-on-surface">[DYNAMIC]</span>
+</div>
+<div class="pb-2 border-b dashed-rule">
+<span class="text-secondary block">RUN ID:</span>
+<span class="font-bold text-on-surface">[DYNAMIC RUN ID]</span>
+</div>
+<div class="pb-2 border-b dashed-rule">
+<span class="text-secondary block">EVIDENCE ARTIFACTS:</span>
+<span class="font-bold text-on-surface">[DYNAMIC]</span>
+</div>
+<div>
+<span class="text-secondary block">MODEL-DERIVED EVIDENCE:</span>
+<span class="font-bold text-on-surface">[DYNAMIC]</span>
+</div></div>
+</div>
+<!-- 6.C: CONTINUE INVESTIGATION (Action buttons) -->
+<div class="border structural-rule bg-surface p-4 space-y-3">
+<div class="font-label-mono-bold text-label-mono-bold uppercase tracking-wider text-on-surface pb-2 border-b structural-rule">
+            CONTINUE INVESTIGATION
+          </div>
+<p class="font-body-sm text-body-sm text-secondary">
+            Advance inquiry into connected topological modules and transaction details.
+          </p>
+<div class="space-y-2 pt-2">
+<a class="w-full flex items-center justify-between p-3 bg-on-surface text-background font-label-mono-bold text-label-mono-bold hover:bg-primary-container hover:text-on-surface border structural-rule" href="#">
+<span class="">TRANSACTION INVESTIGATION</span>
+<span class="">↗</span>
+</a>
+<a class="w-full flex items-center justify-between p-3 bg-surface text-on-surface font-label-mono-bold text-label-mono-bold hover:bg-surface-container-high border structural-rule" href="#">
+<span class="">NETWORK GRAPH</span>
+<span class="">↗</span>
+</a>
+<a class="w-full flex items-center justify-between p-3 bg-surface text-on-surface font-label-mono-bold text-label-mono-bold hover:bg-surface-container-high border structural-rule" href="#">
+<span class="">EVIDENCE &amp; PROVENANCE</span>
+<span class="">↗</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- 7. INVESTIGATION FLOW WORKFLOW STRIP -->
+<div class="border structural-rule bg-surface p-4">
+<div class="font-label-mono-bold text-label-mono-sm text-secondary uppercase tracking-wider mb-3">
+        SYSTEM WORKFLOW PROGRESSION
+      </div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2 font-label-mono-bold text-label-mono-bold">
+<!-- Step 1 -->
+<div class="p-2.5 border structural-rule bg-surface-container-low text-secondary flex items-center gap-2">
+<span class="w-4 h-4 rounded-none bg-surface-variant flex items-center justify-center font-label-mono-sm text-label-mono-sm text-on-surface">1</span>
+<span class="">ALERT QUEUE</span>
+</div>
+<!-- Step 2 (Active) -->
+<div class="p-2.5 border structural-rule bg-primary-container text-on-surface flex items-center gap-2">
+<span class="w-4 h-4 rounded-none bg-on-surface flex items-center justify-center font-label-mono-sm text-label-mono-sm text-background">2</span>
+<span class="">ALERT INVESTIGATION</span>
+</div>
+<!-- Step 3 -->
+<div class="p-2.5 border structural-rule bg-surface text-on-surface flex items-center gap-2 hover:bg-surface-container-low">
+<span class="w-4 h-4 rounded-none bg-surface-container flex items-center justify-center font-label-mono-sm text-label-mono-sm">3</span>
+<span class="">TX INVESTIGATION</span>
+</div>
+<!-- Step 4 -->
+<div class="p-2.5 border structural-rule bg-surface text-on-surface flex items-center gap-2 hover:bg-surface-container-low">
+<span class="w-4 h-4 rounded-none bg-surface-container flex items-center justify-center font-label-mono-sm text-label-mono-sm">4</span>
+<span class="">NETWORK GRAPH</span>
+</div>
+<!-- Step 5 -->
+<div class="p-2.5 border structural-rule bg-surface text-on-surface flex items-center gap-2 hover:bg-surface-container-low">
+<span class="w-4 h-4 rounded-none bg-surface-container flex items-center justify-center font-label-mono-sm text-label-mono-sm">5</span>
+<span class="">PROVENANCE</span>
+</div>
+</div>
+</div>
+<!-- 8. EPISTEMIC BOUNDARY & FOOTER -->
+<!-- Inverted Legal Safeguard Statement Banner -->
+<div class="bg-on-surface text-background p-4 border structural-rule">
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+<div class="font-label-mono-bold text-label-mono-bold tracking-wider text-primary-container uppercase">
+          EPISTEMIC BOUNDARY &amp; LEGAL SAFEGUARD STATEMENT
+        </div>
+
+</div>
+<p class="font-body-md text-body-md text-surface-container-low mt-2">
+        Structural anomaly does not mean criminal activity. CryptoNexus surfaces patterns for human investigation. It does not determine identity, ownership or criminal intent.
+      </p>
+</div>
+</main>
+<!-- EDITORIAL LEDGER FOOTER -->
+<footer class="w-full bg-surface border-t structural-rule px-6 py-8 mt-12 flex flex-col md:flex-row justify-between items-center gap-4">
+<!-- Left: Brand Logo & Copyright -->
+<div class="flex flex-col sm:flex-row items-center gap-4">
+<img alt="CryptoNexus Logo" class="h-6 object-contain" src="assets/image_1.png">
+<span class="hidden sm:inline text-secondary font-label-mono-sm">|</span>
+<p class="font-label-mono-sm text-label-mono-sm text-secondary text-center sm:text-left">
+        © 2026 CRYPTONEXUS. BITCOIN INTELLIGENCE PLATFORM. LOCAL / OFFLINE.
+      </p>
+</div>
+<!-- Right: Footer Links -->
+<div class="flex items-center space-x-6 font-label-mono-sm text-label-mono-sm text-secondary uppercase">
+<a class="hover:text-primary-container" href="#">DISCLAIMER</a>
+<a class="hover:text-primary-container" href="#">METHODOLOGY</a>
+<a class="hover:text-primary-container" href="#">ABOUT</a>
+</div>
+</footer>
+
+
+</body></html>

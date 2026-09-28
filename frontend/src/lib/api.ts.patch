@@ -1,0 +1,27 @@
+--- frontend/src/lib/api.ts
++++ frontend/src/lib/api.ts
+@@ -107,6 +107,24 @@
+   getGraphNeighbors: (runId: string, txid: string, depth = 1) => fetchApi<GraphResponse>(`/runs/${runId}/transactions/${txid}/neighbors?depth=${depth}`),
+   search: (query: string, category: string, limit = 50, runId?: string) => {
+     let url = `/search?q=${encodeURIComponent(query)}&category=${encodeURIComponent(category)}&limit=${limit}`;
+     if (runId) url += `&run_id=${encodeURIComponent(runId)}`;
+     return fetchApi<SearchResponse>(url);
+   },
++  createRun: (runId?: string) => fetchApi<RunResponse>(`/runs`, {
++    method: 'POST',
++    body: runId ? JSON.stringify({ run_id: runId }) : undefined
++  }),
++  uploadDataset: async (runId: string, file: File) => {
++    const formData = new FormData();
++    formData.append('file', file);
++    const response = await fetch(`${BASE_URL}/runs/${runId}/ingest`, {
++      method: 'POST',
++      body: formData,
++    });
++    if (!response.ok) throw new ApiError(response.status, `Upload Failed`);
++    return response.json();
++  },
++  executeRun: (runId: string) => fetchApi<{status: string}>(`/runs/${runId}/execute`, {
++    method: 'POST'
++  }),
+ };

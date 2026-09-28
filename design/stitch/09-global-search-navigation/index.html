@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CRYPTONEXUS - Global Search &amp; Navigation</title>
+<!-- Google Fonts: Oswald, Space Grotesk, Space Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with configuration -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-variant": "#e3e3de",
+            "on-tertiary-fixed-variant": "#6c3a00",
+            "secondary": "#5f5e5e",
+            "tertiary-fixed": "#ffdcc1",
+            "inverse-primary": "#ffb874",
+            "on-secondary-fixed": "#1c1b1b",
+            "tertiary-container": "#f99223",
+            "surface-container-high": "#e9e8e3",
+            "secondary-container": "#e5e2e1",
+            "primary": "#8c4f00",
+            "surface-container-lowest": "#ffffff",
+            "surface-bright": "#faf9f4",
+            "on-surface-variant": "#554335",
+            "on-primary-container": "#603500",
+            "tertiary": "#8f4e00",
+            "tertiary-fixed-dim": "#ffb77a",
+            "background": "#faf9f4",
+            "on-secondary": "#ffffff",
+            "primary-fixed": "#ffdcbf",
+            "on-secondary-container": "#656464",
+            "surface-container": "#efeee9",
+            "secondary-fixed-dim": "#c9c6c5",
+            "inverse-surface": "#30312e",
+            "on-surface": "#1b1c19",
+            "on-error": "#ffffff",
+            "surface-dim": "#dbdad5",
+            "surface-container-highest": "#e3e3de",
+            "on-background": "#1b1c19",
+            "surface-tint": "#8c4f00",
+            "surface-container-low": "#f5f4ef",
+            "on-tertiary-container": "#623400",
+            "primary-container": "#f7931a",
+            "on-error-container": "#93000a",
+            "on-primary-fixed-variant": "#6b3b00",
+            "on-secondary-fixed-variant": "#474646",
+            "inverse-on-surface": "#f2f1ec",
+            "outline-variant": "#dbc2ae",
+            "on-primary-fixed": "#2d1600",
+            "on-tertiary-fixed": "#2e1500",
+            "outline": "#887362",
+            "secondary-fixed": "#e5e2e1",
+            "error-container": "#ffdad6",
+            "error": "#ba1a1a",
+            "primary-fixed-dim": "#ffb874",
+            "on-primary": "#ffffff",
+            "surface": "#faf9f4",
+            "on-tertiary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0px",
+            "lg": "0px",
+            "xl": "0px",
+            "full": "0px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "space-xl": "2.5rem",
+            "margin-mobile": "1rem",
+            "margin": "1.5rem",
+            "gutter": "0px",
+            "space-lg": "1.5rem",
+            "gutter-loose": "1.5rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "label-mono-sm": ["Space Mono"],
+            "headline-xl": ["Oswald"],
+            "headline-lg": ["Oswald"],
+            "label-mono-bold": ["Space Mono"],
+            "data-metric": ["Oswald"],
+            "display-hero-mobile": ["Oswald"],
+            "body-md": ["Space Grotesk"],
+            "display-hero": ["Oswald"],
+            "headline-xl-mobile": ["Oswald"],
+            "body-sm": ["Space Grotesk"],
+            "headline-sm": ["Oswald"],
+            "body-lg": ["Space Grotesk"],
+            "headline-md": ["Oswald"]
+          },
+          "fontSize": {
+            "label-mono-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.05em", "fontWeight": "400" }],
+            "headline-xl": ["3.5rem", { "lineHeight": "3.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["2.25rem", { "lineHeight": "2.5rem", "letterSpacing": "0em", "fontWeight": "600" }],
+            "label-mono-bold": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.08em", "fontWeight": "700" }],
+            "data-metric": ["2.75rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display-hero-mobile": ["3rem", { "lineHeight": "3.125rem", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-md": ["0.9375rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+            "display-hero": ["5rem", { "lineHeight": "5rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-xl-mobile": ["2.25rem", { "lineHeight": "2.5rem", "letterSpacing": "0em", "fontWeight": "600" }],
+            "body-sm": ["0.8125rem", { "lineHeight": "1.25rem", "fontWeight": "400" }],
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }],
+            "headline-md": ["1.5rem", { "lineHeight": "1.875rem", "letterSpacing": "0.01em", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    * {
+      border-radius: 0px !important;
+      box-shadow: none !important;
+    }
+    body {
+      background-color: #FAF9F4;
+      color: #1B1C19;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 1.125rem;
+    }
+    .hairline-border {
+      border: 1px solid #1B1C19;
+    }
+    .hairline-border-b {
+      border-bottom: 1px solid #1B1C19;
+    }
+    .hairline-border-t {
+      border-top: 1px solid #1B1C19;
+    }
+    .hairline-border-r {
+      border-right: 1px solid #1B1C19;
+    }
+    .hairline-border-l {
+      border-left: 1px solid #1B1C19;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased selection:bg-primary-container selection:text-on-surface">
+<!-- 1. SHARED HEADER (Editorial Masthead) -->
+<header class="w-full hairline-border-b bg-surface flex flex-col md:flex-row items-stretch justify-between px-6 py-0 z-30">
+<div class="flex items-center gap-6 py-3 md:py-0 border-b md:border-b-0 border-on-surface">
+<!-- Actual brand asset -->
+<div class="flex items-center">
+<img alt="CRYPTONEXUS Bitcoin Intelligence" class="h-7 w-auto object-contain" src="assets/image_1.png"/>
+</div>
+<div class="h-6 w-px bg-on-surface hidden md:block"></div>
+<span class="font-label-mono-bold text-label-mono-bold tracking-wider text-secondary hidden lg:inline-block">WORKSTATION // SCREEN 07</span>
+</div>
+<!-- Navigation Links & Action cluster -->
+<div class="flex items-stretch overflow-x-auto">
+<nav class="flex items-stretch">
+<a class="flex items-center px-4 py-3 font-label-mono-bold text-label-mono-bold text-secondary uppercase tracking-wider hover:text-primary-container transition-none hairline-border-r border-on-surface" href="#overview">OVERVIEW</a>
+<a class="flex items-center px-4 py-3 font-label-mono-bold text-label-mono-bold text-secondary uppercase tracking-wider hover:text-primary-container transition-none hairline-border-r border-on-surface" href="#investigations">INVESTIGATIONS</a>
+<a class="flex items-center px-4 py-3 font-label-mono-bold text-label-mono-bold text-secondary uppercase tracking-wider hover:text-primary-container transition-none hairline-border-r border-on-surface" href="#analytics">ANALYTICS</a>
+<a class="flex items-center px-4 py-3 font-label-mono-bold text-label-mono-bold text-secondary uppercase tracking-wider hover:text-primary-container transition-none hairline-border-r border-on-surface" href="#documentation">DOCUMENTATION</a>
+<!-- Current Tab Active: SEARCH -->
+<a class="flex items-center gap-1.5 px-4 py-3 font-label-mono-bold text-label-mono-bold bg-on-surface text-surface border-b-2 border-primary-container hairline-border-r border-on-surface" href="#search">
+<span class="material-symbols-outlined text-primary-container">search</span>
+<span>SEARCH</span>
+</a>
+</nav>
+<!-- Status Indicator -->
+<div class="hidden sm:flex items-center px-4 hairline-border-r border-on-surface font-label-mono-sm text-label-mono-sm text-secondary bg-surface-container-low">
+<span class="inline-block w-2 h-2 bg-primary-container mr-2"></span>
+        STATUS: LOCAL/OFFLINE
+      </div>
+<!-- Action Button -->
+<a class="flex items-center px-5 font-label-mono-bold text-label-mono-bold bg-primary-container text-on-surface hover:bg-on-surface hover:text-surface transition-none whitespace-nowrap" href="#investigate">
+        START INVESTIGATING ↗
+      </a>
+</div>
+</header>
+<!-- 2. ACTIVE RUN RIBBON -->
+<section class="w-full bg-surface-container-low hairline-border-b px-6 py-2 overflow-x-auto">
+<div class="flex items-center gap-4 text-secondary font-label-mono-sm text-label-mono-sm whitespace-nowrap min-w-max">
+<div class="flex items-center gap-2">
+<span class="text-on-surface font-bold">RUN ID:</span>
+<span class="bg-surface hairline-border px-1.5 py-0.5 text-on-surface font-label-mono-bold">[DYNAMIC RUN ID]</span>
+</div>
+<span class="text-outline">|</span>
+<div><span class="text-on-surface">SOURCE:</span> DEMO_V1</div>
+<span class="text-outline">|</span>
+<div><span class="text-on-surface">SOURCE BLOCKS:</span> 700000 → 700022</div>
+<span class="text-outline">|</span>
+<div><span class="text-on-surface">RUNTIME:</span> LOCAL / OFFLINE</div>
+<span class="text-outline">|</span>
+<div><span class="text-on-surface">MODEL:</span> ISOLATION FOREST</div>
+<span class="text-outline">|</span>
+<div><span class="text-on-surface">DATABASE:</span> DUCKDB</div>
+<span class="text-outline">|</span>
+<div class="flex items-center gap-1.5 font-bold text-on-surface">
+<span>RUN STATUS:</span>
+<span class="text-on-surface font-label-mono-bold">READY</span>
+<span class="w-2 h-2 rounded-none bg-primary-container inline-block"></span>
+</div>
+</div>
+</section>
+<!-- MAIN FORENSIC CANVAS -->
+<main class="w-full max-w-[1440px] mx-auto px-4 md:px-6 py-6 space-y-6">
+<!-- 3. PAGE HEADER & WORKBENCH METADATA -->
+<section class="hairline-border bg-surface grid grid-cols-1 lg:grid-cols-12">
+<!-- Title Area (~8 cols) -->
+<div class="lg:col-span-8 p-6 lg:hairline-border-r border-on-surface flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 font-label-mono-bold text-label-mono-bold text-secondary uppercase tracking-widest mb-2">
+<span class="w-2 h-2 bg-on-surface inline-block"></span>
+            GLOBAL NAVIGATION // SYSTEM INDEX
+          </div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface uppercase tracking-tight m-0">
+            GLOBAL SEARCH
+          </h1>
+<p class="font-body-md text-body-md text-secondary mt-2 max-w-2xl">
+            Search the active local analytical workspace by supported transaction, address, network, alert, run, evidence, or source references.
+          </p>
+</div>
+<div class="mt-4 pt-4 hairline-border-t border-on-surface flex items-center gap-4 text-secondary font-label-mono-sm text-label-mono-sm">
+<span>RUNTIME MODEL: LOCAL / OFFLINE</span>
+<span>•</span>
+<span>ACTIVE RUN SCOPE</span>
+<span>•</span>
+<span class="text-primary-container font-bold">LOCAL ANALYTICAL ARTIFACTS</span>
+</div>
+</div>
+<!-- Right Metadata Workbench Card (~4 cols) -->
+<div class="lg:col-span-4 p-6 bg-surface-container flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 hairline-border-b border-on-surface">
+<span class="font-headline-sm text-headline-sm uppercase tracking-wide text-on-surface">SEARCH WORKSPACE</span>
+<span class="font-label-mono-bold text-label-mono-bold bg-on-surface text-surface px-2 py-0.5">READY</span>
+</div>
+<dl class="space-y-2 mt-4 font-label-mono-sm text-label-mono-sm">
+<div class="flex justify-between py-1 hairline-border-b border-outline-variant">
+<dt class="text-secondary uppercase">STATE</dt>
+<dd class="text-on-surface font-bold uppercase">READY</dd>
+</div>
+<div class="flex justify-between py-1 hairline-border-b border-outline-variant">
+<dt class="text-secondary uppercase">RUN</dt>
+<dd class="text-on-surface font-label-mono-bold">[DYNAMIC RUN ID]</dd>
+</div>
+<div class="flex justify-between py-1 hairline-border-b border-outline-variant">
+<dt class="text-secondary uppercase">SCOPE</dt>
+<dd class="text-on-surface uppercase">ACTIVE LOCAL RUN</dd>
+</div>
+<div class="flex justify-between py-1">
+<dt class="text-secondary uppercase">RUNTIME</dt>
+<dd class="text-on-surface uppercase font-bold text-primary">LOCAL / OFFLINE</dd>
+</div>
+</dl>
+</div>
+<div class="mt-4 pt-3 hairline-border-t border-on-surface font-label-mono-sm text-label-mono-sm text-secondary">
+          QUERY SCOPE: <span class="text-on-surface font-bold">ACTIVE LOCAL WORKSPACE</span>
+</div>
+</div>
+</section>
+<!-- 4. PRIMARY SEARCH BAR (Dominant Forensic Control) -->
+<section class="hairline-border bg-surface p-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">search</span>
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface">SEARCH LOCAL ANALYTICAL RECORDS</span>
+</div>
+<span class="font-label-mono-bold text-label-mono-bold text-secondary uppercase bg-surface-container-high px-2 py-1 hairline-border border-on-surface">
+          SEARCH SCOPE: ACTIVE LOCAL WORKSPACE // NO EXTERNAL NETWORK REQUESTS
+        </span>
+</div>
+<!-- Main Input Frame -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-0 hairline-border border-on-surface">
+<div class="md:col-span-9 flex items-center bg-surface px-4 py-3 md:hairline-border-r border-on-surface">
+<span class="material-symbols-outlined text-secondary mr-3">terminal</span>
+<input class="w-full bg-transparent border-0 p-0 font-label-mono-bold text-label-mono-bold text-on-surface placeholder:text-secondary focus:ring-0 focus:outline-none" placeholder="TXID / ADDRESS / IP / ALERT ID / RUN ID / EVIDENCE ID" type="text" value=""/>
+</div>
+<div class="md:col-span-3 flex items-stretch">
+<button class="flex-1 bg-on-surface text-surface hover:bg-primary-container hover:text-on-surface transition-none font-label-mono-bold text-label-mono-bold py-3 px-4 flex items-center justify-center gap-2 hairline-border-r border-on-surface">
+<span class="material-symbols-outlined text-sm">search</span>
+            SEARCH
+          </button>
+<button class="px-5 bg-surface text-on-surface hover:bg-surface-container-high transition-none font-label-mono-bold text-label-mono-bold py-3 flex items-center justify-center">
+            CLEAR
+          </button>
+</div>
+</div>
+<div class="mt-3 flex flex-wrap items-center justify-between gap-2 font-label-mono-sm text-label-mono-sm text-secondary">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-primary-container inline-block"></span>
+<span>LOCAL WORKSPACE QUERY // NO EXTERNAL NETWORK REQUESTS</span>
+</div>
+<div class="text-on-surface font-label-mono-sm">
+          HOTKEY SHORTCUT: <kbd class="px-1.5 py-0.5 bg-surface-container hairline-border border-on-surface font-bold text-xs">[CMD + K]</kbd>
+</div>
+</div>
+</section>
+<!-- 5. SEARCH TYPE FILTERS -->
+<section class="hairline-border bg-surface-container-low p-4 flex flex-col md:flex-row md:items-center gap-3">
+<span class="font-label-mono-bold text-label-mono-bold uppercase text-on-surface tracking-wider shrink-0">
+        SEARCH TYPE:
+      </span>
+<div class="flex flex-wrap gap-2">
+<!-- ALL ACTIVE -->
+<button class="px-3 py-1.5 font-label-mono-bold text-label-mono-bold bg-on-surface text-surface hairline-border border-on-surface flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 bg-primary-container inline-block"></span>
+          ALL
+        </button>
+<button class="px-3 py-1.5 font-label-mono-bold text-label-mono-bold bg-surface text-on-surface hairline-border border-on-surface hover:bg-surface-container transition-none">
+          TRANSACTION
+        </button>
+<button class="px-3 py-1.5 font-label-mono-bold text-label-mono-bold bg-surface text-on-surface hairline-border border-on-surface hover:bg-surface-container transition-none">
+          ADDRESS
+        </button>
+<button class="px-3 py-1.5 font-label-mono-bold text-label-mono-bold bg-surface text-on-surface hairline-border border-on-surface hover:bg-surface-container transition-none">
+          NETWORK OBSERVATION
+        </button>
+<button class="px-3 py-1.5 font-label-mono-bold text-label-mono-bold bg-surface text-on-surface hairline-border border-on-surface hover:bg-surface-container transition-none">
+          ALERT
+        </button>
+<button class="px-3 py-1.5 font-label-mono-bold text-label-mono-bold bg-surface text-on-surface hairline-border border-on-surface hover:bg-surface-container transition-none">
+          RUN
+        </button>
+<button class="px-3 py-1.5 font-label-mono-bold text-label-mono-bold bg-surface text-on-surface hairline-border border-on-surface hover:bg-surface-container transition-none">
+          EVIDENCE
+        </button>
+<button class="px-3 py-1.5 font-label-mono-bold text-label-mono-bold bg-surface text-on-surface hairline-border border-on-surface hover:bg-surface-container transition-none">
+          SOURCE RECORD
+        </button>
+</div>
+</section>
+<!-- 6. SEARCH STATUS STRIP -->
+<section class="hairline-border bg-surface px-4 py-2.5 font-label-mono-sm text-label-mono-sm flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-3 text-secondary">
+<span class="font-label-mono-bold text-label-mono-bold text-on-surface uppercase">SEARCH RESULTS</span>
+<span>//</span>
+<span>RESULTS: <strong class="text-on-surface font-label-mono-bold">[DYNAMIC COUNT]</strong></span>
+<span>//</span>
+<span>QUERY: <strong class="text-on-surface font-label-mono-bold">[DYNAMIC QUERY]</strong></span>
+<span>//</span>
+<span>SCOPE: <strong class="text-on-surface font-label-mono-bold">ACTIVE RUN</strong></span>
+<span>//</span>
+<span>STATUS: <strong class="text-on-surface font-label-mono-bold">[DYNAMIC STATUS]</strong></span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-secondary uppercase">MODES:</span>
+<span class="px-1.5 py-0.5 bg-surface-container-high hairline-border border-on-surface font-bold text-on-surface">READY</span>
+<span class="px-1.5 py-0.5 hairline-border border-outline-variant text-secondary">SEARCHING</span>
+<span class="px-1.5 py-0.5 hairline-border border-outline-variant text-secondary">NO RESULTS</span>
+<span class="px-1.5 py-0.5 hairline-border border-outline-variant text-secondary">ERROR</span>
+</div>
+</section>
+<!-- 7. 8:4 ASYMMETRIC ANALYTICAL WORKSPACE -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- LEFT COLUMN (~8 cols / ~66%): RESULTS LEDGER -->
+<section class="lg:col-span-8 space-y-6">
+<!-- Table Container -->
+<div class="hairline-border bg-surface">
+<!-- Table Header Banner -->
+<div class="p-4 hairline-border-b border-on-surface flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-surface-container-low">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface uppercase tracking-tight m-0">SEARCH RESULTS</h2>
+<p class="font-body-sm text-body-sm text-secondary m-0">Supported records returned from the active local analytical workspace.</p>
+</div>
+<span class="font-label-mono-bold text-label-mono-bold bg-surface px-2.5 py-1 hairline-border border-on-surface text-secondary self-start sm:self-auto">
+              [DYNAMIC RESULT COUNT] RECORDS
+            </span>
+</div>
+<!-- Structured Ledger Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="hairline-border-b border-on-surface bg-surface-container font-label-mono-bold text-label-mono-bold text-on-surface uppercase tracking-wider">
+<th class="py-2.5 px-3 hairline-border-r border-on-surface">TYPE</th>
+<th class="py-2.5 px-3 hairline-border-r border-on-surface">IDENTIFIER</th>
+<th class="py-2.5 px-3 hairline-border-r border-on-surface">SOURCE / CONTEXT</th>
+<th class="py-2.5 px-3 hairline-border-r border-on-surface">RUN</th>
+<th class="py-2.5 px-3 hairline-border-r border-on-surface">TIMESTAMP</th>
+<th class="py-2.5 px-3 hairline-border-r border-on-surface">STATUS</th>
+<th class="py-2.5 px-3 text-right">ACTION</th>
+</tr>
+</thead>
+<tbody class="font-label-mono-sm text-label-mono-sm divide-y divide-on-surface">
+<!-- Row 1: Selected Record (Transaction) -->
+<tr class="bg-surface-container-high hover:bg-surface-variant transition-none">
+<td class="py-3 px-3 hairline-border-r border-on-surface font-label-mono-bold text-on-surface">
+<span class="inline-block w-2 h-2 bg-primary-container mr-1.5"></span>
+                    [DYNAMIC TYPE: TRANSACTION]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface font-bold text-on-surface">
+                    [DYNAMIC IDENTIFIER: TXID]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface text-secondary">
+                    [DYNAMIC SOURCE / CONTEXT]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface text-secondary">
+                    [DYNAMIC RUN ID]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface text-secondary">
+                    [DYNAMIC TIMESTAMP]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface">
+<span class="bg-on-surface text-surface px-1.5 py-0.5 font-bold uppercase text-[10px]">
+                      [DYNAMIC STATUS: OBSERVED]
+                    </span>
+</td>
+<td class="py-3 px-3 text-right">
+<button class="bg-on-surface text-surface hover:bg-primary-container hover:text-on-surface px-2.5 py-1 text-label-mono-bold font-label-mono-bold hairline-border border-on-surface transition-none">
+                      OPEN TRANSACTION ↗
+                    </button>
+</td>
+</tr>
+<!-- Row 2: Address -->
+<tr class="bg-surface hover:bg-surface-container transition-none">
+<td class="py-3 px-3 hairline-border-r border-on-surface font-label-mono-bold text-on-surface">
+<span class="inline-block w-2 h-2 bg-secondary mr-1.5"></span>
+                    [DYNAMIC TYPE: ADDRESS]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface font-bold text-on-surface">
+                    [DYNAMIC IDENTIFIER: BITCOIN ADDRESS]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface text-secondary">
+                    [DYNAMIC SOURCE: INPUT SET]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface text-secondary">
+                    [DYNAMIC RUN ID]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface text-secondary">
+                    [DYNAMIC TIMESTAMP]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface">
+<span class="bg-surface-container hairline-border border-on-surface text-on-surface px-1.5 py-0.5 font-bold uppercase text-[10px]">
+                      [DYNAMIC STATUS: DERIVED]
+                    </span>
+</td>
+<td class="py-3 px-3 text-right">
+<button class="bg-surface text-on-surface hover:bg-surface-container px-2.5 py-1 text-label-mono-bold font-label-mono-bold hairline-border border-on-surface transition-none">
+                      OPEN GRAPH ↗
+                    </button>
+</td>
+</tr>
+<!-- Row 3: Alert -->
+<tr class="bg-surface-container-low hover:bg-surface-container transition-none">
+<td class="py-3 px-3 hairline-border-r border-on-surface font-label-mono-bold text-on-surface">
+<span class="inline-block w-2 h-2 bg-primary-container mr-1.5"></span>
+                    [DYNAMIC TYPE: ALERT]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface font-bold text-on-surface">
+                    [DYNAMIC IDENTIFIER: ALERT ID]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface text-secondary">
+                    [DYNAMIC SOURCE: ISOLATION FOREST]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface text-secondary">
+                    [DYNAMIC RUN ID]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface text-secondary">
+                    [DYNAMIC TIMESTAMP]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface">
+<span class="bg-primary-container text-on-surface font-bold px-1.5 py-0.5 uppercase text-[10px]">
+                      [DYNAMIC STATUS: ACTIVE]
+                    </span>
+</td>
+<td class="py-3 px-3 text-right">
+<button class="bg-surface text-on-surface hover:bg-surface-container px-2.5 py-1 text-label-mono-bold font-label-mono-bold hairline-border border-on-surface transition-none">
+                      OPEN ALERT ↗
+                    </button>
+</td>
+</tr>
+<!-- Row 4: Network -->
+<tr class="bg-surface hover:bg-surface-container transition-none">
+<td class="py-3 px-3 hairline-border-r border-on-surface font-label-mono-bold text-on-surface">
+<span class="inline-block w-2 h-2 bg-secondary mr-1.5"></span>
+                    [DYNAMIC TYPE: NETWORK]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface font-bold text-on-surface">
+                    [DYNAMIC IDENTIFIER: IP OBSERVATION]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface text-secondary">
+                    [DYNAMIC SOURCE: SENSOR_NODE]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface text-secondary">
+                    [DYNAMIC RUN ID]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface text-secondary">
+                    [DYNAMIC TIMESTAMP]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface">
+<span class="bg-surface-container hairline-border border-on-surface text-on-surface px-1.5 py-0.5 font-bold uppercase text-[10px]">
+                      [DYNAMIC STATUS: RECORDED]
+                    </span>
+</td>
+<td class="py-3 px-3 text-right">
+<button class="bg-surface text-on-surface hover:bg-surface-container px-2.5 py-1 text-label-mono-bold font-label-mono-bold hairline-border border-on-surface transition-none">
+                      OPEN GRAPH ↗
+                    </button>
+</td>
+</tr>
+<!-- Row 5: Evidence -->
+<tr class="bg-surface-container-low hover:bg-surface-container transition-none">
+<td class="py-3 px-3 hairline-border-r border-on-surface font-label-mono-bold text-on-surface">
+<span class="inline-block w-2 h-2 bg-on-surface mr-1.5"></span>
+                    [DYNAMIC TYPE: EVIDENCE]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface font-bold text-on-surface">
+                    [DYNAMIC IDENTIFIER: EVIDENCE ID]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface text-secondary">
+                    [DYNAMIC SOURCE: PROVENANCE]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface text-secondary">
+                    [DYNAMIC RUN ID]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface text-secondary">
+                    [DYNAMIC TIMESTAMP]
+                  </td>
+<td class="py-3 px-3 hairline-border-r border-on-surface">
+<span class="bg-surface-container-highest text-on-surface hairline-border border-on-surface font-bold px-1.5 py-0.5 uppercase text-[10px]">
+                      [DYNAMIC STATUS]
+                    </span>
+</td>
+<td class="py-3 px-3 text-right">
+<button class="bg-surface text-on-surface hover:bg-surface-container px-2.5 py-1 text-label-mono-bold font-label-mono-bold hairline-border border-on-surface transition-none">
+                      OPEN PROVENANCE ↗
+                    </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer Strip -->
+<div class="p-3 hairline-border-t border-on-surface bg-surface-container font-label-mono-sm text-label-mono-sm flex flex-col sm:flex-row justify-between items-center text-secondary gap-2">
+<div>SHOWING 5 OF [DYNAMIC TOTAL] RECORDS MATCHING ACTIVE CONSTRAINTS</div>
+<div class="flex items-center gap-2">
+<span class="text-on-surface font-bold">PAGINATION:</span>
+<button class="px-2 py-0.5 bg-surface hairline-border border-on-surface text-on-surface disabled:opacity-50">PREV</button>
+<span class="px-2 py-0.5 bg-on-surface text-surface">1</span>
+<button class="px-2 py-0.5 bg-surface hairline-border border-on-surface text-on-surface">NEXT</button>
+</div>
+</div>
+</div>
+<!-- SECONDARY STATE CONTRACT PANELS -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Initial Search Reference Matrix -->
+<div class="hairline-border bg-surface p-4">
+<div class="pb-2 mb-3 hairline-border-b border-on-surface flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface">SEARCH MATRIX: SUPPORTED KEYS</span>
+<span class="font-label-mono-bold text-label-mono-bold text-secondary">SCHEMA 1.0</span>
+</div>
+<ul class="font-label-mono-sm text-label-mono-sm space-y-1.5 text-secondary">
+<li class="flex justify-between py-0.5 hairline-border-b border-outline-variant">
+<span class="text-on-surface font-bold uppercase">TRANSACTION</span>
+<span>TXID</span>
+</li>
+<li class="flex justify-between py-0.5 hairline-border-b border-outline-variant">
+<span class="text-on-surface font-bold uppercase">ADDRESS</span>
+<span>Bitcoin address</span>
+</li>
+<li class="flex justify-between py-0.5 hairline-border-b border-outline-variant">
+<span class="text-on-surface font-bold uppercase">NETWORK</span>
+<span>IP / network observation</span>
+</li>
+<li class="flex justify-between py-0.5 hairline-border-b border-outline-variant">
+<span class="text-on-surface font-bold uppercase">ALERT</span>
+<span>Alert ID</span>
+</li>
+<li class="flex justify-between py-0.5 hairline-border-b border-outline-variant">
+<span class="text-on-surface font-bold uppercase">RUN</span>
+<span>Run ID</span>
+</li>
+<li class="flex justify-between py-0.5 hairline-border-b border-outline-variant">
+<span class="text-on-surface font-bold uppercase">EVIDENCE</span>
+<span>Evidence ID</span>
+</li>
+<li class="flex justify-between py-0.5">
+<span class="text-on-surface font-bold uppercase">SOURCE</span>
+<span>Source record / reference</span>
+</li>
+</ul>
+</div>
+<!-- UI State Modes Display -->
+<div class="hairline-border bg-surface-container-low p-4 flex flex-col justify-between">
+<div>
+<div class="pb-2 mb-3 hairline-border-b border-on-surface flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface">WORKSPACE MODES CONTRACT</span>
+<span class="font-label-mono-bold text-label-mono-bold bg-primary-container text-on-surface px-1.5">SPEC</span>
+</div>
+<div class="space-y-2 font-label-mono-sm text-label-mono-sm">
+<div class="p-2 bg-surface hairline-border border-on-surface flex items-center justify-between">
+<span class="font-bold text-on-surface">[NO RESULTS]</span>
+<span class="text-secondary text-right">No matching artifact in loaded run.</span>
+</div>
+<div class="p-2 bg-surface hairline-border border-on-surface flex items-center justify-between">
+<span class="font-bold text-on-surface">[SEARCHING]</span>
+<span class="text-secondary text-right">Local search operation over the active workspace.</span>
+</div>
+<div class="p-2 bg-surface hairline-border border-on-surface flex items-center justify-between">
+<span class="font-bold text-error">[ERROR]</span>
+<span class="text-secondary text-right">Invalid query or local search error.</span>
+</div>
+</div>
+</div>
+<div class="pt-3 hairline-border-t border-on-surface text-[10px] font-label-mono-sm text-secondary uppercase">
+              LOCAL SEARCH STATES // ACTIVE RUN SCOPE
+            </div>
+</div>
+</div>
+</section>
+<!-- RIGHT COLUMN (~4 cols / ~34%): SELECTED RESULT INSPECTOR -->
+<aside class="lg:col-span-4 space-y-6">
+<div class="hairline-border bg-surface sticky top-6">
+<!-- Inspector Header -->
+<div class="p-4 bg-on-surface text-surface flex items-center justify-between">
+<div>
+<div class="font-label-mono-bold text-label-mono-bold text-primary-container uppercase">FORENSIC INSPECTOR</div>
+<h3 class="font-headline-sm text-headline-sm uppercase m-0 text-surface">SELECTED RESULT [DYNAMIC]</h3>
+</div>
+<span class="material-symbols-outlined text-primary-container">biotech</span>
+</div>
+<!-- Metadata Identification Block -->
+<div class="p-4 bg-surface-container-high hairline-border-b border-on-surface font-label-mono-sm text-label-mono-sm space-y-1.5">
+<div class="flex justify-between">
+<span class="text-secondary">RECORD TYPE:</span>
+<span class="font-bold text-on-surface uppercase">[DYNAMIC]</span>
+</div>
+<div class="flex justify-between">
+<span class="text-secondary">IDENTIFIER:</span>
+<span class="font-bold text-on-surface">[DYNAMIC]</span>
+</div>
+<div class="flex justify-between">
+<span class="text-secondary">RUN LINKAGE:</span>
+<span class="font-bold text-on-surface">[DYNAMIC RUN ID]</span>
+</div>
+<div class="flex justify-between">
+<span class="text-secondary">PRIMARY SOURCE:</span>
+<span class="font-bold text-on-surface">[DYNAMIC]</span>
+</div>
+<div class="flex justify-between">
+<span class="text-secondary">TIMESTAMP:</span>
+<span class="font-bold text-on-surface">[DYNAMIC]</span>
+</div>
+<div class="flex justify-between">
+<span class="text-secondary">EVALUATION STATUS:</span>
+<span class="font-bold text-primary-container uppercase bg-on-surface px-1">[DYNAMIC]</span>
+</div>
+</div>
+<!-- Context-Adaptive Inspector Panel -->
+<div class="p-4 space-y-4">
+<div class="font-label-mono-bold text-label-mono-bold text-on-surface uppercase tracking-wider hairline-border-b border-on-surface pb-1">
+              STRUCTURAL CONTEXT MATRIX
+            </div>
+<div class="space-y-2 font-label-mono-sm text-label-mono-sm">
+<div class="flex justify-between py-1 hairline-border-b border-surface-container-highest">
+<span class="text-secondary">INPUT COUNT:</span>
+<span class="text-on-surface font-bold">[DYNAMIC / N/A]</span>
+</div>
+<div class="flex justify-between py-1 hairline-border-b border-surface-container-highest">
+<span class="text-secondary">OUTPUT COUNT:</span>
+<span class="text-on-surface font-bold">[DYNAMIC / N/A]</span>
+</div>
+<div class="flex justify-between py-1 hairline-border-b border-surface-container-highest">
+<span class="text-secondary">EVIDENCE TIER:</span>
+<span class="text-on-surface font-bold">[DYNAMIC / N/A]</span>
+</div>
+<div class="flex justify-between py-1 hairline-border-b border-surface-container-highest">
+<span class="text-secondary">ANOMALY STRENGTH:</span>
+<span class="text-on-surface font-bold">[DYNAMIC / N/A]</span>
+</div>
+<div class="flex justify-between py-1 hairline-border-b border-surface-container-highest">
+<span class="text-secondary">NETWORK CONTEXT:</span>
+<span class="text-on-surface font-bold">[DYNAMIC / N/A]</span>
+</div>
+<div class="flex justify-between py-1 hairline-border-b border-surface-container-highest">
+<span class="text-secondary">DATABASE:</span>
+<span class="text-on-surface font-bold">[DYNAMIC / N/A]</span>
+</div>
+<div class="flex justify-between py-1">
+<span class="text-secondary">MODEL:</span>
+<span class="text-on-surface font-bold">[DYNAMIC / N/A]</span>
+</div>
+</div>
+<!-- Direct Contextual Navigation Actions -->
+<div class="pt-4 hairline-border-t border-on-surface space-y-2">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary uppercase mb-2">
+                DIRECT JUMP ACTIONS:
+              </div>
+<a class="w-full py-2.5 px-3 bg-on-surface text-surface hover:bg-primary-container hover:text-on-surface transition-none font-label-mono-bold text-label-mono-bold flex items-center justify-between hairline-border border-on-surface" href="#transaction">
+<span>OPEN TRANSACTION</span>
+<span>↗</span>
+</a>
+<a class="w-full py-2.5 px-3 bg-surface text-on-surface hover:bg-surface-container-high transition-none font-label-mono-bold text-label-mono-bold flex items-center justify-between hairline-border border-on-surface" href="#alert">
+<span>OPEN ALERT INVESTIGATION</span>
+<span>↗</span>
+</a>
+<a class="w-full py-2.5 px-3 bg-surface text-on-surface hover:bg-surface-container-high transition-none font-label-mono-bold text-label-mono-bold flex items-center justify-between hairline-border border-on-surface" href="#network">
+<span>OPEN NETWORK GRAPH</span>
+<span>↗</span>
+</a>
+<a class="w-full py-2.5 px-3 bg-surface text-on-surface hover:bg-surface-container-high transition-none font-label-mono-bold text-label-mono-bold flex items-center justify-between hairline-border border-on-surface" href="#evidence">
+<span>OPEN PROVENANCE &amp; EVIDENCE</span>
+<span>↗</span>
+</a>
+<a class="w-full py-2.5 px-3 bg-surface text-on-surface hover:bg-surface-container-high transition-none font-label-mono-bold text-label-mono-bold flex items-center justify-between hairline-border border-on-surface" href="#run">
+<span>OPEN RUN WORKSPACE</span>
+<span>↗</span>
+</a>
+</div>
+<!-- Local Execution Note -->
+<div class="p-3 bg-surface-container hairline-border border-on-surface text-secondary font-label-mono-sm text-label-mono-sm leading-relaxed">
+<div class="flex items-center gap-1.5 text-on-surface font-bold uppercase mb-1">
+<span class="w-1.5 h-1.5 bg-primary-container inline-block"></span>
+                LOCAL INTEGRITY NOTE: LOCAL SEARCH ONLY // NO CLOUD DEPENDENCY // RESOLVED AGAINST LOADED RUN ARTIFACTS
+              </div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<!-- 8. INVESTIGATION NAVIGATION / QUICK ACCESS MAP (Full Width) -->
+<section class="hairline-border bg-surface p-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 pb-2 hairline-border-b border-on-surface gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface">account_tree</span>
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface">INVESTIGATION NAVIGATION // WORKSPACE DIRECTORY</span>
+</div>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary">
+          INVESTIGATION WORKFLOW
+        </span>
+</div>
+<!-- Stepper Flow -->
+<div class="grid grid-cols-2 md:grid-cols-5 hairline-border border-on-surface mb-6">
+<!-- Step 1 -->
+<a class="p-4 bg-surface hover:bg-surface-container-high transition-none hairline-border-r border-on-surface flex flex-col justify-between group" href="#step1">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary group-hover:text-primary-container">01</div>
+<div class="mt-4">
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface block">ALERT QUEUE</span>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary">TRIAGE &amp; ANOMALY RANK</span>
+</div>
+</a>
+<!-- Step 2 -->
+<a class="p-4 bg-surface hover:bg-surface-container-high transition-none hairline-border-r border-on-surface flex flex-col justify-between group" href="#step2">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary group-hover:text-primary-container">02</div>
+<div class="mt-4">
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface block">ALERT INVESTIGATION</span>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary">MODEL SIGNAL DRILLDOWN</span>
+</div>
+</a>
+<!-- Step 3 -->
+<a class="p-4 bg-surface hover:bg-surface-container-high transition-none hairline-border-r border-on-surface flex flex-col justify-between group" href="#step3">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary group-hover:text-primary-container">03</div>
+<div class="mt-4">
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface block">TX INVESTIGATION</span>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary">INPUT / OUTPUT STRUCTURE</span>
+</div>
+</a>
+<!-- Step 4 -->
+<a class="p-4 bg-surface hover:bg-surface-container-high transition-none hairline-border-r border-on-surface flex flex-col justify-between group" href="#step4">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary group-hover:text-primary-container">04</div>
+<div class="mt-4">
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface block">NETWORK GRAPH</span>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary">TOPOLOGY &amp; PROPAGATION</span>
+</div>
+</a>
+<!-- Step 5 -->
+<a class="p-4 bg-surface hover:bg-surface-container-high transition-none flex flex-col justify-between group col-span-2 md:col-span-1 border-t md:border-t-0 border-on-surface" href="#step5">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary group-hover:text-primary-container">05</div>
+<div class="mt-4">
+<span class="font-headline-sm text-headline-sm uppercase text-on-surface block">PROVENANCE</span>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary">EVIDENCE &amp; TRACEABILITY</span>
+</div>
+</a>
+</div>
+<!-- Platform Modules Row -->
+<div class="flex flex-col sm:flex-row items-center justify-between p-3 bg-surface-container hairline-border border-on-surface gap-3">
+<div class="font-label-mono-bold text-label-mono-bold uppercase text-on-surface">
+          CORE PLATFORM MODULES:
+        </div>
+<div class="flex flex-wrap gap-2">
+<a class="px-4 py-1.5 bg-surface text-on-surface font-label-mono-bold text-label-mono-bold hairline-border border-on-surface hover:bg-surface-container-high transition-none" href="#overview">
+            OVERVIEW
+          </a>
+<a class="px-4 py-1.5 bg-surface text-on-surface font-label-mono-bold text-label-mono-bold hairline-border border-on-surface hover:bg-surface-container-high transition-none" href="#analytics">
+            ANALYTICS
+          </a>
+<a class="px-4 py-1.5 bg-surface text-on-surface font-label-mono-bold text-label-mono-bold hairline-border border-on-surface hover:bg-surface-container-high transition-none" href="#documentation">
+            DOCUMENTATION
+          </a>
+</div>
+</div>
+</section>
+<!-- 9. EPISTEMIC BOUNDARY & LEGAL SAFEGUARD -->
+<section class="hairline-border bg-on-surface text-surface p-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between pb-3 hairline-border-b border-secondary gap-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">gavel</span>
+<span class="font-headline-sm text-headline-sm uppercase tracking-wider text-surface">
+            EPISTEMIC BOUNDARY // LEGAL &amp; ANALYTICAL SAFEGUARDS
+          </span>
+</div>
+<span class="font-label-mono-bold text-label-mono-bold bg-primary-container text-on-surface px-2.5 py-1 tracking-wider uppercase">
+          STRICT NON-ASSERTION // ZERO SPECULATION POLICY
+        </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4 font-body-sm text-body-sm text-surface-container-high leading-relaxed">
+<div class="p-4 hairline-border border-secondary bg-inverse-surface space-y-2">
+<div class="font-label-mono-bold text-label-mono-bold text-primary-container uppercase">
+            STRUCTURAL PATTERN NOTICE
+          </div>
+<p class="m-0">
+            Structural anomaly does not mean criminal activity. CryptoNexus surfaces patterns for human investigation. It does not determine identity, ownership, or criminal intent.
+          </p>
+</div>
+<div class="p-4 hairline-border border-secondary bg-inverse-surface space-y-2">
+<div class="font-label-mono-bold text-label-mono-bold text-primary-container uppercase">
+            PSEUDONYMITY &amp; SENSOR LIMITATIONS
+          </div>
+<p class="m-0">
+            Bitcoin addresses are pseudonymous identifiers. Address ≠ wallet ≠ entity. IP association ≠ ownership. GeoIP is enrichment, not identity. Network observation time is sensor observation time.
+          </p>
+</div>
+</div>
+</section>
+</main>
+<!-- 10. FOOTER (Shared Editorial Ledger) -->
+<footer class="w-full hairline-border-t bg-surface px-6 py-8 mt-12">
+<div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<!-- Left: Logo -->
+<div class="flex items-center">
+<img alt="CRYPTONEXUS" class="h-6 w-auto object-contain" src="assets/image_0.png"/>
+</div>
+<!-- Center: Legal / Runtime Copy -->
+<div class="font-label-mono-sm text-label-mono-sm text-secondary text-center">
+        © 2026 CRYPTONEXUS. BITCOIN INTELLIGENCE PLATFORM. LOCAL / OFFLINE.
+      </div>
+<!-- Right: Links -->
+<div class="flex items-center gap-6 font-label-mono-sm text-label-mono-sm">
+<a class="text-secondary hover:text-on-surface uppercase transition-none" href="#disclaimer">DISCLAIMER</a>
+<a class="text-secondary hover:text-on-surface uppercase transition-none" href="#methodology">METHODOLOGY</a>
+<a class="text-secondary hover:text-on-surface uppercase transition-none" href="#about">ABOUT</a>
+</div>
+</div>
+</footer>
+</body></html>

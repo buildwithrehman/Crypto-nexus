@@ -1,0 +1,14 @@
+@import "./fonts.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-neutral text-secondary font-body selection:bg-primary selection:text-secondary;
+  }
+  
+  :focus-visible {
+    @apply outline outline-2 outline-primary outline-offset-2;
+  }
+}

@@ -1,0 +1,33 @@
+# Python
+.venv/
+.venv-uv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Node
+node_modules/
+
+# Logs and OS
+*.log
+.DS_Store
+
+# Large Database Files (Distributed via Release Archive)
+*.db
+*.duckdb
+cryptonexus.db
+test_*.db
+
+# Large ML Artifacts (Distributed via Release Archive)
+backend/ml/artifacts/*.joblib
+backend/ml/artifacts_staging_fix12d/*.joblib
+*.joblib
+
+# Large Export Files
+export/*.parquet
+*.parquet
+
+# Temporary or Archive files
+*.tar.gz
+CRYPTONEXUS_FINAL_RELEASE/
+CRYPTONEXUS_FINAL_SMOKE_TEST/

@@ -1,0 +1,878 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CryptoNexus — System States &amp; Operational Workspace</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed": "#2d1600",
+            "background": "#faf9f4",
+            "on-tertiary": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed": "#1c1b1b",
+            "on-surface-variant": "#554335",
+            "outline-variant": "#dbc2ae",
+            "tertiary": "#8f4e00",
+            "on-primary-fixed-variant": "#6b3b00",
+            "secondary-fixed": "#e5e2e1",
+            "surface-container-low": "#f5f4ef",
+            "surface-variant": "#e3e3de",
+            "surface-container-lowest": "#ffffff",
+            "primary-container": "#f7931a",
+            "surface-container": "#efeee9",
+            "surface-container-highest": "#e3e3de",
+            "primary-fixed-dim": "#ffb874",
+            "on-background": "#1b1c19",
+            "on-error": "#ffffff",
+            "primary": "#8c4f00",
+            "secondary-fixed-dim": "#c9c6c5",
+            "tertiary-container": "#f99223",
+            "inverse-on-surface": "#f2f1ec",
+            "inverse-surface": "#30312e",
+            "on-primary-container": "#603500",
+            "surface-bright": "#faf9f4",
+            "surface-container-high": "#e9e8e3",
+            "error": "#d32f2f",
+            "on-primary": "#ffffff",
+            "on-secondary": "#ffffff",
+            "surface-dim": "#dbdad5",
+            "on-secondary-fixed-variant": "#474646",
+            "surface": "#faf9f4",
+            "secondary-container": "#e5e2e1",
+            "surface-tint": "#8c4f00",
+            "inverse-primary": "#ffb874",
+            "secondary": "#5f5e5e",
+            "on-tertiary-fixed-variant": "#6c3a00",
+            "tertiary-fixed": "#ffdcc1",
+            "tertiary-fixed-dim": "#ffb77a",
+            "on-tertiary-fixed": "#2e1500",
+            "primary-fixed": "#ffdcbf",
+            "on-secondary-container": "#656464",
+            "on-tertiary-container": "#623400",
+            "on-error-container": "#93000a",
+            "on-surface": "#121316",
+            "outline": "#121316"
+          },
+          "borderRadius": {
+            "DEFAULT": "0px",
+            "lg": "0px",
+            "xl": "0px",
+            "full": "0px"
+          },
+          "spacing": {
+            "margin": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "gutter": "0px",
+            "space-xs": "0.25rem",
+            "gutter-loose": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-xl": "2.5rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Oswald", "sans-serif"],
+            "headline-xl": ["Oswald", "sans-serif"],
+            "data-metric": ["Oswald", "sans-serif"],
+            "label-mono-bold": ["Space Mono", "monospace"],
+            "body-md": ["Space Grotesk", "sans-serif"],
+            "body-sm": ["Space Grotesk", "sans-serif"],
+            "body-lg": ["Space Grotesk", "sans-serif"],
+            "display-hero-mobile": ["Oswald", "sans-serif"],
+            "headline-xl-mobile": ["Oswald", "sans-serif"],
+            "headline-sm": ["Oswald", "sans-serif"],
+            "display-hero": ["Oswald", "sans-serif"],
+            "headline-md": ["Oswald", "sans-serif"],
+            "label-mono-sm": ["Space Mono", "monospace"]
+          },
+          "fontSize": {
+            "headline-lg": ["2.25rem", { "lineHeight": "2.5rem", "letterSpacing": "0em", "fontWeight": "600" }],
+            "headline-xl": ["3.5rem", { "lineHeight": "3.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "data-metric": ["2.75rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-mono-bold": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.08em", "fontWeight": "700" }],
+            "body-md": ["0.9375rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+            "body-sm": ["0.8125rem", { "lineHeight": "1.25rem", "fontWeight": "400" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }],
+            "display-hero-mobile": ["3rem", { "lineHeight": "3.125rem", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-xl-mobile": ["2.25rem", { "lineHeight": "2.5rem", "letterSpacing": "0em", "fontWeight": "600" }],
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "display-hero": ["5rem", { "lineHeight": "5rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["1.5rem", { "lineHeight": "1.875rem", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "label-mono-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.05em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    * {
+      border-radius: 0px !important;
+      box-shadow: none !important;
+    }
+    .material-symbols-outlined {
+      font-size: 1.125rem;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Hairline brutalist borders */
+    .b-cell {
+      border: 1px solid #121316;
+    }
+    .b-cell-dashed {
+      border: 1px dashed #5A5852;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body-md selection:bg-primary-container selection:text-on-surface">
+<!-- TOP MASTHEAD -->
+<header class="w-full bg-surface border-b border-on-surface flex flex-col md:flex-row items-stretch justify-between px-6 py-0 select-none z-50">
+<div class="flex items-center gap-4 py-3 md:py-0 border-b md:border-b-0 border-on-surface md:border-r md:pr-6">
+<img alt="CryptoNexus Logo" class="h-7 w-auto object-contain" src="assets/image_1.png">
+<div class="h-6 w-px bg-on-surface"></div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm uppercase font-semibold text-on-surface leading-none tracking-tight">CRYPTONEXUS</span>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary tracking-widest uppercase mt-0.5">WORKSTATION // SCREEN 08</span>
+</div>
+</div>
+<!-- Main Navigation Links -->
+<nav class="flex items-center overflow-x-auto gap-1 md:gap-6 py-2 md:py-0 text-label-mono-bold font-label-mono-bold"><a class="text-secondary hover:text-primary-container transition-none tracking-wider px-2 py-4" href="#">OVERVIEW</a>
+<a class="text-secondary hover:text-primary-container transition-none tracking-wider px-2 py-4" href="#">INVESTIGATIONS</a>
+<a class="text-secondary hover:text-primary-container transition-none tracking-wider px-2 py-4" href="#">ANALYTICS</a>
+<a class="text-secondary hover:text-primary-container transition-none tracking-wider px-2 py-4" href="#">DOCUMENTATION</a>
+<a class="text-secondary hover:text-primary-container transition-none tracking-wider px-2 py-4 flex items-center gap-1" href="#">
+<span class="material-symbols-outlined">search</span> SEARCH
+</a></nav>
+<!-- Header Actions -->
+<div class="flex items-center gap-4 py-2 md:py-0 border-t md:border-t-0 border-on-surface md:border-l md:pl-6">
+<div class="flex items-center gap-2 font-label-mono-bold text-label-mono-bold text-secondary">
+<span class="inline-block w-2 h-2 bg-primary-container"></span>
+        STATUS: LOCAL/OFFLINE
+      </div>
+<button class="bg-on-surface text-surface hover:bg-primary-container hover:text-on-surface border border-on-surface px-4 py-2 font-label-mono-bold text-label-mono-bold transition-none flex items-center gap-1.5 uppercase">
+        START INVESTIGATING ↗
+      </button>
+</div>
+</header>
+<!-- ACTIVE RUN METADATA RIBBON -->
+<section class="w-full bg-surface-container-high border-b border-on-surface px-6 py-2 text-label-mono-sm font-label-mono-sm text-on-surface overflow-x-auto whitespace-nowrap">
+<div class="flex items-center gap-4">
+<span class="font-bold text-primary-container uppercase bg-on-surface px-1.5 py-0.5">METRIC / EXECUTION RUN</span>
+<span class="">RUN ID: <span class="font-bold">[DYNAMIC RUN ID]</span></span>
+<span class="text-secondary">|</span>
+<span class="">SOURCE: <span class="font-bold">DEMO_V1</span></span>
+<span class="text-secondary">|</span>
+<span class="">SOURCE BLOCKS: <span class="font-bold">700000 → 700022</span></span>
+<span class="text-secondary">|</span>
+<span class="">RUNTIME: <span class="font-bold">LOCAL / OFFLINE</span></span>
+<span class="text-secondary">|</span>
+<span class="">MODEL: <span class="font-bold">ISOLATION FOREST</span></span>
+<span class="text-secondary">|</span>
+<span class="">DATABASE: <span class="font-bold">DUCKDB</span></span>
+<span class="text-secondary">|</span>
+<span class="">RUN STATUS: <span class="font-bold text-primary">[DYNAMIC STATUS]</span></span>
+</div>
+</section>
+<!-- PAGE HEADER TITLE BLOCK -->
+<section class="w-full border-b border-on-surface px-6 py-8 bg-surface">
+<div class="max-w-[1720px] mx-auto">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary uppercase tracking-widest mb-1">
+        SYSTEM STATES // OPERATIONAL WORKSPACE
+      </div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="font-headline-xl text-headline-xl uppercase font-bold tracking-tight text-on-surface leading-none">
+            SYSTEM STATES
+          </h1>
+<p class="font-body-md text-body-md text-secondary mt-2 max-w-4xl">
+            Define the application states used across the CryptoNexus local analytical workspace, including loading, empty, unavailable, validation, pipeline, and runtime states.
+          </p>
+</div>
+<div class="border border-on-surface px-3 py-1.5 bg-surface-container text-label-mono-bold text-on-surface self-start md:self-auto">
+          RUNTIME MODEL: LOCAL / OFFLINE • ACTIVE RUN SCOPE • UI STATE CONTRACT
+        </div>
+</div>
+</div>
+</section>
+<!-- MAIN 8:4 ASYMMETRIC EDITORIAL MATRIX -->
+<main class="w-full flex-grow px-6 py-8 max-w-[1720px] mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-0 border border-on-surface bg-surface">
+<!-- LEFT COLUMN (~8 Cols / 66%): STATE CATALOG & SEMANTICS -->
+<div class="lg:col-span-8 border-b lg:border-b-0 lg:border-r border-on-surface p-6 flex flex-col">
+<div class="flex items-center justify-between border-b border-on-surface pb-3 mb-6">
+<div class="flex items-center gap-3">
+<span class="w-3 h-3 bg-on-surface inline-block"></span>
+<h2 class="font-headline-md text-headline-md uppercase font-bold text-on-surface">
+              01 // STATE CATALOG (10 CANONICAL OPERATIONAL STATES)
+            </h2>
+</div>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary uppercase border border-on-surface px-2 py-0.5">
+            DETERMINISTIC UI CONTRACT
+          </span>
+</div>
+<!-- 10 States Grid (2 columns x 5 rows) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-0 border border-on-surface">
+<!-- 01 READY -->
+<div class="border-b md:border-r border-on-surface p-4 bg-surface hover:bg-surface-container-low transition-none">
+<div class="flex items-center justify-between border-b border-on-surface pb-1.5 mb-2">
+<span class="font-label-mono-bold text-label-mono-bold text-on-surface">STATE 01 // READY</span>
+<span class="text-label-mono-sm font-label-mono-sm bg-on-surface text-surface px-1.5 py-0.2">IDLE</span>
+</div>
+<div class="text-label-mono-sm font-label-mono-sm text-secondary mb-1">PURPOSE:</div>
+<div class="font-body-sm text-body-sm text-on-surface mb-3 font-medium">Workspace is available for interaction.</div>
+<div class="bg-surface-container p-2.5 border border-on-surface mb-3 space-y-1">
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface">WORKSPACE READY</div>
+<div class="font-body-sm text-body-sm text-secondary">Active local analytical workspace is available.</div>
+</div>
+<div class="flex items-center justify-between text-label-mono-sm font-label-mono-sm">
+<span class="text-secondary">EXPECTED ACTION:</span>
+<span class="border border-on-surface px-2 py-1 font-bold text-on-surface bg-surface-container-high">CONTINUE</span>
+</div>
+</div>
+<!-- 02 LOADING -->
+<div class="border-b border-on-surface p-4 bg-surface hover:bg-surface-container-low transition-none">
+<div class="flex items-center justify-between border-b border-on-surface pb-1.5 mb-2">
+<span class="font-label-mono-bold text-label-mono-bold text-on-surface">STATE 02 // LOADING</span>
+<span class="text-label-mono-sm font-label-mono-sm bg-secondary-fixed text-on-secondary-fixed px-1.5 py-0.2">ASYNC</span>
+</div>
+<div class="text-label-mono-sm font-label-mono-sm text-secondary mb-1">PURPOSE:</div>
+<div class="font-body-sm text-body-sm text-on-surface mb-3 font-medium">Data or an analytical view is being prepared.</div>
+<div class="bg-surface-container p-2.5 border border-on-surface mb-3 space-y-1">
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface">LOADING DATA</div>
+<div class="font-body-sm text-body-sm text-secondary">The requested local operation is in progress.</div>
+</div>
+<div class="flex items-center justify-between text-label-mono-sm font-label-mono-sm">
+<span class="text-secondary">EXPECTED ACTION:</span>
+<span class="border border-on-surface px-2 py-1 font-bold text-on-surface bg-surface-container-high">WAIT</span>
+</div>
+</div>
+<!-- 03 EMPTY -->
+<div class="border-b md:border-r border-on-surface p-4 bg-surface hover:bg-surface-container-low transition-none">
+<div class="flex items-center justify-between border-b border-on-surface pb-1.5 mb-2">
+<span class="font-label-mono-bold text-label-mono-bold text-on-surface">STATE 03 // EMPTY</span>
+<span class="text-label-mono-sm font-label-mono-sm border border-on-surface px-1.5 py-0.2">ZERO-REC</span>
+</div>
+<div class="text-label-mono-sm font-label-mono-sm text-secondary mb-1">PURPOSE:</div>
+<div class="font-body-sm text-body-sm text-on-surface mb-3 font-medium">No applicable records are currently available.</div>
+<div class="bg-surface-container p-2.5 border border-on-surface mb-3 space-y-1">
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface">NO DATA AVAILABLE</div>
+<div class="font-body-sm text-body-sm text-secondary">The current workspace contains no records for this view.</div>
+</div>
+<div class="flex items-center justify-between text-label-mono-sm font-label-mono-sm">
+<span class="text-secondary">EXPECTED ACTION:</span>
+<span class="border border-on-surface px-2 py-1 font-bold text-on-surface bg-surface-container-high">RETURN TO WORKSPACE</span>
+</div>
+</div>
+<!-- 04 NO RESULTS -->
+<div class="border-b border-on-surface p-4 bg-surface hover:bg-surface-container-low transition-none">
+<div class="flex items-center justify-between border-b border-on-surface pb-1.5 mb-2">
+<span class="font-label-mono-bold text-label-mono-bold text-on-surface">STATE 04 // NO RESULTS</span>
+<span class="text-label-mono-sm font-label-mono-sm border border-on-surface px-1.5 py-0.2">NULL-SET</span>
+</div>
+<div class="text-label-mono-sm font-label-mono-sm text-secondary mb-1">PURPOSE:</div>
+<div class="font-body-sm text-body-sm text-on-surface mb-3 font-medium">A valid search or filter returned no matching records.</div>
+<div class="bg-surface-container p-2.5 border border-on-surface mb-3 space-y-1">
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface">NO MATCHING RECORDS</div>
+<div class="font-body-sm text-body-sm text-secondary">No supported record matches the current query or constraints.</div>
+</div>
+<div class="flex items-center justify-between text-label-mono-sm font-label-mono-sm">
+<span class="text-secondary">EXPECTED ACTION:</span>
+<span class="border border-on-surface px-2 py-1 font-bold text-on-surface bg-surface-container-high">CLEAR SEARCH</span>
+</div>
+</div>
+<!-- 05 ERROR -->
+<div class="border-b md:border-r border-on-surface p-4 bg-surface hover:bg-surface-container-low transition-none border-l-4 border-l-error">
+<div class="flex items-center justify-between border-b border-on-surface pb-1.5 mb-2">
+<span class="font-label-mono-bold text-label-mono-bold text-error">STATE 05 // ERROR</span>
+<span class="text-label-mono-sm font-label-mono-sm bg-error text-on-error px-1.5 py-0.2 font-bold">FAILURE</span>
+</div>
+<div class="text-label-mono-sm font-label-mono-sm text-secondary mb-1">PURPOSE:</div>
+<div class="font-body-sm text-body-sm text-on-surface mb-3 font-medium">A local operation failed.</div>
+<div class="bg-surface-container p-2.5 border border-error mb-3 space-y-1">
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-error">LOCAL OPERATION ERROR</div>
+<div class="font-body-sm text-body-sm text-secondary">The requested operation could not be completed.</div>
+</div>
+<div class="flex items-center justify-between text-label-mono-sm font-label-mono-sm">
+<span class="text-secondary">EXPECTED ACTION:</span>
+<span class="border border-error px-2 py-1 font-bold text-error bg-surface-container-high">RETRY</span>
+</div>
+</div>
+<!-- 06 INVALID QUERY -->
+<div class="border-b border-on-surface p-4 bg-surface hover:bg-surface-container-low transition-none">
+<div class="flex items-center justify-between border-b border-on-surface pb-1.5 mb-2">
+<span class="font-label-mono-bold text-label-mono-bold text-on-surface">STATE 06 // INVALID QUERY</span>
+<span class="text-label-mono-sm font-label-mono-sm border border-on-surface px-1.5 py-0.2">VALIDATION</span>
+</div>
+<div class="text-label-mono-sm font-label-mono-sm text-secondary mb-1">PURPOSE:</div>
+<div class="font-body-sm text-body-sm text-on-surface mb-3 font-medium">The supplied search input cannot be processed.</div>
+<div class="bg-surface-container p-2.5 border border-on-surface mb-3 space-y-1">
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface">INVALID QUERY</div>
+<div class="font-body-sm text-body-sm text-secondary">Review the query and try again.</div>
+</div>
+<div class="flex items-center justify-between text-label-mono-sm font-label-mono-sm">
+<span class="text-secondary">EXPECTED ACTION:</span>
+<span class="border border-on-surface px-2 py-1 font-bold text-on-surface bg-surface-container-high">EDIT QUERY</span>
+</div>
+</div>
+<!-- 07 RUN UNAVAILABLE -->
+<div class="border-b md:border-r border-on-surface p-4 bg-surface hover:bg-surface-container-low transition-none">
+<div class="flex items-center justify-between border-b border-on-surface pb-1.5 mb-2">
+<span class="font-label-mono-bold text-label-mono-bold text-on-surface">STATE 07 // RUN UNAVAILABLE</span>
+<span class="text-label-mono-sm font-label-mono-sm border border-on-surface px-1.5 py-0.2">LOOKUP</span>
+</div>
+<div class="text-label-mono-sm font-label-mono-sm text-secondary mb-1">PURPOSE:</div>
+<div class="font-body-sm text-body-sm text-on-surface mb-3 font-medium">The requested run is not available in the current workspace.</div>
+<div class="bg-surface-container p-2.5 border border-on-surface mb-3 space-y-1">
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface">RUN NOT AVAILABLE</div>
+<div class="font-body-sm text-body-sm text-secondary">The selected run cannot be resolved in the active local workspace.</div>
+</div>
+<div class="flex items-center justify-between text-label-mono-sm font-label-mono-sm">
+<span class="text-secondary">EXPECTED ACTION:</span>
+<span class="border border-on-surface px-2 py-1 font-bold text-on-surface bg-surface-container-high">SELECT RUN</span>
+</div>
+</div>
+<!-- 08 PIPELINE RUNNING -->
+<div class="border-b border-on-surface p-4 bg-surface hover:bg-surface-container-low transition-none">
+<div class="flex items-center justify-between border-b border-on-surface pb-1.5 mb-2">
+<span class="font-label-mono-bold text-label-mono-bold text-on-surface">STATE 08 // PIPELINE RUNNING</span>
+<span class="text-label-mono-sm font-label-mono-sm bg-primary-container text-on-surface font-bold px-1.5 py-0.2">ACTIVE</span>
+</div>
+<div class="text-label-mono-sm font-label-mono-sm text-secondary mb-1">PURPOSE:</div>
+<div class="font-body-sm text-body-sm text-on-surface mb-3 font-medium">An analytical pipeline execution is currently in progress.</div>
+<div class="bg-surface-container p-2.5 border border-on-surface mb-3 space-y-1">
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface">PIPELINE RUNNING</div>
+<div class="font-body-sm text-body-sm text-secondary">The current analytical workflow has not completed.</div>
+</div>
+<div class="flex items-center justify-between text-label-mono-sm font-label-mono-sm">
+<span class="text-secondary">EXPECTED ACTION:</span>
+<span class="border border-on-surface px-2 py-1 font-bold text-on-surface bg-surface-container-high">WAIT / VIEW STATUS</span>
+</div>
+</div>
+<!-- 09 PIPELINE COMPLETE -->
+<div class="border-b md:border-b-0 md:border-r border-on-surface p-4 bg-surface hover:bg-surface-container-low transition-none border-l-4 border-l-primary-container">
+<div class="flex items-center justify-between border-b border-on-surface pb-1.5 mb-2">
+<span class="font-label-mono-bold text-label-mono-bold text-on-surface font-bold">STATE 09 // PIPELINE COMPLETE</span>
+<span class="text-label-mono-sm font-label-mono-sm bg-primary-container text-on-surface font-bold px-1.5 py-0.2">DONE</span>
+</div>
+<div class="text-label-mono-sm font-label-mono-sm text-secondary mb-1">PURPOSE:</div>
+<div class="font-body-sm text-body-sm text-on-surface mb-3 font-medium">The analytical pipeline has completed.</div>
+<div class="bg-surface-container p-2.5 border border-primary-container mb-3 space-y-1">
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface">PIPELINE COMPLETE</div>
+<div class="font-body-sm text-body-sm text-secondary">The completed run is available for investigation.</div>
+</div>
+<div class="flex items-center justify-between text-label-mono-sm font-label-mono-sm">
+<span class="text-secondary">EXPECTED ACTION:</span>
+<span class="border border-on-surface bg-primary-container text-on-surface px-3 py-1 font-bold">OPEN RUN ↗</span>
+</div>
+</div>
+<!-- 10 LOCAL / OFFLINE -->
+<div class="p-4 bg-surface hover:bg-surface-container-low transition-none">
+<div class="flex items-center justify-between border-b border-on-surface pb-1.5 mb-2">
+<span class="font-label-mono-bold text-label-mono-bold text-on-surface">STATE 10 // LOCAL / OFFLINE</span>
+<span class="text-label-mono-sm font-label-mono-sm bg-on-surface text-surface px-1.5 py-0.2">CONTAINED</span>
+</div>
+<div class="text-label-mono-sm font-label-mono-sm text-secondary mb-1">PURPOSE:</div>
+<div class="font-body-sm text-body-sm text-on-surface mb-3 font-medium">The application is operating against local resources.</div>
+<div class="bg-surface-container p-2.5 border border-on-surface mb-3 space-y-1">
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface">LOCAL / OFFLINE</div>
+<div class="font-body-sm text-body-sm text-secondary">The workspace is operating without external runtime requests.</div>
+</div>
+<div class="flex items-center justify-between text-label-mono-sm font-label-mono-sm">
+<span class="text-secondary">EXPECTED ACTION:</span>
+<span class="border border-on-surface px-2 py-1 font-bold text-on-surface bg-surface-container-high">CONTINUE</span>
+</div>
+</div>
+</div>
+<!-- 2. STATE SEMANTICS & DEFINITION TABLE -->
+<div class="mt-8">
+<div class="flex items-center justify-between border-b border-on-surface pb-2 mb-3">
+<h3 class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface">
+              NEUTRAL OPERATIONAL SEMANTICS SPECIFICATION
+            </h3>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary">
+              ZERO-ASSERTION VOCABULARY STANDARD
+            </span>
+</div>
+<div class="overflow-x-auto border border-on-surface">
+<table class="w-full text-left border-collapse text-body-sm">
+<thead>
+<tr class="bg-surface-container border-b-2 border-on-surface font-label-mono-bold text-label-mono-bold uppercase">
+<th class="p-2.5 border-r border-on-surface">CODE</th>
+<th class="p-2.5 border-r border-on-surface">STATE IDENTIFIER</th>
+<th class="p-2.5 border-r border-on-surface">STRICT OPERATIONAL SEMANTICS</th>
+<th class="p-2.5">RUNTIME DISPOSITION</th>
+</tr>
+</thead>
+<tbody class="font-label-mono-sm text-label-mono-sm divide-y divide-on-surface"><tr class="bg-surface">
+<td class="p-2 font-bold border-r border-on-surface">S-01</td>
+<td class="p-2 font-bold border-r border-on-surface">READY</td>
+<td class="p-2 border-r border-on-surface">Workspace is available for interaction.</td>
+<td class="p-2 font-bold text-on-surface">READY</td>
+</tr>
+<tr class="bg-surface-container-low">
+<td class="p-2 font-bold border-r border-on-surface">S-02</td>
+<td class="p-2 font-bold border-r border-on-surface">LOADING</td>
+<td class="p-2 border-r border-on-surface">Data or an analytical view is being prepared.</td>
+<td class="p-2 text-secondary">IN PROGRESS</td>
+</tr>
+<tr class="bg-surface">
+<td class="p-2 font-bold border-r border-on-surface">S-03</td>
+<td class="p-2 font-bold border-r border-on-surface">EMPTY</td>
+<td class="p-2 border-r border-on-surface">No applicable records are currently available for the current view.</td>
+<td class="p-2 font-bold text-on-surface">NO DATA</td>
+</tr>
+<tr class="bg-surface-container-low">
+<td class="p-2 font-bold border-r border-on-surface">S-04</td>
+<td class="p-2 font-bold border-r border-on-surface">NO RESULTS</td>
+<td class="p-2 border-r border-on-surface">A valid search or filter returned no matching records.</td>
+<td class="p-2 text-secondary">IDLE</td>
+</tr>
+<tr class="bg-surface">
+<td class="p-2 font-bold border-r border-on-surface text-error">S-05</td>
+<td class="p-2 font-bold border-r border-on-surface text-error">ERROR</td>
+<td class="p-2 border-r border-on-surface">A local operation could not be completed.</td>
+<td class="p-2 font-bold text-error">ATTENTION REQUIRED</td>
+</tr>
+<tr class="bg-surface-container-low">
+<td class="p-2 font-bold border-r border-on-surface">S-06</td>
+<td class="p-2 font-bold border-r border-on-surface">INVALID QUERY</td>
+<td class="p-2 border-r border-on-surface">The supplied query or search input could not be processed.</td>
+<td class="p-2 text-secondary">AWAITING REVISION</td>
+</tr>
+<tr class="bg-surface">
+<td class="p-2 font-bold border-r border-on-surface">S-07</td>
+<td class="p-2 font-bold border-r border-on-surface">RUN UNAVAILABLE</td>
+<td class="p-2 border-r border-on-surface">The requested run is not available in the current workspace.</td>
+<td class="p-2 text-secondary">ACTION REQUIRED</td>
+</tr>
+<tr class="bg-surface-container-low">
+<td class="p-2 font-bold border-r border-on-surface text-primary">S-08</td>
+<td class="p-2 font-bold border-r border-on-surface text-primary">PIPELINE RUNNING</td>
+<td class="p-2 border-r border-on-surface">An analytical pipeline execution is currently in progress.</td>
+<td class="p-2 font-bold text-primary">IN PROGRESS</td>
+</tr>
+<tr class="bg-surface">
+<td class="p-2 font-bold border-r border-on-surface text-primary">S-09</td>
+<td class="p-2 font-bold border-r border-on-surface text-primary">PIPELINE COMPLETE</td>
+<td class="p-2 border-r border-on-surface">The analytical pipeline has completed and the run is available for investigation.</td>
+<td class="p-2 font-bold text-on-surface">READY FOR REVIEW</td>
+</tr>
+<tr class="bg-surface-container-low">
+<td class="p-2 font-bold border-r border-on-surface">S-10</td>
+<td class="p-2 font-bold border-r border-on-surface">LOCAL / OFFLINE</td>
+<td class="p-2 border-r border-on-surface">The application is operating against local resources.</td>
+<td class="p-2 font-bold text-on-surface">LOCAL RUNTIME</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN (~4 Cols / 34%): INSPECTOR, RUNTIME & PREVIEWS -->
+<div class="lg:col-span-4 p-6 bg-surface-container-low flex flex-col gap-6">
+<!-- 1. SYSTEM STATE INSPECTOR -->
+<div class="border border-on-surface bg-surface">
+<div class="border-b border-on-surface p-3 bg-surface-container flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface">
+              SYSTEM STATE INSPECTOR
+            </span>
+<span class="bg-on-surface text-surface px-2 py-0.5 font-label-mono-bold text-label-mono-bold">
+              [DYNAMIC STATE]
+            </span>
+</div>
+<div class="p-4 space-y-3 font-label-mono-sm text-label-mono-sm divide-y divide-on-surface/20">
+<div class="flex justify-between pt-1">
+<span class="text-secondary uppercase">STATE:</span>
+<span class="font-bold text-on-surface">[DYNAMIC]</span>
+</div>
+<div class="flex justify-between pt-2">
+<span class="text-secondary uppercase">PURPOSE:</span>
+<span class="font-bold text-on-surface text-right max-w-[200px]">[DYNAMIC]</span>
+</div>
+<div class="flex justify-between pt-2">
+<span class="text-secondary uppercase">PRIMARY MESSAGE:</span>
+<span class="font-bold text-on-surface text-right">[DYNAMIC]</span>
+</div>
+<div class="flex justify-between pt-2">
+<span class="text-secondary uppercase">SECONDARY MSG:</span>
+<span class="font-bold text-on-surface text-right">[DYNAMIC]</span>
+</div>
+<div class="flex justify-between pt-2">
+<span class="text-secondary uppercase">AVAILABLE ACTION:</span>
+<span class="font-bold text-on-surface">[DYNAMIC]</span>
+</div>
+<div class="flex justify-between pt-2">
+<span class="text-secondary uppercase">RUNTIME:</span>
+<span class="font-bold text-on-surface">LOCAL / OFFLINE</span>
+</div>
+<div class="flex justify-between pt-2">
+<span class="text-secondary uppercase">ACTIVE RUN:</span>
+<span class="font-bold text-primary-container bg-on-surface px-1.5">[DYNAMIC RUN ID]</span>
+</div>
+</div>
+<div class="border-t border-on-surface p-3 bg-surface-container flex gap-2">
+<button class="flex-1 bg-on-surface text-surface hover:bg-primary-container hover:text-on-surface px-2 py-2 font-label-mono-bold text-label-mono-bold transition-none uppercase">
+              APPLY STATE TO VIEW ↗
+            </button>
+<button class="border border-on-surface hover:bg-surface-container px-3 py-2 font-label-mono-bold text-label-mono-bold transition-none uppercase">
+              INSPECT SPEC ↗
+            </button>
+</div>
+</div>
+<!-- 2. RUNTIME STATE CARD -->
+<div class="border border-on-surface bg-surface">
+<div class="border-b border-on-surface p-3 bg-surface-container flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface">
+              RUNTIME STATE
+            </span>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary"></span>
+</div>
+<div class="p-4 space-y-2.5 font-label-mono-sm text-label-mono-sm"><div class="flex justify-between border-b border-on-surface/10 pb-1.5">
+<span class="text-secondary uppercase">FRONTEND:</span>
+<span class="font-bold text-on-surface">[DYNAMIC]</span>
+</div>
+<div class="flex justify-between border-b border-on-surface/10 pb-1.5">
+<span class="text-secondary uppercase">API INTERFACE:</span>
+<span class="font-bold text-on-surface">[DYNAMIC]</span>
+</div>
+<div class="flex justify-between border-b border-on-surface/10 pb-1.5">
+<span class="text-secondary uppercase">DATABASE:</span>
+<span class="font-bold text-on-surface">DUCKDB</span>
+</div>
+<div class="flex justify-between border-b border-on-surface/10 pb-1.5">
+<span class="text-secondary uppercase">ML ARTIFACTS:</span>
+<span class="font-bold text-on-surface">[DYNAMIC]</span>
+</div>
+<div class="flex justify-between border-b border-on-surface/10 pb-1.5">
+<span class="text-secondary uppercase">GEOIP ENGINE:</span>
+<span class="font-bold text-primary">ENRICHMENT PENDING</span>
+</div>
+<div class="pt-2 text-center text-label-mono-bold border border-on-surface bg-surface-container-high py-1">
+              LOCAL / OFFLINE RUNTIME
+            </div></div>
+</div>
+<!-- 3. ERROR & EMPTY PRESENTATION PREVIEWS -->
+<div class="space-y-4">
+<!-- Restrained Error Example Box -->
+<div class="border-2 border-error bg-surface p-4">
+<div class="flex items-center justify-between border-b border-error pb-1 mb-2">
+<span class="font-label-mono-bold text-label-mono-bold text-error uppercase">SAMPLE ERROR PRESENTATION</span>
+<span class="font-label-mono-sm text-label-mono-sm bg-error text-on-error px-1 font-bold">STATE: 05</span>
+</div>
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-error mb-1">
+              LOCAL OPERATION ERROR
+            </div>
+<p class="font-body-sm text-body-sm text-on-surface mb-2">
+              The requested local operation could not be completed.
+            </p>
+<div class="bg-surface-container p-2 border border-on-surface/20 font-label-mono-sm text-label-mono-sm text-secondary mb-3">
+              DETAILS: <span class="text-on-surface">[DYNAMIC ERROR CONTEXT]</span>
+</div>
+<div class="flex gap-2">
+<button class="border border-error bg-surface hover:bg-error hover:text-on-error text-error px-3 py-1 font-label-mono-bold text-label-mono-bold uppercase transition-none">
+                [RETRY]
+              </button>
+<button class="border border-on-surface bg-surface hover:bg-surface-container px-3 py-1 font-label-mono-bold text-label-mono-bold uppercase transition-none">
+                [RETURN]
+              </button>
+</div>
+</div>
+<!-- Empty State Preview Box -->
+<div class="border border-on-surface bg-surface p-4">
+<div class="flex items-center justify-between border-b border-on-surface pb-1 mb-2">
+<span class="font-label-mono-bold text-label-mono-bold text-secondary uppercase">SAMPLE EMPTY PRESENTATION</span>
+<span class="font-label-mono-sm text-label-mono-sm border border-on-surface px-1">STATE: 03</span>
+</div>
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface mb-1">
+              NO RECORDS AVAILABLE
+            </div>
+<p class="font-body-sm text-body-sm text-secondary mb-4">
+              No applicable records are available for the current workspace or constraints.
+            </p>
+<div>
+<button class="border border-on-surface bg-surface-container-high hover:bg-on-surface hover:text-surface px-3 py-1 font-label-mono-bold text-label-mono-bold uppercase transition-none">
+                [RETURN TO WORKSPACE]
+              </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- FULL WIDTH SECTIONS (BELOW MATRIX) -->
+<div class="w-full px-6 pb-12 max-w-[1720px] mx-auto space-y-8">
+<!-- 1. STATE TRANSITIONS // WORKSPACE FLOW -->
+<section class="border border-on-surface bg-surface p-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between border-b border-on-surface pb-3 mb-6 gap-2">
+<div>
+<h2 class="font-headline-md text-headline-md uppercase font-bold text-on-surface">
+            02 // STATE TRANSITIONS // WORKSPACE FLOW
+          </h2>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary">Conceptual UI state flow only • Not binding to backend execution mechanics.</span>
+</div>
+<div class="font-label-mono-bold text-label-mono-bold uppercase bg-surface-container px-3 py-1 border border-on-surface">
+          CANONICAL INTERACTIVE PATHS
+        </div>
+</div>
+<div class="space-y-6">
+<!-- Interactive Workflow -->
+<div>
+<div class="font-label-mono-bold text-label-mono-bold text-secondary uppercase mb-2">
+            A. INTERACTIVE QUERY &amp; FILTER WORKFLOW
+          </div>
+<div class="grid grid-cols-2 md:grid-cols-6 gap-0 border border-on-surface text-center font-label-mono-bold text-label-mono-bold">
+<div class="p-3 bg-surface border-r border-on-surface">
+<div class="text-secondary text-label-mono-sm">01</div>
+<div class="mt-1 text-on-surface">READY</div>
+</div>
+<div class="p-3 bg-surface-container border-r border-on-surface">
+<div class="text-secondary text-label-mono-sm">EVENT</div>
+<div class="mt-1 text-on-surface font-normal">→ USER ACTION</div>
+</div>
+<div class="p-3 bg-surface border-r border-on-surface">
+<div class="text-secondary text-label-mono-sm">02</div>
+<div class="mt-1 text-on-surface">LOADING</div>
+</div>
+<div class="p-3 bg-surface-container border-r border-on-surface">
+<div class="text-secondary text-label-mono-sm">EVALUATION</div>
+<div class="mt-1 text-on-surface font-normal">→ READY / NO RESULTS / ERROR</div>
+</div>
+<div class="p-3 bg-surface border-r border-on-surface">
+<div class="text-secondary text-label-mono-sm">EVENT</div>
+<div class="mt-1 text-on-surface font-normal">→ USER ACTION</div>
+</div>
+<div class="p-3 bg-primary-container text-on-surface">
+<div class="text-on-surface text-label-mono-sm">FINAL</div>
+<div class="mt-1 font-bold">READY</div>
+</div>
+</div>
+</div>
+<!-- Pipeline Workflow -->
+<div>
+<div class="font-label-mono-bold text-label-mono-bold text-secondary uppercase mb-2">
+            B. BATCH PIPELINE WORKFLOW
+          </div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-0 border border-on-surface text-center font-label-mono-bold text-label-mono-bold">
+<div class="p-3 bg-surface border-r border-on-surface">
+<div class="text-secondary text-label-mono-sm">ORIGIN</div>
+<div class="mt-1 text-on-surface">READY</div>
+</div>
+<div class="p-3 bg-surface-container border-r border-on-surface">
+<div class="text-secondary text-label-mono-sm">08 IN-PROGRESS</div>
+<div class="mt-1 text-primary">→ PIPELINE RUNNING</div>
+</div>
+<div class="p-3 bg-surface-container-high border-r border-on-surface"><div class="text-secondary text-label-mono-sm">09 FINALIZED</div>
+<div class="mt-1 text-on-surface">→ PIPELINE COMPLETE</div></div>
+<div class="p-3 bg-on-surface text-surface">
+<div class="text-surface/70 text-label-mono-sm">ACTIVE VIEW</div>
+<div class="mt-1 font-bold text-primary-container">→ INVESTIGATION</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. SEARCH STATE EXAMPLES (3 Side-by-Side Cards) -->
+<section class="border border-on-surface bg-surface p-6">
+<div class="border-b border-on-surface pb-3 mb-6">
+<h2 class="font-headline-md text-headline-md uppercase font-bold text-on-surface">
+          03 // SEARCH STATE EXAMPLES
+        </h2>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary">
+          STANDARDIZED TEMPLATES FOR QUERY RESPONSES
+        </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6"><!-- Searching -->
+<div class="border border-on-surface p-4 bg-surface-container-low">
+<div class="flex items-center justify-between border-b border-on-surface pb-1.5 mb-3 font-label-mono-bold text-label-mono-bold">
+<span class="uppercase">CASE: SEARCHING</span>
+<span class="bg-secondary-fixed text-on-surface px-1">ACTIVE</span>
+</div>
+<div class="space-y-2 font-label-mono-sm text-label-mono-sm mb-4">
+<div class="">QUERY: <span class="font-bold text-on-surface">[DYNAMIC QUERY]</span></div>
+<div class="">STATUS: <span class="font-bold text-primary">SEARCHING</span></div>
+</div>
+<div class="border border-on-surface bg-surface p-3 text-center">
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface">
+              LOCAL SEARCH IN PROGRESS
+            </div>
+<div class="font-body-sm text-body-sm text-secondary mt-1">Local search operation in progress.</div>
+</div>
+</div>
+<!-- No Results -->
+<div class="border border-on-surface p-4 bg-surface-container-low">
+<div class="flex items-center justify-between border-b border-on-surface pb-1.5 mb-3 font-label-mono-bold text-label-mono-bold">
+<span class="uppercase">CASE: NO RESULTS</span>
+<span class="border border-on-surface px-1">NULL</span>
+</div>
+<div class="space-y-2 font-label-mono-sm text-label-mono-sm mb-4">
+<div class="">QUERY: <span class="font-bold text-on-surface">[DYNAMIC QUERY]</span></div>
+<div class="">STATUS: <span class="font-bold text-on-surface">NO RESULTS</span></div>
+</div>
+<div class="border border-on-surface bg-surface p-3 text-center">
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface">
+              NO MATCHING RECORDS
+            </div>
+<div class="font-body-sm text-body-sm text-secondary mt-1">Review the query or search constraints.</div>
+</div>
+</div>
+<!-- Error -->
+<div class="border-2 border-error p-4 bg-surface-container-low">
+<div class="flex items-center justify-between border-b border-error pb-1.5 mb-3 font-label-mono-bold text-label-mono-bold text-error">
+<span class="uppercase">CASE: ERROR</span>
+<span class="bg-error text-on-error px-1 font-bold">EXCEPTION</span>
+</div>
+<div class="space-y-2 font-label-mono-sm text-label-mono-sm mb-4">
+<div class="">QUERY: <span class="font-bold text-on-surface">[DYNAMIC QUERY]</span></div>
+<div class="">STATUS: <span class="font-bold text-error">ERROR</span></div>
+</div>
+<div class="border border-error bg-surface p-3 text-center">
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-error">
+              LOCAL SEARCH ERROR
+            </div>
+<div class="font-body-sm text-body-sm text-secondary mt-1">The submitted query could not be processed.</div>
+</div>
+</div></div>
+</section>
+<!-- 3. PIPELINE STATE EXAMPLES (Compact 9-stage pipeline) -->
+<section class="border border-on-surface bg-surface p-6">
+<div class="border-b border-on-surface pb-3 mb-6 flex flex-col md:flex-row md:items-center justify-between gap-2"><div>
+<h2 class="font-headline-md text-headline-md uppercase font-bold text-on-surface">
+            04 // PIPELINE STATE EXAMPLES
+          </h2>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary">
+            COMPACT 9-STAGE PIPELINE STATE REFERENCE
+          </span>
+</div>
+<div class="font-label-mono-bold text-label-mono-bold uppercase border border-on-surface px-2 py-1">
+          PIPELINE STATE REFERENCE
+        </div></div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-9 gap-0 border border-on-surface bg-surface-container"><!-- Stage 01 -->
+<div class="border-b xl:border-b-0 border-r border-on-surface p-3 bg-surface">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary text-xs">STAGE 01</div>
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface my-1">INGESTION</div>
+<div class="font-label-mono-sm text-label-mono-sm text-on-surface">[DYNAMIC STATUS]</div>
+</div>
+<!-- Stage 02 -->
+<div class="border-b xl:border-b-0 border-r border-on-surface p-3 bg-surface">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary text-xs">STAGE 02</div>
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface my-1">NETWORK OBSERVATIONS</div>
+<div class="font-label-mono-sm text-label-mono-sm text-on-surface">[DYNAMIC STATUS]</div>
+</div>
+<!-- Stage 03 -->
+<div class="border-b xl:border-b-0 border-r border-on-surface p-3 bg-surface">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary text-xs">STAGE 03</div>
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface my-1">CORRELATION</div>
+<div class="font-label-mono-sm text-label-mono-sm text-on-surface">[DYNAMIC STATUS]</div>
+</div>
+<!-- Stage 04 -->
+<div class="border-b xl:border-b-0 border-r border-on-surface p-3 bg-surface">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary text-xs">STAGE 04</div>
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface my-1">ENTITY CLUSTERING</div>
+<div class="font-label-mono-sm text-label-mono-sm text-on-surface">[DYNAMIC STATUS]</div>
+</div>
+<!-- Stage 05 -->
+<div class="border-b xl:border-b-0 border-r border-on-surface p-3 bg-surface">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary text-xs">STAGE 05</div>
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface my-1">GRAPH ANALYSIS</div>
+<div class="font-label-mono-sm text-label-mono-sm text-on-surface">[DYNAMIC STATUS]</div>
+</div>
+<!-- Stage 06 -->
+<div class="border-b xl:border-b-0 border-r border-on-surface p-3 bg-surface">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary text-xs">STAGE 06</div>
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface my-1">FEATURE EXTRACTION</div>
+<div class="font-label-mono-sm text-label-mono-sm text-on-surface">[DYNAMIC STATUS]</div>
+</div>
+<!-- Stage 07 -->
+<div class="border-b xl:border-b-0 border-r border-on-surface p-3 bg-surface">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary text-xs">STAGE 07</div>
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface my-1">ML ANALYSIS</div>
+<div class="font-label-mono-sm text-label-mono-sm text-on-surface">[DYNAMIC STATUS]</div>
+</div>
+<!-- Stage 08 -->
+<div class="border-b xl:border-b-0 border-r border-on-surface p-3 bg-surface">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary text-xs">STAGE 08</div>
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface my-1">EVIDENCE INTERPRETATION</div>
+<div class="font-label-mono-sm text-label-mono-sm text-on-surface">[DYNAMIC STATUS]</div>
+</div>
+<!-- Stage 09 -->
+<div class="p-3 bg-surface-container-high">
+<div class="font-label-mono-bold text-label-mono-bold text-primary-container text-xs">STAGE 09</div>
+<div class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface my-1">RUN FINALIZED</div>
+<div class="font-label-mono-sm text-label-mono-sm font-bold text-on-surface">[DYNAMIC STATUS]</div>
+</div></div>
+</section>
+<!-- 4. RECOVERY & NAVIGATION STRIP -->
+<section class="border border-on-surface bg-surface-container p-4">
+<div class="flex flex-wrap items-center justify-between gap-4 font-label-mono-bold text-label-mono-bold text-on-surface">
+<span class="text-secondary uppercase">WORKSPACE ROUTING SHORTCUTS:</span>
+<div class="flex flex-wrap gap-2">
+<a class="border border-on-surface bg-surface hover:bg-on-surface hover:text-surface px-4 py-2 uppercase transition-none" href="#">
+            RETURN TO OVERVIEW
+          </a>
+<a class="border border-on-surface bg-surface hover:bg-on-surface hover:text-surface px-4 py-2 uppercase transition-none" href="#">
+            OPEN INVESTIGATIONS
+          </a>
+<a class="border border-on-surface bg-surface hover:bg-on-surface hover:text-surface px-4 py-2 uppercase transition-none" href="#">
+            OPEN SEARCH
+          </a>
+<a class="border border-on-surface bg-surface hover:bg-on-surface hover:text-surface px-4 py-2 uppercase transition-none" href="#">
+            OPEN ANALYTICS
+          </a>
+<a class="border border-on-surface bg-surface hover:bg-on-surface hover:text-surface px-4 py-2 uppercase transition-none" href="#">
+            OPEN DOCUMENTATION
+          </a>
+</div>
+</div>
+</section>
+<!-- 5. EPISTEMIC BOUNDARY (Verbatim dark panel) -->
+<section class="bg-on-surface text-surface border border-on-surface p-6 sm:p-8">
+<div class="flex items-center gap-3 border-b border-surface/20 pb-3 mb-4">
+<span class="material-symbols-outlined text-primary-container">info</span>
+<h3 class="font-headline-md text-headline-md uppercase font-bold text-surface tracking-wide">
+          EPISTEMIC BOUNDARY &amp; LEGAL INTELLIGENCE DISCLAIMER
+        </h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-body-sm text-body-sm text-surface/90">
+<div class="border-l-2 border-primary-container pl-4">
+<p class="mb-2 font-medium leading-relaxed">
+            "Structural anomaly does not mean criminal activity. CryptoNexus surfaces patterns for human investigation. It does not determine identity, ownership, or criminal intent."
+          </p>
+</div>
+<div class="border-l-2 border-surface/40 pl-4">
+<p class="leading-relaxed">
+            "Bitcoin addresses are pseudonymous identifiers. Address ≠ wallet ≠ entity. IP association ≠ ownership. GeoIP is enrichment, not identity. Network observation time is sensor observation time."
+          </p>
+</div>
+</div>
+</section>
+</div>
+<!-- FOOTER -->
+<footer class="w-full border-t border-on-surface px-6 py-8 bg-surface mt-auto">
+<div class="max-w-[1720px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-4">
+<img alt="CryptoNexus Logo" class="h-6 w-auto object-contain" src="assets/image_0.png">
+<span class="font-label-mono-sm text-label-mono-sm text-secondary uppercase">LOCAL INSTANCE</span>
+</div>
+<div class="font-label-mono-sm text-label-mono-sm text-secondary text-center">
+        © 2026 CRYPTONEXUS. BITCOIN INTELLIGENCE PLATFORM. LOCAL / OFFLINE.
+      </div>
+<div class="flex items-center gap-6 font-label-mono-sm text-label-mono-sm text-on-surface uppercase font-bold">
+<a class="hover:text-primary-container transition-none" href="#">DISCLAIMER</a>
+<a class="hover:text-primary-container transition-none" href="#">METHODOLOGY</a>
+<a class="hover:text-primary-container transition-none" href="#">ABOUT</a>
+</div>
+</div>
+</footer>
+
+
+</body></html>

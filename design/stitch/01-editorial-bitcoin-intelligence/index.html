@@ -1,0 +1,545 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CRYPTONEXUS — Bitcoin Intelligence Platform</title>
+<!-- Google Fonts: Oswald & Space Mono & Space Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#faf9f4",
+            "on-primary-container": "#603500",
+            "background": "#faf9f4",
+            "outline-variant": "#dbc2ae",
+            "secondary-container": "#e5e2e1",
+            "on-surface": "#1b1c19",
+            "outline": "#887362",
+            "on-error": "#ffffff",
+            "on-secondary-container": "#656464",
+            "error-container": "#ffdad6",
+            "primary-fixed": "#ffdcbf",
+            "on-secondary-fixed": "#1c1b1b",
+            "inverse-on-surface": "#f2f1ec",
+            "surface-tint": "#8c4f00",
+            "tertiary-container": "#f99223",
+            "surface-container": "#efeee9",
+            "on-tertiary-fixed": "#2e1500",
+            "surface": "#faf9f4",
+            "primary": "#8c4f00",
+            "on-background": "#1b1c19",
+            "error": "#ba1a1a",
+            "primary-container": "#f7931a",
+            "tertiary": "#8f4e00",
+            "inverse-surface": "#30312e",
+            "secondary-fixed-dim": "#c9c6c5",
+            "on-tertiary-fixed-variant": "#6c3a00",
+            "on-primary-fixed": "#2d1600",
+            "surface-container-high": "#e9e8e3",
+            "on-primary": "#ffffff",
+            "surface-container-highest": "#e3e3de",
+            "surface-container-lowest": "#ffffff",
+            "on-surface-variant": "#554335",
+            "on-tertiary-container": "#623400",
+            "inverse-primary": "#ffb874",
+            "surface-variant": "#e3e3de",
+            "on-secondary": "#ffffff",
+            "secondary-fixed": "#e5e2e1",
+            "primary-fixed-dim": "#ffb874",
+            "surface-dim": "#dbdad5",
+            "on-tertiary": "#ffffff",
+            "secondary": "#5f5e5e",
+            "on-secondary-fixed-variant": "#474646",
+            "on-primary-fixed-variant": "#6b3b00",
+            "tertiary-fixed-dim": "#ffb77a",
+            "surface-container-low": "#f5f4ef",
+            "on-error-container": "#93000a",
+            "tertiary-fixed": "#ffdcc1"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2.5rem",
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "gutter": "0px",
+            "margin": "1.5rem",
+            "space-lg": "1.5rem",
+            "gutter-loose": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-xl": ["Oswald"],
+            "headline-sm": ["Oswald"],
+            "headline-md": ["Oswald"],
+            "display-hero": ["Oswald"],
+            "label-mono-sm": ["Space Mono"],
+            "label-mono-bold": ["Space Mono"],
+            "headline-xl-mobile": ["Oswald"],
+            "body-lg": ["Space Grotesk"],
+            "display-hero-mobile": ["Oswald"],
+            "headline-lg": ["Oswald"],
+            "body-sm": ["Space Grotesk"],
+            "data-metric": ["Oswald"],
+            "body-md": ["Space Grotesk"]
+          },
+          "fontSize": {
+            "headline-xl": ["3.5rem", { "lineHeight": "3.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "headline-md": ["1.5rem", { "lineHeight": "1.875rem", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "display-hero": ["5rem", { "lineHeight": "5rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-mono-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.05em", "fontWeight": "400" }],
+            "label-mono-bold": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.08em", "fontWeight": "700" }],
+            "headline-xl-mobile": ["2.25rem", { "lineHeight": "2.5rem", "letterSpacing": "0em", "fontWeight": "600" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }],
+            "display-hero-mobile": ["3rem", { "lineHeight": "3.125rem", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-lg": ["2.25rem", { "lineHeight": "2.5rem", "letterSpacing": "0em", "fontWeight": "600" }],
+            "body-sm": ["0.8125rem", { "lineHeight": "1.25rem", "fontWeight": "400" }],
+            "data-metric": ["2.75rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["0.9375rem", { "lineHeight": "1.5rem", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Neo-Brutalist Swiss Print Grid Hairlines */
+    * {
+      border-radius: 0 !important;
+      box-shadow: none !important;
+    }
+    body {
+      background-color: #faf9f4;
+      color: #1b1c19;
+      font-feature-settings: "tnum" 1;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+    .structural-border {
+      border-color: #1b1c19;
+    }
+    .dashed-divider {
+      border-bottom: 1px dashed #887362;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased selection:bg-primary-container selection:text-on-surface">
+<!-- 1. EDITORIAL MASTHEAD / TOPNAVBAR (Shared Component: exact labels & layout) -->
+<header class="w-full border-b border-on-surface dark:border-outline flex items-stretch justify-between px-6 py-0 bg-surface dark:bg-inverse-surface sticky top-0 z-50">
+<!-- Brand Anchor -->
+<div class="flex items-center gap-3 border-r border-on-surface pr-8 py-3.5"><a href="#overview" class="flex items-center"><img src="assets/image_1.png" alt="CryptoNexus — Bitcoin Intelligence" class="h-10 w-auto object-contain"></a></div>
+<!-- Center Navigation Links (OVERVIEW is active per hierarchy) -->
+<nav class="hidden md:flex items-stretch space-x-8">
+<a class="flex items-center text-on-surface dark:text-inverse-on-surface font-label-mono-bold text-label-mono-bold border-b-2 border-primary-container pb-1 uppercase hover:text-primary-container transition-none" href="#overview">
+        OVERVIEW
+      </a>
+<a class="flex items-center text-secondary dark:text-secondary-fixed-dim font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:text-primary-container transition-none" href="#investigations">
+        INVESTIGATIONS
+      </a>
+<a class="flex items-center text-secondary dark:text-secondary-fixed-dim font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:text-primary-container transition-none" href="#analytics">
+        ANALYTICS
+      </a>
+<a class="flex items-center text-secondary dark:text-secondary-fixed-dim font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:text-primary-container transition-none" href="#documentation">
+        DOCUMENTATION
+      </a>
+<a class="flex items-center text-secondary dark:text-secondary-fixed-dim font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:text-primary-container transition-none" href="#about">
+        ABOUT
+      </a>
+</nav>
+<!-- Trailing Actions & Diagnostics -->
+<div class="flex items-stretch border-l border-on-surface pl-6">
+<!-- Search & Terminal Icons -->
+<div class="flex items-center border-r border-on-surface px-4 space-x-3 text-on-surface"><button class="hover:text-primary-container transition-none p-1 flex items-center gap-1.5" title="Search"><span class="material-symbols-outlined text-lg" data-icon="search">search</span><span class="font-label-mono-bold text-label-mono-sm uppercase">SEARCH</span></button></div>
+<!-- Status Indicator -->
+<div class="hidden lg:flex items-center px-4 border-r border-on-surface font-label-mono-bold text-label-mono-sm tracking-widest text-on-surface">
+<span class="w-2 h-2 bg-primary-container inline-block mr-2"></span>
+        STATUS: LOCAL/OFFLINE
+      </div>
+<!-- Primary Action CTA -->
+<a class="flex items-center bg-primary-container px-6 text-on-surface font-label-mono-bold text-label-mono-bold uppercase tracking-widest hover:bg-on-surface hover:text-surface transition-none" href="#investigate-now">
+        START INVESTIGATING ↗
+      </a>
+</div>
+</header>
+<!-- SUB-BAR METADATA TICKER -->
+
+<main class="w-full">
+<!-- 2. MONUMENTAL ASYMMETRIC HERO SECTION (60/40 Split) -->
+<section class="border-b border-on-surface grid grid-cols-1 lg:grid-cols-12">
+<!-- Left Column (60% Desktop: 7-8 cols) -->
+<div class="lg:col-span-7 p-6 sm:p-10 lg:p-14 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-on-surface bg-surface">
+<div>
+<!-- Classification tag -->
+<div class="inline-flex items-center border border-on-surface px-2.5 py-1 mb-8 bg-surface-container-low">
+<span class="w-1.5 h-1.5 bg-primary-container mr-2"></span>
+<span class="font-label-mono-bold text-label-mono-bold uppercase text-on-surface">BITCOIN TRANSACTION INTELLIGENCE</span>
+</div>
+<!-- Monumental Condensed Headline -->
+<h1 class="font-display-hero text-display-hero uppercase tracking-tight text-on-surface mb-8 leading-none">
+            LOCAL TRANSACTION TRAFFIC ANALYSIS FOR STRUCTURAL INVESTIGATION
+          </h1>
+<!-- Supporting Editorial Copy -->
+<p class="font-body-lg text-body-lg text-secondary max-w-2xl mb-10 leading-relaxed">Analyze Bitcoin transaction structure, network observations, graph relationships, and structural anomalies locally. Built for analysts who need evidence-traceable investigation workflows with explainable model outputs.</p>
+<!-- Action Cluster -->
+<div class="flex flex-wrap items-center gap-4 mb-14">
+<a class="bg-on-surface text-surface border border-on-surface px-8 py-4 font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:bg-primary-container hover:text-on-surface transition-none flex items-center gap-2" href="#investigate">
+              START INVESTIGATING <span class="text-base leading-none">↗</span>
+</a>
+<a class="bg-transparent text-on-surface border border-on-surface px-8 py-4 font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:bg-surface-container-high transition-none" href="#demo">
+              EXPLORE DEMO
+            </a>
+</div>
+</div>
+<!-- Technical Metadata Band -->
+<div class="border-t border-on-surface pt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 font-label-mono-sm text-label-mono-sm"><div class="">
+<div class="text-secondary font-label-mono-bold">ENGINE ARCHITECTURE</div>
+<div class="text-on-surface uppercase font-bold mt-1">DUCKDB + NETWORKX</div>
+</div>
+<div class="sm:border-l sm:border-on-surface sm:pl-4">
+<div class="text-secondary font-label-mono-bold">RUNTIME</div>
+<div class="text-on-surface uppercase font-bold mt-1">LOCAL / OFFLINE</div>
+</div>
+<div class="sm:border-l sm:border-on-surface sm:pl-4">
+<div class="text-secondary font-label-mono-bold">ANALYTICAL FEATURES</div>
+<div class="text-on-surface uppercase font-bold mt-1">17 CANONICAL FEATURES</div>
+</div></div>
+</div>
+<!-- Right Column (40% Desktop: 5 cols) Abstract Editorial Network Diagram -->
+<div class="lg:col-span-5 bg-surface-container-low p-6 sm:p-10 flex flex-col justify-between relative overflow-hidden">
+<!-- Top sub-header -->
+<div class="flex items-center justify-between border-b border-on-surface pb-3 mb-6">
+<span class="font-label-mono-bold text-label-mono-bold text-on-surface uppercase">TOPOLOGICAL GRAPH REPRESENTATION</span>
+<span class="font-label-mono-sm text-label-mono-sm text-primary uppercase font-bold">ABSTRACT RELATIONSHIP VIEW</span>
+</div>
+<!-- Pure Editorial SVG Geometry Diagram -->
+<div class="my-auto py-8 flex items-center justify-center">
+<svg class="w-full max-w-md h-auto" fill="none" viewBox="0 0 460 420" xmlns="http://www.w3.org/2000/svg"><line stroke="#1b1c19" stroke-dasharray="2 4" stroke-width="0.75" x1="20" x2="440" y1="20" y2="20" class=""></line>
+<line stroke="#1b1c19" stroke-dasharray="2 4" stroke-width="0.75" x1="20" x2="440" y1="120" y2="120" class=""></line>
+<line stroke="#1b1c19" stroke-dasharray="2 4" stroke-width="0.75" x1="20" x2="440" y1="220" y2="220" class=""></line>
+<line stroke="#1b1c19" stroke-dasharray="2 4" stroke-width="0.75" x1="20" x2="440" y1="320" y2="320" class=""></line>
+<line stroke="#1b1c19" stroke-dasharray="2 4" stroke-width="0.75" x1="20" x2="440" y1="400" y2="400" class=""></line>
+<line stroke="#1b1c19" stroke-dasharray="2 4" stroke-width="0.75" x1="60" x2="60" y1="10" y2="410" class=""></line>
+<line stroke="#1b1c19" stroke-dasharray="2 4" stroke-width="0.75" x1="180" x2="180" y1="10" y2="410" class=""></line>
+<line stroke="#1b1c19" stroke-dasharray="2 4" stroke-width="0.75" x1="300" x2="300" y1="10" y2="410" class=""></line>
+<line stroke="#1b1c19" stroke-dasharray="2 4" stroke-width="0.75" x1="400" x2="400" y1="10" y2="410" class=""></line>
+<circle cx="230" cy="210" r="140" stroke="#1b1c19" stroke-width="1" class=""></circle>
+<circle cx="230" cy="210" r="85" stroke="#f7931a" stroke-dasharray="4 2" stroke-width="1.5" class=""></circle>
+<path d="M70 120 L230 210 L370 100" stroke="#1b1c19" stroke-width="1.25" class=""></path>
+<path d="M230 210 L150 330 L290 320 L230 210" stroke="#1b1c19" stroke-width="1.25" class=""></path>
+<path d="M370 100 L390 260 L290 320" stroke="#1b1c19" stroke-width="1" class=""></path>
+<path d="M70 120 L150 330" stroke="#1b1c19" stroke-width="1" class=""></path>
+<line stroke="#f7931a" stroke-width="2.5" x1="230" x2="320" y1="210" y2="150" class=""></line>
+<rect fill="#1b1c19" height="28" stroke="#f7931a" stroke-width="2" width="28" x="216" y="196" class=""></rect>
+<text fill="#faf9f4" font-family="Space Mono" font-size="11" font-weight="700" text-anchor="middle" x="230" y="214" class="">TX</text>
+<circle cx="70" cy="120" fill="#faf9f4" r="14" stroke="#1b1c19" stroke-width="2" class=""></circle>
+<text fill="#1b1c19" font-family="Space Mono" font-size="9" font-weight="700" text-anchor="middle" x="70" y="124" class="">IN.1</text>
+<rect fill="#f7931a" height="24" stroke="#1b1c19" stroke-width="1.5" width="24" x="358" y="88" class=""></rect>
+<text fill="#1b1c19" font-family="Space Mono" font-size="9" font-weight="700" text-anchor="middle" x="370" y="104" class="">OUT.8</text>
+<circle cx="150" cy="330" fill="#1b1c19" r="16" stroke="#1b1c19" class=""></circle>
+<text fill="#faf9f4" font-family="Space Mono" font-size="9" font-weight="700" text-anchor="middle" x="150" y="334" class="">PEER</text>
+<circle cx="290" cy="320" fill="#faf9f4" r="12" stroke="#1b1c19" stroke-width="1.5" class=""></circle>
+<text fill="#1b1c19" font-family="Space Mono" font-size="8" text-anchor="middle" x="290" y="323" class="">IN.2</text>
+<circle cx="390" cy="260" fill="#faf9f4" r="10" stroke="#1b1c19" stroke-width="1.5" class=""></circle></svg>
+</div>
+<!-- Right Card Bottom Legend -->
+<div class="border-t border-on-surface pt-4 flex items-center justify-between font-label-mono-sm text-label-mono-sm"><div class="flex items-center space-x-3">
+<span class="inline-block w-3 h-3 bg-on-surface"></span>
+<span class="text-on-surface">OBSERVED PEERS</span>
+</div>
+<div class="flex items-center space-x-3">
+<span class="inline-block w-3 h-3 bg-primary-container"></span>
+<span class="text-on-surface">ANALYTICAL RELATIONSHIPS</span>
+</div>
+<div class="flex items-center space-x-3">
+<span class="inline-block w-3 h-3 border border-on-surface bg-surface"></span>
+<span class="text-on-surface">TRANSACTION / ADDRESS RELATIONSHIPS</span>
+</div></div>
+</div>
+</section>
+<!-- 3. MANDATORY PROMINENT PRODUCT BOUNDARY STATEMENT (Full-Width High Contrast Banner) -->
+<section class="w-full bg-on-surface text-surface border-b border-on-surface px-6 py-10 md:px-12 md:py-14 relative">
+<div class="max-w-6xl mx-auto border-l-4 border-primary-container pl-6 md:pl-10"><div class="font-label-mono-bold text-label-mono-bold text-primary-container uppercase tracking-widest mb-3">
+          ANALYTICAL BOUNDARY
+        </div>
+<blockquote class="font-headline-md text-headline-md md:text-headline-lg font-headline-lg uppercase text-surface leading-snug tracking-tight">
+          “Structural anomaly does not mean criminal activity. CryptoNexus surfaces patterns for human investigation. It does not determine identity, ownership or criminal intent.”
+        </blockquote></div>
+</section>
+<!-- 4. DEMONSTRATION DATA LEDGER (Asymmetric Architectural Grid) -->
+<section class="w-full border-b border-on-surface bg-surface" id="overview">
+<!-- Section Banner -->
+<div class="border-b border-on-surface px-6 py-3 bg-surface-container flex items-center justify-between"><span class="font-headline-sm text-headline-sm uppercase text-on-surface font-semibold">DEMO DATASET // DEMO_V1</span>
+<span class="font-label-mono-bold text-label-mono-sm uppercase text-secondary">SOURCE BLOCKS: 700000 → 700022</span></div>
+<!-- Ledger Row Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 divide-y sm:divide-y-0 sm:divide-x divide-on-surface"><!-- Metric 1 -->
+<div class="p-6 md:p-8 bg-surface flex flex-col justify-between hover:bg-surface-container-low transition-none">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary uppercase tracking-wider mb-4">
+TRANSACTIONS
+</div>
+<div>
+<div class="font-data-metric text-data-metric text-on-surface tracking-tight leading-none mb-2">
+25,649
+</div>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="p-6 md:p-8 bg-surface-container-low flex flex-col justify-between hover:bg-surface-container-high transition-none">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary uppercase tracking-wider mb-4">
+NETWORK OBSERVATIONS
+</div>
+<div>
+<div class="font-data-metric text-data-metric text-on-surface tracking-tight leading-none mb-2">
+60,355
+</div>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="p-6 md:p-8 bg-primary-container text-on-surface flex flex-col justify-between">
+<div class="font-label-mono-bold text-label-mono-bold text-on-surface uppercase tracking-wider mb-4 flex items-center justify-between">
+<span class="">STRUCTURAL ANOMALIES</span>
+<span class="w-2.5 h-2.5 bg-on-surface"></span>
+</div>
+<div>
+<div class="font-data-metric text-data-metric text-on-surface tracking-tight leading-none mb-2">
+1,283
+</div>
+<div class="font-label-mono-bold text-label-mono-sm text-on-surface uppercase">
+[ STRUCTURAL ANOMALY ALERTS ]
+</div>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="p-6 md:p-8 bg-surface flex flex-col justify-between hover:bg-surface-container-low transition-none">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary uppercase tracking-wider mb-4">
+OBSERVED PEERS
+</div>
+<div>
+<div class="font-data-metric text-data-metric text-on-surface tracking-tight leading-none mb-2">
+7,468
+</div>
+</div>
+</div>
+<!-- Metric 5 -->
+<div class="p-6 md:p-8 bg-surface-container-low flex flex-col justify-between hover:bg-surface-container-high transition-none">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary uppercase tracking-wider mb-4">
+CONNECTED COMPONENTS
+</div>
+<div>
+<div class="font-data-metric text-data-metric text-on-surface tracking-tight leading-none mb-2">
+3
+</div>
+</div>
+</div></div>
+</section>
+<!-- 5. CORE ANALYTICAL CAPABILITIES (Modular Editorial Matrix) -->
+<section class="w-full border-b border-on-surface" id="analytics">
+<div class="border-b border-on-surface p-6 sm:px-10 bg-surface flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+<div>
+<div class="font-label-mono-bold text-label-mono-bold text-primary uppercase mb-1">// ARCHITECTURAL SPECIFICATION</div>
+<h2 class="font-headline-xl text-headline-xl uppercase text-on-surface tracking-tight leading-none">
+            CORE ANALYTICAL CAPABILITIES
+          </h2>
+</div>
+<p class="font-body-sm text-body-sm text-secondary max-w-md">Local analytical modules operate over transaction records, network observations, graph relationships, and the canonical feature set with reproducible pipeline outputs.</p>
+</div>
+<!-- 6-Cell Matrix (Neo-Brutalist 0px Gutter Grid with 1px structural borders) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y lg:divide-y-0 divide-on-surface"><!-- Capability 01 -->
+<div class="p-8 border-r-0 lg:border-r border-b border-on-surface bg-surface flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between border-b border-on-surface pb-3 mb-6">
+<span class="font-label-mono-bold text-label-mono-bold text-primary uppercase">CAPABILITY 01</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-3">
+TRANSACTION STRUCTURE
+</h3>
+<p class="font-body-md text-body-md text-secondary leading-relaxed mb-6">
+Inspect transaction inputs, outputs, amounts, fees when available, and transaction-level structure.
+</p>
+</div>
+<div class="border-t border-dashed border-outline pt-4 font-label-mono-sm text-label-mono-sm text-on-surface flex justify-between">
+<span class="">TRANSACTION STRUCTURE</span>
+<span class="font-bold">LOCAL</span>
+</div>
+</div>
+<!-- Capability 02 -->
+<div class="p-8 border-r-0 lg:border-r border-b border-on-surface bg-surface-container-low flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between border-b border-on-surface pb-3 mb-6">
+<span class="font-label-mono-bold text-label-mono-bold text-primary uppercase">CAPABILITY 02</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-3">
+NETWORK OBSERVATIONS
+</h3>
+<p class="font-body-md text-body-md text-secondary leading-relaxed mb-6">
+Analyzes observed peer IPs, transaction propagation timing, and network relationships represented in the investigation dataset.
+</p>
+</div>
+<div class="border-t border-dashed border-outline pt-4 font-label-mono-sm text-label-mono-sm text-on-surface flex justify-between">
+<span class="">OBSERVATION NETWORK</span>
+<span class="font-bold">ANALYTICAL</span>
+</div>
+</div>
+<!-- Capability 03 -->
+<div class="p-8 border-b border-on-surface bg-surface flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between border-b border-on-surface pb-3 mb-6">
+<span class="font-label-mono-bold text-label-mono-bold text-primary uppercase">CAPABILITY 03</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-3">
+GRAPH ANALYSIS
+</h3>
+<p class="font-body-md text-body-md text-secondary leading-relaxed mb-6">
+Builds transaction, address, and observed-peer relationships for connected-component analysis, traversal, and graph-based investigation.
+</p>
+</div>
+<div class="border-t border-dashed border-outline pt-4 font-label-mono-sm text-label-mono-sm text-on-surface flex justify-between">
+<span class="">NETWORKX ENGINE</span>
+<span class="font-bold">IN-MEMORY DIRECT</span>
+</div>
+</div>
+<!-- Capability 04 -->
+<div class="p-8 border-r-0 lg:border-r border-b lg:border-b-0 border-on-surface bg-surface-container-low flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between border-b border-on-surface pb-3 mb-6">
+<span class="font-label-mono-bold text-label-mono-bold text-primary uppercase">CAPABILITY 04</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-3">
+STRUCTURAL ANOMALIES
+</h3>
+<p class="font-body-md text-body-md text-secondary leading-relaxed mb-6">
+Identifies structural outliers using Isolation Forest and density-based clustering over the canonical analytical feature set.
+</p>
+</div>
+<div class="border-t border-dashed border-outline pt-4 font-label-mono-sm text-label-mono-sm text-on-surface flex justify-between">
+<span class="">MODEL ATTRIBUTION</span>
+<span class="font-bold">ISOLATION FOREST + HDBSCAN</span>
+</div>
+</div>
+<!-- Capability 05 -->
+<div class="p-8 border-r-0 lg:border-r border-b lg:border-b-0 border-on-surface bg-surface flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between border-b border-on-surface pb-3 mb-6">
+<span class="font-label-mono-bold text-label-mono-bold text-primary uppercase">CAPABILITY 05</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-3">
+EXPLAINABLE AI
+</h3>
+<p class="font-body-md text-body-md text-secondary leading-relaxed mb-6">
+SHAP explanations expose feature contributions associated with model-derived anomaly signals.
+</p>
+</div>
+<div class="border-t border-dashed border-outline pt-4 font-label-mono-sm text-label-mono-sm text-on-surface flex justify-between">
+<span class="">MODEL EXPLANATION</span>
+<span class="font-bold">SHAP</span>
+</div>
+</div>
+<!-- Capability 06 -->
+<div class="p-8 border-on-surface bg-surface-container-high flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between border-b border-on-surface pb-3 mb-6">
+<span class="font-label-mono-bold text-label-mono-bold text-primary uppercase">CAPABILITY 06</span>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary">EVIDENCE_PROVENANCE</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-on-surface mb-3">
+EVIDENCE PROVENANCE &amp; LOCAL EXECUTION
+</h3>
+<p class="font-body-md text-body-md text-secondary leading-relaxed mb-6">
+Trace investigation findings back to source transaction and network-observation records, derived features, and model outputs through deterministic provenance.
+</p>
+</div>
+<div class="border-t border-dashed border-outline pt-4 font-label-mono-sm text-label-mono-sm text-on-surface flex justify-between">
+<span class="">PROVENANCE</span>
+<span class="font-bold text-primary">TRACEABLE</span>
+</div>
+</div></div>
+</section>
+<!-- 6. ANALYTICAL JOURNEY & VALIDATED STACK (Methodology Pipeline) -->
+<section class="w-full border-b border-on-surface bg-surface-container-low" id="investigations"><!-- Header -->
+<div class="p-6 sm:px-10 border-b border-on-surface bg-surface flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-3">
+<span class="w-3 h-3 bg-primary-container"></span>
+<h2 class="font-headline-md text-headline-md uppercase text-on-surface font-semibold">METHODOLOGY PIPELINE // ANALYTICAL WORKFLOW</h2>
+</div>
+<div class="font-label-mono-sm text-label-mono-sm text-secondary">
+EXECUTION STACK: DUCKDB • NETWORKX • SCIKIT-LEARN • HDBSCAN • SHAP
+</div>
+</div>
+<!-- Horizontal Architectural Timeline: 9 stages -->
+<div class="overflow-x-auto">
+<div class="min-w-[1080px] grid grid-cols-9 divide-x divide-on-surface border-b border-on-surface bg-surface text-center"><div class="p-4 flex flex-col justify-between hover:bg-surface-container transition-none"><span class="font-label-mono-sm text-label-mono-sm text-secondary mb-2">01</span><span class="font-headline-sm text-headline-sm uppercase text-on-surface font-bold">INGEST</span><span class="font-label-mono-sm text-label-mono-sm text-secondary mt-2">Transaction and network-observation records</span></div><div class="p-4 flex flex-col justify-between hover:bg-surface-container transition-none"><span class="font-label-mono-sm text-label-mono-sm text-secondary mb-2">02</span><span class="font-headline-sm text-headline-sm uppercase text-on-surface font-bold">CORRELATE</span><span class="font-label-mono-sm text-label-mono-sm text-secondary mt-2">Peer timing and transaction relationships</span></div><div class="p-4 flex flex-col justify-between hover:bg-surface-container transition-none"><span class="font-label-mono-sm text-label-mono-sm text-secondary mb-2">03</span><span class="font-headline-sm text-headline-sm uppercase text-on-surface font-bold">CIH</span><span class="font-label-mono-sm text-label-mono-sm text-secondary mt-2">Common-input-hypothesis clustering</span></div><div class="p-4 flex flex-col justify-between hover:bg-surface-container transition-none"><span class="font-label-mono-sm text-label-mono-sm text-secondary mb-2">04</span><span class="font-headline-sm text-headline-sm uppercase text-on-surface font-bold">GRAPH</span><span class="font-label-mono-sm text-label-mono-sm text-secondary mt-2">Transaction, address, and peer relationships</span></div><div class="p-4 flex flex-col justify-between hover:bg-surface-container transition-none"><span class="font-label-mono-sm text-label-mono-sm text-secondary mb-2">05</span><span class="font-headline-sm text-headline-sm uppercase text-on-surface font-bold">GRAPH ANALYSIS</span><span class="font-label-mono-sm text-label-mono-sm text-secondary mt-2">Topology and connected components</span></div><div class="p-4 flex flex-col justify-between hover:bg-surface-container transition-none"><span class="font-label-mono-sm text-label-mono-sm text-secondary mb-2">06</span><span class="font-headline-sm text-headline-sm uppercase text-on-surface font-bold">FEATURES</span><span class="font-label-mono-sm text-label-mono-sm text-secondary mt-2">17 canonical analytical features</span></div><div class="p-4 flex flex-col justify-between hover:bg-surface-container transition-none"><span class="font-label-mono-sm text-label-mono-sm text-secondary mb-2">07</span><span class="font-headline-sm text-headline-sm uppercase text-on-surface font-bold">ML SCORING</span><span class="font-label-mono-sm text-label-mono-sm text-secondary mt-2">Isolation Forest and HDBSCAN</span></div><div class="p-4 flex flex-col justify-between hover:bg-surface-container transition-none"><span class="font-label-mono-sm text-label-mono-sm text-secondary mb-2">08</span><span class="font-headline-sm text-headline-sm uppercase text-on-surface font-bold">ALERTS</span><span class="font-label-mono-sm text-label-mono-sm text-secondary mt-2">Structural anomaly signals</span></div><div class="p-4 flex flex-col justify-between bg-primary-container text-on-surface"><span class="font-label-mono-sm text-label-mono-sm text-on-surface mb-2 font-bold">09</span><span class="font-headline-sm text-headline-sm uppercase font-bold text-on-surface">FINALIZE</span><span class="font-label-mono-bold text-label-mono-sm text-on-surface mt-2">Persist run outputs and evidence</span></div></div>
+</div>
+<!-- Validated Analytical Engine Stack Details -->
+<div class="grid grid-cols-1 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-on-surface p-0 bg-surface">
+<div class="p-6">
+<div class="font-label-mono-bold text-label-mono-bold uppercase text-primary mb-1">DUCKDB</div>
+<div class="font-label-mono-sm text-label-mono-sm text-secondary">High-performance in-process SQL OLAP engine executing queries locally over dataset records.</div>
+</div>
+<div class="p-6">
+<div class="font-label-mono-bold text-label-mono-bold uppercase text-primary mb-1">NETWORKX</div>
+<div class="font-label-mono-sm text-label-mono-sm text-secondary">Graph modeling and analysis across transaction, address, and observed-peer relationships.</div>
+</div>
+<div class="p-6">
+<div class="font-label-mono-bold text-label-mono-bold uppercase text-primary mb-1">ISOLATION FOREST</div>
+<div class="font-label-mono-sm text-label-mono-sm text-secondary">Unsupervised ensemble anomaly detection isolating rare multi-feature transaction outliers.</div>
+</div>
+<div class="p-6">
+<div class="font-label-mono-bold text-label-mono-bold uppercase text-primary mb-1">HDBSCAN</div>
+<div class="font-label-mono-sm text-label-mono-sm text-secondary">Density-based spatial clustering identifying structural clusters and noise candidates.</div>
+</div>
+<div class="p-6">
+<div class="font-label-mono-bold text-label-mono-bold uppercase text-primary mb-1">SHAP ATTRIBUTION</div>
+<div class="font-label-mono-sm text-label-mono-sm text-secondary">SHAP explanations expose feature contributions associated with model-derived anomaly signals.</div>
+</div>
+</div></section>
+<!-- LIVE SAMPLE INVESTIGATION WORKBENCH (Editorial Terminal Feel) -->
+
+<!-- SECTION: CALL TO VERIFICATION / DOWNLOAD LOCAL RUNTIME -->
+<section class="border-b border-on-surface bg-surface p-8 sm:p-14 text-center">
+<div class="max-w-3xl mx-auto">
+<div class="inline-block border border-on-surface px-3 py-1 font-label-mono-bold text-label-mono-bold uppercase mb-6 bg-surface-container-high">LOCAL INVESTIGATION WORKSPACE</div>
+<h2 class="font-headline-xl text-headline-xl uppercase text-on-surface tracking-tight leading-none mb-6">
+START AN INVESTIGATION
+</h2>
+<p class="font-body-lg text-body-lg text-secondary mb-8">
+Load a local dataset and begin an evidence-traceable structural analysis.
+</p>
+<div class="flex flex-wrap items-center justify-center gap-4">
+<a class="bg-primary-container text-on-surface px-8 py-4 font-label-mono-bold text-label-mono-bold uppercase tracking-wider border border-on-surface hover:bg-on-surface hover:text-surface transition-none" href="#investigate">
+START INVESTIGATING ↗
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- 7. EDITORIAL LEDGER FOOTER (Shared Component: exact labels, styling & copyright) -->
+<footer class="w-full border-t border-on-surface dark:border-outline px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4 bg-surface dark:bg-inverse-surface"><!-- Brand & Copyright Ledger -->
+<div class="flex flex-col gap-2 max-w-xl text-center md:text-left"><div class="flex items-center justify-center md:justify-start gap-3"><img src="assets/image_0.png" alt="CryptoNexus — Bitcoin Intelligence" class="h-8 w-auto object-contain"><span class="font-label-mono-sm text-label-mono-sm border border-on-surface px-1.5 py-0.5">LOCAL / OFFLINE</span></div><p class="font-body-sm text-body-sm text-secondary dark:text-secondary-fixed-dim">© 2026 CRYPTONEXUS. BITCOIN INTELLIGENCE PLATFORM. LOCAL / OFFLINE.</p></div>
+<!-- Footer Navigation Links -->
+<div class="flex flex-wrap items-center justify-center gap-6 font-label-mono-sm text-label-mono-sm">
+<a class="text-secondary dark:text-secondary-fixed-dim font-label-mono-sm uppercase hover:text-primary-container transition-none" href="#disclaimer">
+DISCLAIMER
+</a>
+<a class="text-secondary dark:text-secondary-fixed-dim font-label-mono-sm uppercase hover:text-primary-container transition-none" href="#methodology">
+METHODOLOGY
+</a>
+<a class="text-secondary dark:text-secondary-fixed-dim font-label-mono-sm uppercase hover:text-primary-container transition-none" href="#about">
+ABOUT
+</a>
+</div></footer>
+
+
+</body></html>

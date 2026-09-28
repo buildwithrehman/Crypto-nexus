@@ -1,0 +1,602 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CryptoNexus — Command Center</title>
+<!-- Google Fonts: Oswald & Space Grotesk & Space Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-container": "#f99223",
+            "on-tertiary-fixed": "#2e1500",
+            "surface-tint": "#8c4f00",
+            "secondary-container": "#e5e2e1",
+            "inverse-primary": "#ffb874",
+            "tertiary-fixed-dim": "#ffb77a",
+            "on-primary-fixed": "#2d1600",
+            "on-secondary-container": "#656464",
+            "surface-container-high": "#e9e8e3",
+            "on-secondary-fixed": "#1c1b1b",
+            "on-tertiary-container": "#623400",
+            "surface-container-highest": "#e3e3de",
+            "secondary-fixed-dim": "#c9c6c5",
+            "tertiary-fixed": "#ffdcc1",
+            "on-secondary": "#ffffff",
+            "surface-container-low": "#f5f4ef",
+            "tertiary": "#8f4e00",
+            "secondary-fixed": "#e5e2e1",
+            "background": "#faf9f4",
+            "on-error": "#ffffff",
+            "primary-fixed": "#ffdcbf",
+            "on-background": "#1b1c19",
+            "outline": "#887362",
+            "on-tertiary": "#ffffff",
+            "on-error-container": "#93000a",
+            "inverse-surface": "#30312e",
+            "on-surface-variant": "#554335",
+            "on-primary-container": "#603500",
+            "on-primary": "#ffffff",
+            "surface-dim": "#dbdad5",
+            "inverse-on-surface": "#f2f1ec",
+            "primary-fixed-dim": "#ffb874",
+            "on-secondary-fixed-variant": "#474646",
+            "surface-variant": "#e3e3de",
+            "on-tertiary-fixed-variant": "#6c3a00",
+            "surface-container": "#efeee9",
+            "on-surface": "#1b1c19",
+            "error": "#ba1a1a",
+            "primary": "#8c4f00",
+            "secondary": "#5f5e5e",
+            "surface-bright": "#faf9f4",
+            "error-container": "#ffdad6",
+            "surface-container-lowest": "#ffffff",
+            "primary-container": "#f7931a",
+            "on-primary-fixed-variant": "#6b3b00",
+            "outline-variant": "#dbc2ae",
+            "surface": "#faf9f4"
+          },
+          "borderRadius": {
+            "DEFAULT": "0px",
+            "none": "0px",
+            "lg": "0px",
+            "xl": "0px",
+            "full": "0px"
+          },
+          "spacing": {
+            "gutter": "0px",
+            "space-xs": "0.25rem",
+            "margin": "1.5rem",
+            "space-lg": "1.5rem",
+            "gutter-loose": "1.5rem",
+            "space-xl": "2.5rem",
+            "space-md": "1rem",
+            "margin-mobile": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Space Grotesk"],
+            "headline-xl-mobile": ["Oswald"],
+            "label-mono-bold": ["Space Mono"],
+            "display-hero-mobile": ["Oswald"],
+            "label-mono-sm": ["Space Mono"],
+            "headline-sm": ["Oswald"],
+            "body-md": ["Space Grotesk"],
+            "data-metric": ["Oswald"],
+            "body-sm": ["Space Grotesk"],
+            "display-hero": ["Oswald"],
+            "headline-lg": ["Oswald"],
+            "headline-md": ["Oswald"],
+            "headline-xl": ["Oswald"]
+          },
+          "fontSize": {
+            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }],
+            "headline-xl-mobile": ["2.25rem", { "lineHeight": "2.5rem", "letterSpacing": "0em", "fontWeight": "600" }],
+            "label-mono-bold": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.08em", "fontWeight": "700" }],
+            "display-hero-mobile": ["3rem", { "lineHeight": "3.125rem", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-mono-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.05em", "fontWeight": "400" }],
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-md": ["0.9375rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+            "data-metric": ["2.75rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-sm": ["0.8125rem", { "lineHeight": "1.25rem", "fontWeight": "400" }],
+            "display-hero": ["5rem", { "lineHeight": "5rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg": ["2.25rem", { "lineHeight": "2.5rem", "letterSpacing": "0em", "fontWeight": "600" }],
+            "headline-md": ["1.5rem", { "lineHeight": "1.875rem", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-xl": ["3.5rem", { "lineHeight": "3.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Neo-Brutalist structural zero-radius and sharp borders */
+    * {
+      border-radius: 0px !important;
+      -webkit-font-smoothing: antialiased;
+    }
+    body {
+      background-color: #faf9f4;
+      color: #1b1c19;
+      margin: 0;
+      padding: 0;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .grid-matrix-cell {
+      border-right: 1px solid #1b1c19;
+      border-bottom: 1px solid #1b1c19;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body-md selection:bg-primary-container selection:text-on-background">
+<!-- TOP MASTHEAD (SHARED COMPONENT JSON COMPLIANT) -->
+<header class="w-full border-b border-on-surface flex items-stretch justify-between px-6 py-0 bg-surface select-none sticky top-0 z-50">
+<div class="flex items-center gap-6 py-3">
+<!-- Official Brand Logo Asset -->
+<a class="flex items-center gap-3" href="#">
+<img alt="CRYPTONEXUS Logo" class="h-9 w-auto object-contain" src="assets/image_1.png">
+</a>
+<!-- Primary Navigation Links (Active state: INVESTIGATIONS) -->
+<nav class="hidden lg:flex items-stretch h-full pl-6 border-l border-on-surface">
+<a class="px-4 py-4 flex items-center text-secondary font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:text-primary-container transition-none" href="#">OVERVIEW</a>
+<a class="px-4 py-4 flex items-center text-on-surface font-label-mono-bold text-label-mono-bold border-b-2 border-primary-container uppercase transition-none" href="#">INVESTIGATIONS</a>
+<a class="px-4 py-4 flex items-center text-secondary font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:text-primary-container transition-none" href="#">ANALYTICS</a>
+<a class="px-4 py-4 flex items-center text-secondary font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:text-primary-container transition-none" href="#">DOCUMENTATION</a>
+<a class="px-4 py-4 flex items-center text-secondary font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:text-primary-container transition-none" href="#">ABOUT</a>
+</nav>
+</div>
+<!-- Masthead Right Actions -->
+<div class="flex items-stretch border-l border-on-surface">
+<!-- Search Trigger Action -->
+<button class="px-4 flex items-center gap-2 border-r border-on-surface text-secondary hover:text-on-surface hover:bg-surface-container transition-none" title="Search Ledger">
+<span class="material-symbols-outlined text-[18px]">search</span>
+<span class="font-label-mono-bold text-label-mono-sm uppercase hidden md:inline">SEARCH</span>
+</button>
+<!-- Operational Status Indicator -->
+<div class="px-4 flex items-center gap-2 border-r border-on-surface bg-surface-container-low font-label-mono-bold text-label-mono-sm uppercase text-on-surface">
+<span class="inline-block w-2.5 h-2.5 bg-primary-container border border-on-surface"></span>
+<span class="tracking-wide">STATUS: LOCAL/OFFLINE</span>
+</div>
+<!-- Trailing Primary Action CTA -->
+<button class="px-6 flex items-center font-label-mono-bold text-label-mono-bold uppercase bg-primary-container text-on-background hover:bg-on-surface hover:text-surface transition-none border-0">
+        START INVESTIGATING ↗
+      </button>
+</div>
+</header>
+<!-- ACTIVE RUN METADATA ARCHIVAL RIBBON -->
+<aside class="w-full bg-surface-container-low border-b border-on-surface px-6 py-2 overflow-x-auto select-none"><div class="flex items-center gap-6 font-label-mono-sm text-label-mono-sm min-w-max uppercase tracking-wider">
+  <div class="flex items-center gap-1.5">
+    <span class="text-secondary">RUN ID:</span>
+    <span class="font-label-mono-bold text-on-surface">[DYNAMIC RUN ID]</span>
+  </div>
+  <span class="text-outline-variant">|</span>
+  <div class="flex items-center gap-1.5">
+    <span class="text-secondary">SOURCE:</span>
+    <span class="font-label-mono-bold text-on-surface">DEMO_V1</span>
+  </div>
+  <span class="text-outline-variant">|</span>
+  <div class="flex items-center gap-1.5">
+    <span class="text-secondary">SOURCE BLOCKS:</span>
+    <span class="font-label-mono-bold text-on-surface">700000 → 700022</span>
+  </div>
+  <span class="text-outline-variant">|</span>
+  <div class="flex items-center gap-1.5">
+    <span class="text-secondary">RUNTIME:</span>
+    <span class="font-label-mono-bold text-on-surface">LOCAL / OFFLINE</span>
+  </div>
+  <span class="text-outline-variant">|</span>
+  <div class="flex items-center gap-1.5">
+    <span class="text-secondary">MODEL:</span>
+    <span class="font-label-mono-bold text-on-surface">ISOLATION FOREST</span>
+  </div>
+  <span class="text-outline-variant">|</span>
+  <div class="flex items-center gap-1.5">
+    <span class="text-secondary">DATABASE:</span>
+    <span class="font-label-mono-bold text-on-surface">DUCKDB</span>
+  </div>
+  <span class="text-outline-variant">|</span>
+  <div class="flex items-center gap-1.5">
+    <span class="text-secondary">RUN STATUS:</span>
+    <span class="font-label-mono-bold text-primary-container">READY</span>
+  </div>
+</div></aside>
+<!-- MAIN OPERATIONAL WORKSPACE -->
+<main class="w-full flex-1 max-w-[1440px] mx-auto px-6 py-8 flex flex-col gap-8">
+<!-- EDITORIAL TITLE BLOCK & TOP LEVEL CONTEXT -->
+<section class="border border-on-surface bg-surface p-8">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-on-surface pb-6">
+<div>
+<div class="font-label-mono-bold text-label-mono-bold text-secondary uppercase tracking-widest mb-2 flex items-center gap-2">
+<span class="w-2 h-2 bg-on-surface inline-block"></span>
+            INVESTIGATION WORKSPACE
+          </div>
+<h1 class="font-display-hero text-display-hero text-on-surface leading-none tracking-tight uppercase">
+            COMMAND<br>CENTER
+          </h1>
+</div>
+<div class="max-w-md">
+<p class="font-body-md text-body-md text-secondary leading-relaxed border-l-2 border-primary-container pl-4">
+            Review the active analysis run, structural anomaly alerts, graph relationships, and evidence available for investigation.
+          </p>
+</div>
+</div>
+<!-- PRIMARY DATA OVERVIEW: BORDER-COLLAPSE ARCHITECTURAL MATRIX -->
+<div class="grid grid-cols-2 md:grid-cols-5 border-t-0 border border-on-surface mt-6">
+<!-- Metric 1 -->
+<div class="p-5 border-r border-b md:border-b-0 border-on-surface bg-surface-container-lowest">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary uppercase mb-2">TRANSACTIONS</div>
+<div class="font-data-metric text-data-metric text-on-surface font-bold">25,649</div>
+<div class="font-label-mono-sm text-label-mono-sm text-secondary mt-1">BLOCKS 700000..700022</div>
+</div>
+<!-- Metric 2 -->
+<div class="p-5 border-r border-b md:border-b-0 border-on-surface bg-surface-container-lowest">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary uppercase mb-2">NETWORK OBSERVATIONS</div>
+<div class="font-data-metric text-data-metric text-on-surface font-bold">60,355</div>
+<div class="font-label-mono-sm text-label-mono-sm text-secondary mt-1">NETWORK OBSERVATIONS</div>
+</div>
+<!-- Metric 3: PRIMARY QUEUE HIGHLIGHT (BITCOIN GOLD HERO BLOCK) -->
+<div class="col-span-2 md:col-span-1 p-5 border-r border-b md:border-b-0 border-on-surface bg-primary-container text-on-background relative flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-mono-bold text-label-mono-bold text-on-background uppercase">ANOMALY ALERTS</span>
+<span class="font-label-mono-bold text-label-mono-sm bg-on-surface text-surface px-1 py-0.2 uppercase">[ PRIMARY QUEUE ]</span>
+</div>
+<div class="font-data-metric text-data-metric text-on-surface font-bold leading-none">1,283</div>
+</div>
+<div class="font-label-mono-bold text-label-mono-sm text-on-surface uppercase border-t border-on-surface/30 pt-2 mt-2">MANUAL INVESTIGATION QUEUE</div>
+</div>
+<!-- Metric 4 -->
+<div class="p-5 border-r border-on-surface bg-surface-container-lowest">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary uppercase mb-2">OBSERVED PEERS</div>
+<div class="font-data-metric text-data-metric text-on-surface font-bold">7,468</div>
+<div class="font-label-mono-sm text-label-mono-sm text-secondary mt-1">UNIQUE OBSERVED PEER IPS</div>
+</div>
+<!-- Metric 5 -->
+<div class="p-5 bg-surface-container-lowest">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary uppercase mb-2">CONNECTED COMPONENTS</div>
+<div class="font-data-metric text-data-metric text-on-surface font-bold">3</div>
+<div class="font-label-mono-sm text-label-mono-sm text-secondary mt-1">TOPOLOGICAL SUBGRAPHS</div>
+</div>
+</div>
+</section>
+<!-- PRIMARY INVESTIGATION AREA (60% / 40% ASYMMETRIC GRID) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 border border-on-surface bg-surface">
+<!-- LEFT COLUMN: 60% (7 COLUMNS ON 12-COL DESKTOP) -->
+<div class="lg:col-span-7 border-b lg:border-b-0 lg:border-r border-on-surface p-6 flex flex-col justify-between">
+<div>
+<!-- Header and Callout -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-on-surface pb-4 mb-6">
+<div>
+<div class="font-label-mono-bold text-label-mono-bold text-secondary uppercase">PRIMARY QUEUE</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface uppercase">INVESTIGATION QUEUE</h2>
+<p class="font-body-sm text-body-sm text-secondary mt-1">
+                Structural outliers surfaced by the active analysis run for manual investigation.
+              </p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-5 py-3 bg-on-surface text-surface hover:bg-primary-container hover:text-on-background font-label-mono-bold text-label-mono-bold uppercase transition-none border border-on-surface">
+                VIEW ALERT QUEUE ↗
+              </button>
+</div>
+</div>
+<!-- Alert Metric Callout -->
+<div class="flex items-center gap-4 bg-surface-container-low border border-on-surface p-4 mb-6">
+<span class="material-symbols-outlined text-primary-container text-3xl">priority_high</span>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface uppercase font-bold">1,283 Structural Anomaly Alerts</div>
+<div class="font-label-mono-sm text-label-mono-sm text-secondary">
+                POPULATION SIZE: 25,649 TXS | ANOMALY RATE: 5.001% | ISOLATION FOREST SPLIT
+              </div>
+</div>
+</div>
+<!-- Structured Editorial Preview Table (Backend Schema) -->
+<div class="border border-on-surface mb-6 overflow-x-auto">
+<div class="bg-surface-container-high px-4 py-2 border-b border-on-surface font-label-mono-bold text-label-mono-sm uppercase text-on-surface flex justify-between">
+<span class="">BACKEND DUCKDB SCHEMA RECONSTRUCTION // ALERT STREAM</span>
+<span class="text-secondary">[ ACTIVE SLICE: 4 OF 1,283 ]</span>
+</div>
+<table class="w-full text-left font-label-mono-sm text-label-mono-sm border-collapse">
+<thead>
+<tr class="border-b-2 border-on-surface bg-surface-container-low text-secondary uppercase font-label-mono-bold">
+<th class="p-3 border-r border-on-surface">TXID</th>
+<th class="p-3 border-r border-on-surface">ANOMALY STRENGTH</th>
+<th class="p-3 border-r border-on-surface">EVIDENCE TIER</th>
+<th class="p-3 border-r border-on-surface">NETWORK TIMING</th>
+<th class="p-3">TOP STRUCTURAL REASON</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-on-surface"><tr class="hover:bg-surface-container transition-none"><td class="p-3 border-r border-on-surface font-label-mono-bold text-on-surface">[DYNAMIC TXID]</td><td class="p-3 border-r border-on-surface font-label-mono-bold text-on-surface">[DYNAMIC]</td><td class="p-3 border-r border-on-surface text-secondary">[DYNAMIC]</td><td class="p-3 border-r border-on-surface text-on-surface">[DYNAMIC]</td><td class="p-3 text-secondary">[DYNAMIC BACKEND DATA]</td></tr><tr class="bg-surface-container-low hover:bg-surface-container transition-none"><td class="p-3 border-r border-on-surface font-label-mono-bold text-on-surface">[DYNAMIC TXID]</td><td class="p-3 border-r border-on-surface font-label-mono-bold text-on-surface">[DYNAMIC]</td><td class="p-3 border-r border-on-surface text-secondary">[DYNAMIC]</td><td class="p-3 border-r border-on-surface text-on-surface">[DYNAMIC]</td><td class="p-3 text-secondary">[DYNAMIC BACKEND DATA]</td></tr><tr class="hover:bg-surface-container transition-none"><td class="p-3 border-r border-on-surface font-label-mono-bold text-on-surface">[DYNAMIC TXID]</td><td class="p-3 border-r border-on-surface font-label-mono-bold text-on-surface">[DYNAMIC]</td><td class="p-3 border-r border-on-surface text-secondary">[DYNAMIC]</td><td class="p-3 border-r border-on-surface text-on-surface">[DYNAMIC]</td><td class="p-3 text-secondary">[DYNAMIC BACKEND DATA]</td></tr><tr class="bg-surface-container-low hover:bg-surface-container transition-none"><td class="p-3 border-r border-on-surface font-label-mono-bold text-on-surface">[DYNAMIC TXID]</td><td class="p-3 border-r border-on-surface font-label-mono-bold text-on-surface">[DYNAMIC]</td><td class="p-3 border-r border-on-surface text-secondary">[DYNAMIC]</td><td class="p-3 border-r border-on-surface text-on-surface">[DYNAMIC]</td><td class="p-3 text-secondary">[DYNAMIC BACKEND DATA]</td></tr></tbody>
+</table>
+<div class="p-2 bg-surface-container-low border-t border-on-surface font-label-mono-sm text-secondary italic">Structural rarity relative to the model reference population. Values populated dynamically from backend alerts API.</div>
+</div>
+</div>
+<!-- CIH Capability Block -->
+<div class="border border-on-surface bg-surface-container-low p-4 mt-2">
+<div class="flex items-center justify-between border-b border-on-surface pb-2 mb-3">
+<span class="font-label-mono-bold text-label-mono-bold text-on-surface uppercase">CIH // COMMON-INPUT-HYPOTHESIS CLUSTERING</span>
+<span class="bg-on-surface text-surface px-2 py-0.5 font-label-mono-bold text-label-mono-sm">ENTITY CLUSTERS: DYNAMIC</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mb-2">
+            Groups transaction inputs using the implemented common-input heuristic to derive common-control hypotheses.
+          </p>
+<div class="font-label-mono-sm text-label-mono-sm text-outline-variant uppercase">
+            Note: Common-control hypothesis only; does not infer confirmed wallet ownership or entity identity.
+          </div>
+</div>
+</div>
+<!-- RIGHT COLUMN: 40% (5 COLUMNS ON 12-COL DESKTOP) -->
+<div class="lg:col-span-5 p-6 flex flex-col justify-between bg-surface-container-lowest">
+<div>
+<!-- NETWORK OVERVIEW CARD -->
+<div class="border border-on-surface p-5 mb-6 bg-surface">
+<div class="flex items-center justify-between border-b border-on-surface pb-3 mb-4">
+<div>
+<span class="font-label-mono-bold text-label-mono-bold text-secondary uppercase">GRAPH TOPOLOGY</span>
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase">NETWORK OVERVIEW</h3>
+</div>
+<button class="px-3 py-2 bg-surface border border-on-surface hover:bg-surface-container font-label-mono-bold text-label-mono-sm uppercase transition-none">
+                EXPLORE NETWORK ↗
+              </button>
+</div>
+<!-- Two Sub-metrics -->
+<div class="grid grid-cols-2 gap-4 mb-4">
+<div class="p-3 border border-on-surface bg-surface-container-low">
+<div class="font-label-mono-sm text-label-mono-sm text-secondary uppercase">OBSERVED PEERS</div>
+<div class="font-headline-lg text-headline-lg text-on-surface font-bold">7,468</div>
+</div>
+<div class="p-3 border border-on-surface bg-surface-container-low">
+<div class="font-label-mono-sm text-label-mono-sm text-secondary uppercase">COMPONENTS</div>
+<div class="font-headline-lg text-headline-lg text-on-surface font-bold">3</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed">Graph-based structural relationships across observed peers, transaction records, and Bitcoin addresses.</p>
+</div>
+<!-- INVESTIGATION SUMMARY & STACK LEDGER -->
+<div class="border border-on-surface bg-surface">
+<div class="bg-surface-container-high px-4 py-2 border-b border-on-surface font-label-mono-bold text-label-mono-bold text-on-surface uppercase flex justify-between">
+<span class="">ACTIVE SYSTEM SPECIFICATION</span>
+<span class="text-secondary">[ WORKSPACE: LOCAL ]</span>
+</div>
+<div class="p-4 font-label-mono-sm text-label-mono-sm divide-y divide-dashed divide-on-surface/40">
+<div class="py-2 flex justify-between items-center">
+<span class="text-secondary">DATASET:</span>
+<span class="font-label-mono-bold text-on-surface">DEMO_V1</span>
+</div>
+<div class="py-2 flex justify-between items-center">
+<span class="text-secondary">TRANSACTIONS:</span>
+<span class="font-label-mono-bold text-on-surface">25,649</span>
+</div>
+<div class="py-2 flex justify-between items-center">
+<span class="text-secondary">NETWORK OBSERVATIONS:</span>
+<span class="font-label-mono-bold text-on-surface">60,355</span>
+</div>
+<div class="py-2 flex justify-between items-center">
+<span class="text-secondary">OBSERVED PEERS:</span>
+<span class="font-label-mono-bold text-on-surface">7,468</span>
+</div>
+<div class="py-2 flex justify-between items-center">
+<span class="text-secondary">CONNECTED COMPONENTS:</span>
+<span class="font-label-mono-bold text-on-surface">3</span>
+</div>
+<div class="py-2 flex justify-between items-center">
+<span class="text-secondary">CANONICAL FEATURES:</span>
+<span class="font-label-mono-bold text-on-surface">17</span>
+</div>
+<div class="py-2 flex justify-between items-center">
+<span class="text-secondary">ANOMALY MODEL:</span>
+<span class="font-label-mono-bold text-on-surface">ISOLATION FOREST</span>
+</div>
+<div class="py-2 flex justify-between items-center">
+<span class="text-secondary">CLUSTERING:</span>
+<span class="font-label-mono-bold text-on-surface">HDBSCAN</span>
+</div>
+<div class="py-2 flex justify-between items-center">
+<span class="text-secondary">EXPLANATION:</span>
+<span class="font-label-mono-bold text-on-surface">SHAP</span>
+</div>
+<div class="py-2 flex justify-between items-center">
+<span class="text-secondary">DATABASE:</span>
+<span class="font-label-mono-bold text-on-surface">DUCKDB</span>
+</div>
+<div class="py-2 flex justify-between items-center">
+<span class="text-secondary">GEOIP:</span>
+<span class="font-label-mono-bold text-tertiary">ENRICHMENT PENDING</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+<!-- PIPELINE STATUS BANNER: 9-STAGE ARCHITECTURAL SEQUENCE -->
+<section class="border border-on-surface bg-surface">
+<div class="bg-surface-container-high px-4 py-2 border-b border-on-surface font-label-mono-bold text-label-mono-sm text-on-surface uppercase flex justify-between">
+<span class="">PIPELINE STATUS // 9-STAGE ANALYTICAL WORKFLOW</span>
+<span class="text-primary-container font-label-mono-bold">● COMPLETE (9/9)</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-9 divide-y md:divide-y-0 md:divide-x divide-on-surface font-label-mono-sm text-label-mono-sm">
+<!-- Stage 1 -->
+<div class="p-3 bg-surface hover:bg-surface-container-low transition-none">
+<div class="flex items-center justify-between text-secondary mb-1">
+<span class="">01</span>
+<span class="text-on-surface font-label-mono-bold">✓</span>
+</div>
+<div class="font-label-mono-bold text-on-surface">INGEST</div>
+<div class="text-[10px] text-secondary mt-1">SOURCE DEMO_V1</div>
+</div>
+<!-- Stage 2 -->
+<div class="p-3 bg-surface hover:bg-surface-container-low transition-none">
+<div class="flex items-center justify-between text-secondary mb-1">
+<span class="">02</span>
+<span class="text-on-surface font-label-mono-bold">✓</span>
+</div>
+<div class="font-label-mono-bold text-on-surface">CORRELATE</div>
+<div class="text-[10px] text-secondary mt-1">NETWORK OBSERVATIONS</div>
+</div>
+<!-- Stage 3 -->
+<div class="p-3 bg-surface hover:bg-surface-container-low transition-none">
+<div class="flex items-center justify-between text-secondary mb-1">
+<span class="">03</span>
+<span class="text-on-surface font-label-mono-bold">✓</span>
+</div>
+<div class="font-label-mono-bold text-on-surface">CIH</div>
+<div class="text-[10px] text-secondary mt-1">HEURISTIC CLUSTER</div>
+</div>
+<!-- Stage 4 -->
+<div class="p-3 bg-surface hover:bg-surface-container-low transition-none">
+<div class="flex items-center justify-between text-secondary mb-1">
+<span class="">04</span>
+<span class="text-on-surface font-label-mono-bold">✓</span>
+</div>
+<div class="font-label-mono-bold text-on-surface">GRAPH</div>
+<div class="text-[10px] text-secondary mt-1">NODE ADJACENCY</div>
+</div>
+<!-- Stage 5 -->
+<div class="p-3 bg-surface hover:bg-surface-container-low transition-none">
+<div class="flex items-center justify-between text-secondary mb-1">
+<span class="">05</span>
+<span class="text-on-surface font-label-mono-bold">✓</span>
+</div>
+<div class="font-label-mono-bold text-on-surface">GRAPH ANALYSIS</div>
+<div class="text-[10px] text-secondary mt-1">TOPOLOGY</div>
+</div>
+<!-- Stage 6 -->
+<div class="p-3 bg-surface hover:bg-surface-container-low transition-none">
+<div class="flex items-center justify-between text-secondary mb-1">
+<span class="">06</span>
+<span class="text-on-surface font-label-mono-bold">✓</span>
+</div>
+<div class="font-label-mono-bold text-on-surface">FEATURES</div>
+<div class="text-[10px] text-secondary mt-1">17 CANONICAL</div>
+</div>
+<!-- Stage 7 -->
+<div class="p-3 bg-surface hover:bg-surface-container-low transition-none">
+<div class="flex items-center justify-between text-secondary mb-1">
+<span class="">07</span>
+<span class="text-on-surface font-label-mono-bold">✓</span>
+</div>
+<div class="font-label-mono-bold text-on-surface">ML SCORING</div>
+<div class="text-[10px] text-secondary mt-1">ISOLATION FOREST</div>
+</div>
+<!-- Stage 8 -->
+<div class="p-3 bg-surface hover:bg-surface-container-low transition-none">
+<div class="flex items-center justify-between text-secondary mb-1">
+<span class="">08</span>
+<span class="text-on-surface font-label-mono-bold">✓</span>
+</div>
+<div class="font-label-mono-bold text-on-surface">ALERTS</div>
+<div class="text-[10px] text-secondary mt-1">1,283 GENERATED</div>
+</div>
+<!-- Stage 9 -->
+<div class="p-3 bg-primary-container/20 hover:bg-primary-container/30 transition-none">
+<div class="flex items-center justify-between text-secondary mb-1">
+<span class="">09</span>
+<span class="text-on-surface font-label-mono-bold">✓</span>
+</div>
+<div class="font-label-mono-bold text-on-surface">FINALIZE</div>
+<div class="text-[10px] text-on-surface font-bold mt-1">RUN FINALIZED</div>
+</div>
+</div>
+</section>
+<!-- TRANSACTION INVESTIGATION & EVIDENCE PROVENANCE (SPLIT HORIZONTAL BAND) -->
+<section class="grid grid-cols-1 md:grid-cols-2 border border-on-surface bg-surface">
+<!-- Left Band -->
+<div class="p-6 border-b md:border-b-0 md:border-r border-on-surface flex flex-col justify-between">
+<div>
+<div class="font-label-mono-bold text-label-mono-bold text-secondary uppercase mb-1">STRUCTURAL LOOKUP</div>
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase mb-3">TRANSACTION INVESTIGATION</h3>
+<p class="font-body-md text-body-md text-secondary leading-relaxed mb-6">
+            Inspect transaction structure, inputs, outputs, amounts, fees when available, and related network observations.
+          </p>
+</div>
+<div>
+<button class="px-5 py-3 bg-surface border border-on-surface hover:bg-on-surface hover:text-surface font-label-mono-bold text-label-mono-bold uppercase transition-none">
+            SEARCH TRANSACTION ↗
+          </button>
+</div>
+</div>
+<!-- Right Band -->
+<div class="p-6 flex flex-col justify-between bg-surface-container-low">
+<div>
+<div class="font-label-mono-bold text-label-mono-bold text-secondary uppercase mb-1">AUDIT CHAIN</div>
+<h3 class="font-headline-md text-headline-md text-on-surface uppercase mb-3">EVIDENCE PROVENANCE</h3>
+<p class="font-body-md text-body-md text-secondary leading-relaxed mb-4">
+            Investigation findings remain traceable to source records, derived features, model outputs, and recorded provenance.
+          </p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="border border-on-surface px-2 py-0.5 font-label-mono-bold text-label-mono-sm uppercase bg-surface">TIER: OBSERVED</span>
+<span class="border border-on-surface px-2 py-0.5 font-label-mono-bold text-label-mono-sm uppercase bg-surface">TIER: DERIVED</span>
+<span class="border border-on-surface px-2 py-0.5 font-label-mono-bold text-label-mono-sm uppercase bg-surface">TIER: HEURISTIC</span>
+<span class="border border-on-surface px-2 py-0.5 font-label-mono-bold text-label-mono-sm uppercase bg-surface">TIER: ML_DERIVED</span>
+<span class="border border-on-surface px-2 py-0.5 font-label-mono-bold text-label-mono-sm uppercase bg-surface">TIER: ENRICHED</span>
+</div>
+</div>
+<div>
+<button class="px-5 py-3 bg-surface border border-on-surface hover:bg-on-surface hover:text-surface font-label-mono-bold text-label-mono-bold uppercase transition-none">
+            VIEW EVIDENCE ↗
+          </button>
+</div>
+</div>
+</section>
+<!-- QUICK NAVIGATION ACTION STRIP -->
+<nav class="border border-on-surface bg-surface grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-on-surface">
+<a class="p-4 flex items-center justify-between font-label-mono-bold text-label-mono-bold uppercase text-on-surface hover:bg-primary-container hover:text-on-background transition-none" href="#">
+<span class="">VIEW ALERT QUEUE</span>
+<span class="">↗</span>
+</a>
+<a class="p-4 flex items-center justify-between font-label-mono-bold text-label-mono-bold uppercase text-on-surface hover:bg-primary-container hover:text-on-background transition-none" href="#">
+<span class="">SEARCH TRANSACTION</span>
+<span class="">↗</span>
+</a>
+<a class="p-4 flex items-center justify-between font-label-mono-bold text-label-mono-bold uppercase text-on-surface hover:bg-primary-container hover:text-on-background transition-none" href="#">
+<span class="">EXPLORE NETWORK</span>
+<span class="">↗</span>
+</a>
+<a class="p-4 flex items-center justify-between font-label-mono-bold text-label-mono-bold uppercase text-on-surface hover:bg-primary-container hover:text-on-background transition-none" href="#">
+<span class="">VIEW EVIDENCE</span>
+<span class="">↗</span>
+</a>
+</nav>
+<!-- EPISTEMIC & LEGAL BOUNDARY BANNER -->
+<section class="border border-on-surface bg-on-surface text-surface p-6">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary-container text-2xl mt-0.5">verified_user</span>
+<div>
+<div class="font-label-mono-bold text-label-mono-bold text-primary-container uppercase tracking-wider mb-1">
+            EPISTEMIC BOUNDARY &amp; LEGAL NOTICE
+          </div>
+<p class="font-body-md text-body-md text-surface-container-high leading-relaxed">
+            Structural anomaly does not mean criminal activity. CryptoNexus surfaces patterns for human investigation. It does not determine identity, ownership or criminal intent.
+          </p>
+</div>
+</div>
+</section>
+</main>
+<!-- FOOTER (SHARED COMPONENT JSON COMPLIANT) -->
+<footer class="w-full border-t border-on-surface px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4 bg-surface mt-auto select-none">
+<div class="flex items-center gap-4">
+<!-- Official Logo in Footer -->
+<img alt="CRYPTONEXUS Logo" class="h-6 w-auto object-contain" src="assets/image_0.png">
+<span class="font-label-mono-sm text-label-mono-sm text-secondary">
+        © 2026 CRYPTONEXUS. BITCOIN INTELLIGENCE PLATFORM. LOCAL / OFFLINE.
+      </span>
+</div>
+<!-- Architectural Footer Links -->
+<div class="flex items-center gap-6 font-label-mono-sm text-label-mono-sm text-secondary"><a class="hover:text-primary-container transition-none uppercase" href="#">DISCLAIMER</a><span class="text-outline">/</span><a class="hover:text-primary-container transition-none uppercase" href="#">METHODOLOGY</a><span class="text-outline">/</span><a class="hover:text-primary-container transition-none uppercase" href="#">ABOUT</a></div>
+</footer>
+
+
+</body></html>

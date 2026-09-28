@@ -1,0 +1,835 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CryptoNexus — Transaction Investigation</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Oswald, Space Grotesk, Space Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface": "#1b1c19",
+            "surface": "#faf9f4",
+            "secondary": "#5f5e5e",
+            "on-error": "#ffffff",
+            "on-secondary-fixed": "#1c1b1b",
+            "error": "#ba1a1a",
+            "secondary-container": "#e5e2e1",
+            "on-tertiary": "#ffffff",
+            "surface-container-highest": "#e3e3de",
+            "surface-variant": "#e3e3de",
+            "outline": "#887362",
+            "surface-container-high": "#e9e8e3",
+            "primary-fixed-dim": "#ffb874",
+            "on-surface-variant": "#554335",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed-variant": "#6b3b00",
+            "on-tertiary-container": "#623400",
+            "tertiary": "#8f4e00",
+            "tertiary-fixed-dim": "#ffb77a",
+            "on-background": "#1b1c19",
+            "on-error-container": "#93000a",
+            "surface-dim": "#dbdad5",
+            "secondary-fixed": "#e5e2e1",
+            "surface-container-low": "#f5f4ef",
+            "primary-fixed": "#ffdcbf",
+            "primary": "#8c4f00",
+            "surface-bright": "#faf9f4",
+            "on-tertiary-fixed-variant": "#6c3a00",
+            "inverse-surface": "#30312e",
+            "inverse-primary": "#ffb874",
+            "primary-container": "#f7931a",
+            "on-primary": "#ffffff",
+            "background": "#faf9f4",
+            "error-container": "#ffdad6",
+            "on-primary-container": "#603500",
+            "on-secondary": "#ffffff",
+            "on-secondary-fixed-variant": "#474646",
+            "tertiary-fixed": "#ffdcc1",
+            "on-primary-fixed": "#2d1600",
+            "surface-container": "#efeee9",
+            "inverse-on-surface": "#f2f1ec",
+            "tertiary-container": "#f99223",
+            "surface-tint": "#8c4f00",
+            "outline-variant": "#dbc2ae",
+            "on-secondary-container": "#656464",
+            "on-tertiary-fixed": "#2e1500",
+            "secondary-fixed-dim": "#c9c6c5"
+          },
+          "borderRadius": {
+            "DEFAULT": "0px",
+            "none": "0px",
+            "sm": "0px",
+            "md": "0px",
+            "lg": "0px",
+            "xl": "0px",
+            "full": "0px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "space-xl": "2.5rem",
+            "space-sm": "0.5rem",
+            "margin-mobile": "1rem",
+            "margin": "1.5rem",
+            "space-lg": "1.5rem",
+            "gutter": "0px",
+            "gutter-loose": "1.5rem"
+          },
+          "fontFamily": {
+            "label-mono-sm": ["Space Mono", "monospace"],
+            "headline-lg": ["Oswald", "sans-serif"],
+            "headline-xl-mobile": ["Oswald", "sans-serif"],
+            "headline-xl": ["Oswald", "sans-serif"],
+            "display-hero": ["Oswald", "sans-serif"],
+            "body-md": ["Space Grotesk", "sans-serif"],
+            "headline-md": ["Oswald", "sans-serif"],
+            "body-sm": ["Space Grotesk", "sans-serif"],
+            "data-metric": ["Oswald", "sans-serif"],
+            "label-mono-bold": ["Space Mono", "monospace"],
+            "display-hero-mobile": ["Oswald", "sans-serif"],
+            "body-lg": ["Space Grotesk", "sans-serif"],
+            "headline-sm": ["Oswald", "sans-serif"]
+          },
+          "fontSize": {
+            "label-mono-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.05em", "fontWeight": "400" }],
+            "headline-lg": ["2.25rem", { "lineHeight": "2.5rem", "letterSpacing": "0em", "fontWeight": "600" }],
+            "headline-xl-mobile": ["2.25rem", { "lineHeight": "2.5rem", "letterSpacing": "0em", "fontWeight": "600" }],
+            "headline-xl": ["3.5rem", { "lineHeight": "3.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-hero": ["5rem", { "lineHeight": "5rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["0.9375rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+            "headline-md": ["1.5rem", { "lineHeight": "1.875rem", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "body-sm": ["0.8125rem", { "lineHeight": "1.25rem", "fontWeight": "400" }],
+            "data-metric": ["2.75rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-mono-bold": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.08em", "fontWeight": "700" }],
+            "display-hero-mobile": ["3rem", { "lineHeight": "3.125rem", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }],
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "0.02em", "fontWeight": "500" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    * {
+      box-sizing: border-box;
+      border-radius: 0px !important;
+      -webkit-font-smoothing: antialiased;
+    }
+    body {
+      background-color: #faf9f4;
+      color: #1b1c19;
+      margin: 0;
+      padding: 0;
+    }
+    .structural-border {
+      border: 1px solid #121316;
+    }
+    .structural-border-b {
+      border-bottom: 1px solid #121316;
+    }
+    .structural-border-t {
+      border-top: 1px solid #121316;
+    }
+    .structural-border-r {
+      border-right: 1px solid #121316;
+    }
+    .structural-border-l {
+      border-left: 1px solid #121316;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+<!-- ==================== HEADER MASTHEAD ==================== -->
+<header class="w-full bg-surface structural-border-b flex items-stretch justify-between px-6 py-0 min-h-[58px] z-30">
+<!-- Left: Brand Logo -->
+<div class="flex items-center structural-border-r pr-6 py-2">
+<img alt="CryptoNexus" class="h-8 w-auto object-contain" src="assets/image_1.png">
+</div>
+<!-- Center Navigation Links -->
+<nav class="hidden md:flex items-stretch space-x-0 h-full">
+<a class="px-5 flex items-center text-secondary font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:text-primary-container transition-none" href="#">OVERVIEW</a>
+<a class="px-5 flex items-center text-on-surface font-label-mono-bold text-label-mono-bold border-b-2 border-primary-container pb-0 uppercase bg-surface-container-low" href="#">INVESTIGATIONS</a>
+<a class="px-5 flex items-center text-secondary font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:text-primary-container transition-none" href="#">ANALYTICS</a>
+<a class="px-5 flex items-center text-secondary font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:text-primary-container transition-none" href="#">DOCUMENTATION</a>
+<a class="px-5 flex items-center text-secondary font-label-mono-bold text-label-mono-bold uppercase tracking-wider hover:text-primary-container transition-none" href="#">ABOUT</a>
+</nav>
+<!-- Right Actions & System Status -->
+<div class="flex items-center space-x-0">
+<button class="px-4 py-2 flex items-center gap-1 font-label-mono-bold text-label-mono-bold structural-border-l hover:bg-surface-container transition-none text-on-surface uppercase">
+<span class="material-symbols-outlined text-base">search</span>
+<span class="hidden sm:inline">SEARCH</span>
+</button>
+<div class="px-4 py-2 structural-border-l hidden lg:flex items-center gap-2 font-label-mono-bold text-label-mono-sm uppercase text-secondary">
+<span class="w-2 h-2 bg-primary-container inline-block"></span>
+<span class="">STATUS: LOCAL / OFFLINE</span>
+</div>
+<button class="px-5 py-3 bg-on-surface text-surface font-label-mono-bold text-label-mono-bold structural-border-l hover:bg-primary-container hover:text-on-surface transition-none uppercase flex items-center gap-1">
+<span class="">START INVESTIGATING</span>
+<span class="material-symbols-outlined text-sm">north_east</span>
+</button>
+</div>
+</header>
+<!-- ==================== ACTIVE RUN METADATA RIBBON ==================== -->
+<div class="w-full bg-surface-container-high structural-border-b px-6 py-1.5 flex flex-wrap items-center justify-between font-label-mono-sm text-label-mono-sm text-on-surface gap-2">
+<div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+<span class="font-bold text-on-surface">RUN ID: [DYNAMIC RUN ID]</span>
+<span class="text-outline">|</span>
+<span class="">SOURCE: DEMO_V1</span>
+<span class="text-outline">|</span>
+<span class="">SOURCE BLOCKS: 700000 → 700022</span>
+<span class="text-outline">|</span>
+<span class="">RUNTIME: LOCAL / OFFLINE</span>
+<span class="text-outline">|</span>
+<span class="">MODEL: ISOLATION FOREST</span>
+<span class="text-outline">|</span>
+<span class="">DATABASE: DUCKDB</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-on-surface">RUN STATUS: READY</span>
+<span class="w-1.5 h-1.5 bg-primary-container"></span>
+</div>
+</div>
+<!-- ==================== BREADCRUMB STRIP ==================== -->
+<div class="w-full bg-surface structural-border-b px-6 py-2 flex flex-wrap items-center justify-between text-label-mono-bold text-label-mono-bold gap-3">
+<div class="flex items-center gap-2 text-secondary flex-wrap">
+<a class="hover:text-on-surface" href="#">INVESTIGATIONS</a>
+<span class="">→</span>
+<a class="hover:text-on-surface" href="#">ALERT QUEUE</a>
+<span class="">→</span>
+<a class="hover:text-on-surface" href="#">ALERT INVESTIGATION</a>
+<span class="">→</span>
+<span class="bg-on-surface text-surface px-2 py-0.5 font-bold">TRANSACTION INVESTIGATION</span>
+</div>
+<div class="font-label-mono-sm text-label-mono-sm text-secondary">
+      ACTIVE RUN: <span class="font-bold text-on-surface">[DYNAMIC RUN ID]</span>
+</div>
+</div>
+<!-- ==================== MAIN CONTENT AREA ==================== -->
+<main class="flex-grow w-full max-w-[1440px] mx-auto p-6 flex flex-col gap-6">
+<!-- PAGE TITLE & IDENTITY -->
+<div class="w-full structural-border bg-surface p-6 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+<div class="space-y-1">
+<div class="font-label-mono-bold text-label-mono-bold text-primary tracking-widest uppercase">
+          STRUCTURAL FORENSIC AUDIT
+        </div>
+<h1 class="font-headline-lg text-headline-lg tracking-tight uppercase text-on-surface">
+          TRANSACTION STRUCTURE REVIEW
+        </h1>
+<p class="font-body-md text-body-md text-secondary max-w-3xl">
+          Inspect the selected Bitcoin transaction, its observable inputs and outputs, associated network observations, and graph relationships.
+        </p>
+</div>
+<div class="structural-border bg-surface-container-low p-4 font-label-mono-sm text-label-mono-sm space-y-1.5 shrink-0 min-w-[280px]">
+<div class="font-bold text-on-surface border-b border-on-surface pb-1 uppercase tracking-wider">
+          ACTIVE TRANSACTION RECORD
+        </div>
+<div class="text-secondary truncate">
+          TXID: <span class="font-bold text-on-surface">[DYNAMIC TXID]</span>
+</div>
+<div class="text-secondary">
+          ACTIVE RUN: <span class="font-bold text-on-surface">[DYNAMIC RUN ID]</span>
+</div>
+</div>
+</div>
+<!-- PRIMARY TRANSACTION HEADER CONTAINER -->
+<section class="w-full structural-border bg-surface">
+<div class="structural-border-b px-4 py-2 bg-surface-container flex items-center justify-between">
+<span class="font-label-mono-bold text-label-mono-bold text-on-surface uppercase tracking-wider">
+          SELECTED TRANSACTION
+        </span>
+
+</div>
+<div class="p-4 bg-surface structural-border-b">
+<div class="font-label-mono-sm text-label-mono-sm text-secondary uppercase mb-1">PRIMARY IDENTIFIER</div>
+<div class="font-label-mono-bold text-body-lg text-on-surface break-all bg-surface-container-low p-3 structural-border select-all">
+          TXID: [DYNAMIC TXID]
+        </div>
+</div>
+<!-- Compact Horizontal Metadata Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 divide-y lg:divide-y-0 lg:divide-x divide-[#121316] font-label-mono-sm text-label-mono-sm">
+<div class="p-3">
+<div class="text-secondary uppercase">FIRST OBSERVED</div>
+<div class="font-bold text-on-surface mt-1">[DYNAMIC]</div>
+</div>
+<div class="p-3">
+<div class="text-secondary uppercase">LAST OBSERVED</div>
+<div class="font-bold text-on-surface mt-1">[DYNAMIC]</div>
+</div>
+<div class="p-3">
+<div class="text-secondary uppercase">OBSERVATIONS</div>
+<div class="font-bold text-on-surface mt-1">[DYNAMIC]</div>
+</div>
+<div class="p-3">
+<div class="text-secondary uppercase">INPUT COUNT</div>
+<div class="font-bold text-on-surface mt-1">[DYNAMIC]</div>
+</div>
+<div class="p-3">
+<div class="text-secondary uppercase">OUTPUT COUNT</div>
+<div class="font-bold text-on-surface mt-1">[DYNAMIC]</div>
+</div>
+<div class="p-3">
+<div class="text-secondary uppercase">ACTIVE RUN</div>
+<div class="font-bold text-on-surface mt-1">[DYNAMIC RUN ID]</div>
+</div>
+</div>
+</section>
+<!-- ==================== MAIN 8:4 ASYMMETRIC EDITORIAL GRID ==================== -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- ==================== LEFT COLUMN (~8 COLUMNS / ~66%) ==================== -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- 1. TRANSACTION STRUCTURE SUMMARY METRICS -->
+<section class="w-full">
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-0 structural-border divide-x divide-y md:divide-y-0 divide-[#121316] bg-surface">
+<div class="p-4 bg-surface">
+<div class="font-label-mono-bold text-label-mono-sm text-secondary uppercase">INPUTS</div>
+<div class="font-data-metric text-data-metric text-on-surface mt-1">[DYNAMIC COUNT]</div>
+<div class="font-label-mono-sm text-label-mono-sm text-outline mt-1">INBOUND VECTOR</div>
+</div>
+<div class="p-4 bg-surface">
+<div class="font-label-mono-bold text-label-mono-sm text-secondary uppercase">OUTPUTS</div>
+<div class="font-data-metric text-data-metric text-on-surface mt-1">[DYNAMIC COUNT]</div>
+<div class="font-label-mono-sm text-label-mono-sm text-outline mt-1">OUTBOUND VECTOR</div>
+</div>
+<div class="p-4 bg-surface">
+<div class="font-label-mono-bold text-label-mono-sm text-secondary uppercase">TOTAL INPUT VALUE</div>
+<div class="font-headline-md text-headline-md text-on-surface mt-2 font-bold break-all">[DYNAMIC VALUE]</div>
+<div class="font-label-mono-sm text-label-mono-sm text-secondary mt-1">BTC OBSERVED</div>
+</div>
+<div class="p-4 bg-surface">
+<div class="font-label-mono-bold text-label-mono-sm text-secondary uppercase">TOTAL OUTPUT VALUE</div>
+<div class="font-headline-md text-headline-md text-on-surface mt-2 font-bold break-all">[DYNAMIC VALUE]</div>
+<div class="font-label-mono-sm text-label-mono-sm text-secondary mt-1">BTC RECORDED</div>
+</div>
+<div class="p-4 bg-surface col-span-2 sm:col-span-1">
+<div class="font-label-mono-bold text-label-mono-sm text-secondary uppercase">NETWORK FEE</div>
+<div class="font-headline-md text-headline-md text-on-surface mt-2 font-bold break-all">[DYNAMIC FEE]</div>
+<div class="font-label-mono-sm text-label-mono-sm text-secondary mt-1">OR NOT AVAILABLE</div>
+</div>
+</div>
+</section>
+<!-- 2. INPUT / OUTPUT STRUCTURE (ASYMMETRIC 2-COLUMN TABLE) -->
+<section class="w-full structural-border bg-surface">
+<div class="p-3 bg-surface-container structural-border-b flex justify-between items-center">
+<span class="font-headline-sm text-headline-sm text-on-surface uppercase">INPUT / OUTPUT STRUCTURE</span>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary">STRUCTURAL BALANCE MAPPING</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[#121316]">
+<!-- Left: Transaction Inputs -->
+<div>
+<div class="p-2.5 bg-surface-container-high structural-border-b font-label-mono-bold text-label-mono-bold text-on-surface flex justify-between">
+<span class="">TRANSACTION INPUTS</span>
+<span class="">VECTOR: INBOUND</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse font-label-mono-sm text-label-mono-sm">
+<thead>
+<tr class="bg-surface-container-low structural-border-b text-secondary">
+<th class="p-2 structural-border-r">ADDRESS</th>
+<th class="p-2 structural-border-r">AMOUNT</th>
+<th class="p-2">EVIDENCE</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#121316]">
+<tr class="hover:bg-surface-container-low">
+<td class="p-2 structural-border-r font-mono break-all">[DYNAMIC INPUT ADDRESS]</td>
+<td class="p-2 structural-border-r font-bold">[DYNAMIC INPUT AMOUNT]</td>
+<td class="p-2"><span class="px-1 bg-surface-container structural-border text-on-surface">[DYNAMIC EVIDENCE TIER]</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low bg-surface-container-lowest">
+<td class="p-2 structural-border-r font-mono break-all">[DYNAMIC INPUT ADDRESS]</td>
+<td class="p-2 structural-border-r font-bold">[DYNAMIC INPUT AMOUNT]</td>
+<td class="p-2"><span class="px-1 bg-surface-container structural-border text-on-surface">[DYNAMIC EVIDENCE TIER]</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low">
+<td class="p-2 structural-border-r font-mono break-all">[DYNAMIC INPUT ADDRESS]</td>
+<td class="p-2 structural-border-r font-bold">[DYNAMIC INPUT AMOUNT]</td>
+<td class="p-2"><span class="px-1 bg-surface-container structural-border text-on-surface">[DYNAMIC EVIDENCE TIER]</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low bg-surface-container-lowest">
+<td class="p-2 structural-border-r font-mono break-all">[DYNAMIC INPUT ADDRESS]</td>
+<td class="p-2 structural-border-r font-bold">[DYNAMIC INPUT AMOUNT]</td>
+<td class="p-2"><span class="px-1 bg-surface-container structural-border text-on-surface">[DYNAMIC EVIDENCE TIER]</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Right: Transaction Outputs -->
+<div>
+<div class="p-2.5 bg-surface-container-high structural-border-b font-label-mono-bold text-label-mono-bold text-on-surface flex justify-between">
+<span class="">TRANSACTION OUTPUTS</span>
+<span class="">VECTOR: OUTBOUND</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse font-label-mono-sm text-label-mono-sm">
+<thead>
+<tr class="bg-surface-container-low structural-border-b text-secondary">
+<th class="p-2 structural-border-r">ADDRESS</th>
+<th class="p-2 structural-border-r">AMOUNT</th>
+<th class="p-2">EVIDENCE</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#121316]">
+<tr class="hover:bg-surface-container-low">
+<td class="p-2 structural-border-r font-mono break-all">[DYNAMIC OUTPUT ADDRESS]</td>
+<td class="p-2 structural-border-r font-bold">[DYNAMIC OUTPUT AMOUNT]</td>
+<td class="p-2"><span class="px-1 bg-surface-container structural-border text-on-surface">[DYNAMIC EVIDENCE TIER]</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low bg-surface-container-lowest">
+<td class="p-2 structural-border-r font-mono break-all">[DYNAMIC OUTPUT ADDRESS]</td>
+<td class="p-2 structural-border-r font-bold">[DYNAMIC OUTPUT AMOUNT]</td>
+<td class="p-2"><span class="px-1 bg-surface-container structural-border text-on-surface">[DYNAMIC EVIDENCE TIER]</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low">
+<td class="p-2 structural-border-r font-mono break-all">[DYNAMIC OUTPUT ADDRESS]</td>
+<td class="p-2 structural-border-r font-bold">[DYNAMIC OUTPUT AMOUNT]</td>
+<td class="p-2"><span class="px-1 bg-surface-container structural-border text-on-surface">[DYNAMIC EVIDENCE TIER]</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low bg-surface-container-lowest">
+<td class="p-2 structural-border-r font-mono break-all">[DYNAMIC OUTPUT ADDRESS]</td>
+<td class="p-2 structural-border-r font-bold">[DYNAMIC OUTPUT AMOUNT]</td>
+<td class="p-2"><span class="px-1 bg-surface-container structural-border text-on-surface">[DYNAMIC EVIDENCE TIER]</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. VALUE FLOW VISUALIZATION -->
+<section class="w-full structural-border bg-surface p-5">
+<div class="flex justify-between items-center border-b border-on-surface pb-3 mb-4">
+<span class="font-headline-sm text-headline-sm text-on-surface uppercase">VALUE FLOW VISUALIZATION</span>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary uppercase">STRUCTURAL DELIMITATION MATRIX</span>
+</div>
+<div class="flex flex-col md:flex-row items-center justify-between gap-4 py-2 font-label-mono-sm">
+<!-- Inputs Box -->
+<div class="w-full md:w-1/3 structural-border bg-surface-container-low p-4 text-center">
+<div class="text-secondary uppercase mb-1">INPUT AGGREGATE</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">[DYNAMIC TOTAL INPUT VALUE]</div>
+<div class="text-xs text-outline mt-1 font-mono">OBSERVED INPUT VECTOR</div>
+</div>
+<!-- Arrow 1 -->
+<div class="hidden md:flex flex-col items-center">
+<span class="material-symbols-outlined text-2xl text-on-surface">arrow_forward</span>
+</div>
+<!-- Central TX Block -->
+<div class="w-full md:w-1/3 structural-border bg-on-surface text-surface p-4 text-center">
+<div class="text-primary-container uppercase font-bold text-xs mb-1">TRANSACTION</div>
+<div class="font-mono text-xs font-bold truncate">[DYNAMIC TXID]</div>
+<div class="text-xs text-secondary-fixed mt-1">NETWORK FEE: [DYNAMIC FEE]</div>
+</div>
+<!-- Arrow 2 -->
+<div class="hidden md:flex flex-col items-center">
+<span class="material-symbols-outlined text-2xl text-on-surface">arrow_forward</span>
+</div>
+<!-- Outputs Box -->
+<div class="w-full md:w-1/3 structural-border bg-surface-container-low p-4 text-center">
+<div class="text-secondary uppercase mb-1">OUTPUT AGGREGATE</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">[DYNAMIC TOTAL OUTPUT VALUE]</div>
+<div class="text-xs text-outline mt-1 font-mono">OBSERVED OUTPUT VECTOR</div>
+</div>
+</div>
+<div class="mt-4 p-2 bg-surface-container font-label-mono-sm text-label-mono-sm text-center structural-border">FEE: <span class="font-bold">[DYNAMIC FEE]</span> (OR NOT AVAILABLE) | NO INFERRED SPEND-CHAIN LINEAGE FABRICATION</div>
+</section>
+<!-- 4. NETWORK OBSERVATIONS TABLE -->
+<section class="w-full structural-border bg-surface">
+<div class="p-4 bg-surface-container structural-border-b">
+<h2 class="font-headline-sm text-headline-sm text-on-surface uppercase">NETWORK OBSERVATIONS</h2>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5">
+              Observed network-layer associations for the selected transaction. Data reflects sensor logging events without ownership assertions.
+            </p>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse font-label-mono-sm text-label-mono-sm">
+<thead>
+<tr class="bg-surface-container-low structural-border-b text-secondary">
+<th class="p-2.5 structural-border-r">OBSERVED AT</th>
+<th class="p-2.5 structural-border-r">SOURCE IP</th>
+<th class="p-2.5 structural-border-r">DESTINATION IP</th>
+<th class="p-2.5 structural-border-r">SOURCE PORT</th>
+<th class="p-2.5 structural-border-r">DEST PORT</th>
+<th class="p-2.5 structural-border-r">GEO COUNTRY</th>
+<th class="p-2.5 structural-border-r">ASN</th>
+<th class="p-2.5">EVIDENCE</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#121316]">
+<tr class="hover:bg-surface-container-low">
+<td class="p-2.5 structural-border-r">[DYNAMIC TIMESTAMP]</td>
+<td class="p-2.5 structural-border-r font-mono">[DYNAMIC SOURCE IP]</td>
+<td class="p-2.5 structural-border-r font-mono">[DYNAMIC DESTINATION IP]</td>
+<td class="p-2.5 structural-border-r font-mono">[DYNAMIC SOURCE PORT]</td>
+<td class="p-2.5 structural-border-r font-mono">[DYNAMIC DESTINATION PORT]</td>
+<td class="p-2.5 structural-border-r">[DYNAMIC COUNTRY]</td>
+<td class="p-2.5 structural-border-r">[DYNAMIC ASN]</td>
+<td class="p-2.5"><span class="px-1 bg-surface-container structural-border">[DYNAMIC EVIDENCE TIER]</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low bg-surface-container-lowest">
+<td class="p-2.5 structural-border-r">[DYNAMIC TIMESTAMP]</td>
+<td class="p-2.5 structural-border-r font-mono">[DYNAMIC SOURCE IP]</td>
+<td class="p-2.5 structural-border-r font-mono">[DYNAMIC DESTINATION IP]</td>
+<td class="p-2.5 structural-border-r font-mono">[DYNAMIC SOURCE PORT]</td>
+<td class="p-2.5 structural-border-r font-mono">[DYNAMIC DESTINATION PORT]</td>
+<td class="p-2.5 structural-border-r">[DYNAMIC COUNTRY]</td>
+<td class="p-2.5 structural-border-r">[DYNAMIC ASN]</td>
+<td class="p-2.5"><span class="px-1 bg-surface-container structural-border">[DYNAMIC EVIDENCE TIER]</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low">
+<td class="p-2.5 structural-border-r">[DYNAMIC TIMESTAMP]</td>
+<td class="p-2.5 structural-border-r font-mono">[DYNAMIC SOURCE IP]</td>
+<td class="p-2.5 structural-border-r font-mono">[DYNAMIC DESTINATION IP]</td>
+<td class="p-2.5 structural-border-r font-mono">[DYNAMIC SOURCE PORT]</td>
+<td class="p-2.5 structural-border-r font-mono">[DYNAMIC DESTINATION PORT]</td>
+<td class="p-2.5 structural-border-r">[DYNAMIC COUNTRY]</td>
+<td class="p-2.5 structural-border-r">[DYNAMIC ASN]</td>
+<td class="p-2.5"><span class="px-1 bg-surface-container structural-border">[DYNAMIC EVIDENCE TIER]</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low bg-surface-container-lowest">
+<td class="p-2.5 structural-border-r">[DYNAMIC TIMESTAMP]</td>
+<td class="p-2.5 structural-border-r font-mono">[DYNAMIC SOURCE IP]</td>
+<td class="p-2.5 structural-border-r font-mono">[DYNAMIC DESTINATION IP]</td>
+<td class="p-2.5 structural-border-r font-mono">[DYNAMIC SOURCE PORT]</td>
+<td class="p-2.5 structural-border-r font-mono">[DYNAMIC DESTINATION PORT]</td>
+<td class="p-2.5 structural-border-r">[DYNAMIC COUNTRY]</td>
+<td class="p-2.5 structural-border-r">[DYNAMIC ASN]</td>
+<td class="p-2.5"><span class="px-1 bg-surface-container structural-border">[DYNAMIC EVIDENCE TIER]</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-2 bg-surface-container-low text-secondary font-label-mono-sm text-xs structural-border-t">
+            RECORD LABEL: OBSERVED PEER (PROPAGATION PATHWAY ONLY, NO ASSIGNMENT OF OPERATIONAL OWNERSHIP)
+          </div>
+</section>
+<!-- 5. ADDRESS RELATIONSHIPS -->
+<section class="w-full structural-border bg-surface">
+<div class="p-4 bg-surface-container structural-border-b">
+<h2 class="font-headline-sm text-headline-sm text-on-surface uppercase">ADDRESS RELATIONSHIPS</h2>
+</div>
+<div class="p-4 space-y-3 font-label-mono-sm text-label-mono-sm">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="p-3 bg-surface-container-low structural-border">
+<span class="text-secondary block">INPUT ADDRESS REUSE:</span>
+<span class="font-bold text-on-surface text-sm mt-1 block">[DYNAMIC]</span>
+</div>
+<div class="p-3 bg-surface-container-low structural-border">
+<span class="text-secondary block">OUTPUT ADDRESS REUSE:</span>
+<span class="font-bold text-on-surface text-sm mt-1 block">[DYNAMIC]</span>
+</div>
+<div class="p-3 bg-surface-container-low structural-border">
+<span class="text-secondary block">COMMON-INPUT INDICATOR:</span>
+<span class="font-bold text-on-surface text-sm mt-1 block">[DYNAMIC] (COMMON-CONTROL HYPOTHESIS)</span>
+</div>
+<div class="p-3 bg-surface-container-low structural-border">
+<span class="text-secondary block">CHANGE-ADDRESS INDICATOR:</span>
+<span class="font-bold text-on-surface text-sm mt-1 block">[DYNAMIC]</span>
+</div>
+</div>
+<div class="p-3 bg-surface structural-border flex justify-between items-center">
+<span class="text-secondary font-bold uppercase">RELATIONSHIP EVIDENCE:</span>
+<span class="font-mono bg-surface-container px-2 py-0.5 structural-border font-bold">[DYNAMIC]</span>
+</div>
+<div class="p-3 bg-surface-container-highest structural-border text-on-surface font-body-sm text-body-sm">
+<span class="font-bold">CAVEAT NOTE:</span> Address relationships are heuristic indicators and do not establish common ownership or identity. Co-spending heuristics remain subject to CoinJoin, multi-party computation, and custodial aggregation behaviors.
+            </div>
+</div>
+</section>
+<!-- 6. GRAPH RELATIONSHIP PREVIEW -->
+<section class="w-full structural-border bg-surface">
+<div class="p-4 bg-surface-container structural-border-b flex justify-between items-center">
+<h2 class="font-headline-sm text-headline-sm text-on-surface uppercase">GRAPH RELATIONSHIP PREVIEW</h2>
+<button class="px-4 py-1.5 bg-on-surface text-surface font-label-mono-bold text-label-mono-sm hover:bg-primary-container hover:text-on-surface transition-none structural-border uppercase flex items-center gap-1">
+<span class="">OPEN NETWORK GRAPH</span>
+<span class="material-symbols-outlined text-xs">north_east</span>
+</button>
+</div>
+<div class="p-6 bg-surface-container-low flex flex-col items-center justify-center min-h-[220px]">
+<!-- Node-Link Structural Schematic -->
+<div class="w-full max-w-lg flex flex-col md:flex-row items-center justify-between gap-6 relative">
+<!-- Left Nodes (Input / Peer) -->
+<div class="flex flex-col gap-4 w-full md:w-auto">
+<div class="p-2 bg-surface structural-border font-label-mono-sm text-label-mono-sm text-center">
+<span class="text-xs text-secondary block font-bold">NODE: INPUT</span>
+<span class="font-mono text-xs">[INPUT ADDRESS]</span>
+</div>
+<div class="p-2 bg-surface structural-border font-label-mono-sm text-label-mono-sm text-center">
+<span class="text-xs text-secondary block font-bold">NODE: OBSERVED PEER</span>
+<span class="font-mono text-xs">[OBSERVED PEER]</span>
+</div>
+</div>
+<!-- Connecting Indicators -->
+<div class="flex flex-col items-center gap-2 font-label-mono-sm text-xs text-secondary">
+<span class="bg-surface px-2 py-0.5 structural-border">EDGE: [INPUT]</span>
+<span class="material-symbols-outlined">sync_alt</span>
+<span class="bg-surface px-2 py-0.5 structural-border">EDGE: [PROPAGATED]</span>
+</div>
+<!-- Center TX Node -->
+<div class="p-4 bg-on-surface text-surface structural-border text-center w-full md:w-auto">
+<span class="text-primary-container text-xs block font-bold">CENTRAL TX NODE</span>
+<span class="font-mono text-xs font-bold">[DYNAMIC TXID]</span>
+</div>
+<!-- Connecting Indicator Right -->
+<div class="flex flex-col items-center gap-2 font-label-mono-sm text-xs text-secondary">
+<span class="bg-surface px-2 py-0.5 structural-border">EDGE: [OUTPUT]</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+<!-- Right Node (Output) -->
+<div class="p-2 bg-surface structural-border font-label-mono-sm text-label-mono-sm text-center w-full md:w-auto">
+<span class="text-xs text-secondary block font-bold">NODE: OUTPUT</span>
+<span class="font-mono text-xs">[OUTPUT ADDRESS]</span>
+</div>
+</div>
+<div class="mt-6 font-label-mono-sm text-xs text-secondary text-center">TOPOLOGICAL SCHEMATIC • RELATIONSHIP EDGES (INPUT, OUTPUT, PROPAGATED) RENDERED DYNAMICALLY WHEN PRESENT IN BACKEND DATA • CLICK "OPEN NETWORK GRAPH" FOR MULTI-HOP CLUSTER TRAVERSAL</div>
+</div>
+</section>
+<!-- 7. TRANSACTION EVIDENCE SUMMARY -->
+<section class="w-full structural-border bg-surface">
+<div class="p-3 bg-surface-container structural-border-b">
+<h2 class="font-headline-sm text-headline-sm text-on-surface uppercase">TRANSACTION EVIDENCE SUMMARY</h2>
+</div>
+<div class="divide-y divide-[#121316] font-label-mono-sm text-label-mono-sm">
+<div class="p-3 flex justify-between items-center bg-surface hover:bg-surface-container-low">
+<span class="text-secondary uppercase">NETWORK OBSERVATION:</span>
+<span class="font-bold bg-surface-container px-2 py-0.5 structural-border">[DYNAMIC EVIDENCE TIER]</span>
+</div>
+<div class="p-3 flex justify-between items-center bg-surface hover:bg-surface-container-low">
+<span class="text-secondary uppercase">TRANSACTION STRUCTURE:</span>
+<span class="font-bold bg-surface-container px-2 py-0.5 structural-border">[DYNAMIC EVIDENCE TIER]</span>
+</div>
+<div class="p-3 flex justify-between items-center bg-surface hover:bg-surface-container-low">
+<span class="text-secondary uppercase">ADDRESS RELATIONSHIP:</span>
+<span class="font-bold bg-surface-container px-2 py-0.5 structural-border">[DYNAMIC EVIDENCE TIER]</span>
+</div>
+<div class="p-3 flex justify-between items-center bg-surface hover:bg-surface-container-low">
+<span class="text-secondary uppercase">GRAPH RELATIONSHIP:</span>
+<span class="font-bold bg-surface-container px-2 py-0.5 structural-border">[DYNAMIC EVIDENCE TIER]</span>
+</div>
+<div class="p-3 flex justify-between items-center bg-surface hover:bg-surface-container-low">
+<span class="text-secondary uppercase">MODEL-DERIVED FEATURE:</span>
+<span class="font-bold bg-surface-container px-2 py-0.5 structural-border">[DYNAMIC EVIDENCE TIER]</span>
+</div>
+</div>
+</section>
+<!-- 8. TRANSACTION ANALYTICAL INTERPRETATION -->
+<section class="w-full structural-border bg-surface p-4 space-y-2">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary uppercase tracking-wider">
+            ANALYTICAL INTERPRETATION
+          </div>
+<div class="font-body-md text-body-md text-on-surface bg-surface-container-low p-3 structural-border">
+            [DYNAMIC TRANSACTION INTERPRETATION]
+          </div>
+<div class="font-label-mono-sm text-label-mono-sm text-secondary pt-1 flex items-center justify-between">
+<span class="">INTERPRETATION BASIS:</span>
+<span class="font-bold text-on-surface">[DYNAMIC EVIDENCE BASIS]</span>
+</div>
+</section>
+<!-- 9. INVESTIGATIVE LEAD -->
+<section class="w-full structural-border bg-surface-container-high p-4 border-l-4 border-l-primary-container">
+<div class="flex justify-between items-center mb-2">
+<span class="font-headline-sm text-headline-sm text-on-surface uppercase">INVESTIGATIVE LEAD</span>
+<span class="bg-on-surface text-primary-container font-label-mono-bold text-label-mono-sm px-2 py-0.5">
+              LEAD STATUS: REQUIRES HUMAN REVIEW
+            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">
+            [DYNAMIC HUMAN-READABLE LEAD]
+          </p>
+</section>
+<!-- 10. CONCEPTUAL BOUNDARIES CAVEAT -->
+<section class="w-full structural-border bg-surface p-4">
+<div class="font-label-mono-bold text-label-mono-bold text-secondary uppercase mb-1">
+            METHODOLOGICAL BOUNDARY SPECIFICATION
+          </div>
+<p class="font-body-sm text-body-sm text-secondary leading-relaxed">
+<span class="font-bold text-on-surface">CONCEPTUAL BOUNDARIES:</span> Bitcoin addresses are pseudonymous identifiers. Address ≠ wallet ≠ entity. IP association ≠ ownership. GeoIP is enrichment, not identity. Network observation time is sensor observation time. Anomaly ≠ crime.
+          </p>
+</section>
+</div>
+<!-- ==================== RIGHT COLUMN (~4 COLUMNS / ~34%) ==================== -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- 1. TRANSACTION RECORD LEDGER -->
+<section class="w-full structural-border bg-surface">
+<div class="p-3 bg-on-surface text-surface structural-border-b flex justify-between items-center">
+<span class="font-headline-sm text-headline-sm uppercase">TRANSACTION RECORD LEDGER</span>
+<span class="font-label-mono-sm text-primary-container font-bold">STATE: RECORDED</span>
+</div>
+<div class="divide-y divide-[#121316] font-label-mono-sm text-label-mono-sm">
+<div class="p-3 bg-surface hover:bg-surface-container-low">
+<span class="text-secondary block text-xs">TXID</span>
+<span class="font-bold text-on-surface font-mono break-all">[DYNAMIC]</span>
+</div>
+<div class="p-3 bg-surface hover:bg-surface-container-low">
+<span class="text-secondary block text-xs">ACTIVE RUN</span>
+<span class="font-bold text-on-surface">[DYNAMIC RUN ID]</span>
+</div>
+<div class="p-3 bg-surface hover:bg-surface-container-low flex justify-between">
+<span class="text-secondary">OBSERVATIONS</span>
+<span class="font-bold text-on-surface">[DYNAMIC]</span>
+</div>
+<div class="p-3 bg-surface hover:bg-surface-container-low flex justify-between">
+<span class="text-secondary">INPUTS</span>
+<span class="font-bold text-on-surface">[DYNAMIC]</span>
+</div>
+<div class="p-3 bg-surface hover:bg-surface-container-low flex justify-between">
+<span class="text-secondary">OUTPUTS</span>
+<span class="font-bold text-on-surface">[DYNAMIC]</span>
+</div>
+<div class="p-3 bg-surface hover:bg-surface-container-low flex justify-between">
+<span class="text-secondary">TOTAL INPUT VALUE</span>
+<span class="font-bold text-on-surface">[DYNAMIC]</span>
+</div>
+<div class="p-3 bg-surface hover:bg-surface-container-low flex justify-between">
+<span class="text-secondary">TOTAL OUTPUT VALUE</span>
+<span class="font-bold text-on-surface">[DYNAMIC]</span>
+</div>
+<div class="p-3 bg-surface hover:bg-surface-container-low flex justify-between">
+<span class="text-secondary">FEE</span>
+<span class="font-bold text-on-surface">[DYNAMIC / NOT AVAILABLE]</span>
+</div>
+<div class="p-3 bg-surface hover:bg-surface-container-low flex justify-between">
+<span class="text-secondary">MODEL</span>
+<span class="font-bold text-on-surface">ISOLATION FOREST</span>
+</div>
+<div class="p-3 bg-surface hover:bg-surface-container-low flex justify-between">
+<span class="text-secondary">DATASET</span>
+<span class="font-bold text-on-surface">DEMO_V1</span>
+</div>
+</div>
+</section>
+<!-- 2. AUDIT TRACEABILITY (LOCAL DUCKDB) -->
+<section class="w-full structural-border bg-surface">
+<div class="p-3 bg-surface-container structural-border-b flex justify-between items-center">
+<span class="font-headline-sm text-headline-sm text-on-surface uppercase">AUDIT TRACEABILITY</span>
+<span class="font-label-mono-sm text-secondary font-bold">LOCAL DUCKDB</span>
+</div>
+<div class="divide-y divide-[#121316] font-label-mono-sm text-label-mono-sm">
+<div class="p-3 bg-surface">
+<span class="text-secondary block text-xs">SOURCE RECORDS:</span>
+<span class="font-bold text-on-surface mt-0.5 block">[DYNAMIC]</span>
+</div>
+<div class="p-3 bg-surface">
+<span class="text-secondary block text-xs">SOURCE FILE:</span>
+<span class="font-mono text-on-surface mt-0.5 block break-all">[DYNAMIC]</span>
+</div>
+<div class="p-3 bg-surface">
+<span class="text-secondary block text-xs">SOURCE ROW / RECORD:</span>
+<span class="font-mono text-on-surface mt-0.5 block">[DYNAMIC]</span>
+</div>
+<div class="p-3 bg-surface">
+<span class="text-secondary block text-xs">RUN ID:</span>
+<span class="font-bold text-on-surface mt-0.5 block">[DYNAMIC RUN ID]</span>
+</div>
+<div class="p-3 bg-surface">
+<span class="text-secondary block text-xs">EVIDENCE ARTIFACTS:</span>
+<span class="font-bold text-on-surface mt-0.5 block">[DYNAMIC]</span>
+</div>
+<div class="p-3 bg-surface">
+<span class="text-secondary block text-xs">MODEL-DERIVED EVIDENCE:</span>
+<span class="font-bold text-on-surface mt-0.5 block">[DYNAMIC]</span>
+</div>
+</div>
+
+</section>
+<!-- 3. CONTINUE INVESTIGATION -->
+<section class="w-full structural-border bg-surface p-4 space-y-4">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface uppercase">CONTINUE INVESTIGATION</h3>
+<p class="font-body-sm text-body-sm text-secondary mt-1">
+              Advance inquiry into network relationships, evidence provenance, and related transaction structure.
+            </p>
+</div>
+<div class="space-y-2 font-label-mono-bold text-label-mono-bold">
+<!-- Button 1: Network Graph -->
+<button class="w-full p-3 bg-on-surface text-surface hover:bg-primary-container hover:text-on-surface structural-border flex justify-between items-center transition-none uppercase">
+<span class="">NETWORK GRAPH</span>
+<span class="material-symbols-outlined text-sm">north_east</span>
+</button>
+<!-- Button 2: Evidence & Provenance -->
+<button class="w-full p-3 bg-surface text-on-surface hover:bg-surface-container-high structural-border flex justify-between items-center transition-none uppercase">
+<span class="">EVIDENCE &amp; PROVENANCE</span>
+<span class="material-symbols-outlined text-sm">north_east</span>
+</button>
+<!-- Button 3: Back to Alert -->
+<button class="w-full p-3 bg-surface text-secondary hover:text-on-surface hover:bg-surface-container structural-border flex justify-between items-center transition-none uppercase">
+<span class="">BACK TO ALERT</span>
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+</button>
+</div>
+</section>
+<!-- SYSTEM INTEGRITY NOTICE -->
+
+</div>
+</div>
+<!-- ==================== WORKFLOW PROGRESSION STRIP ==================== -->
+<section class="w-full structural-border bg-surface mt-4">
+<div class="p-2.5 bg-surface-container structural-border-b font-label-mono-bold text-label-mono-bold text-secondary uppercase text-xs">
+        SYSTEM WORKFLOW PROGRESSION
+      </div>
+<div class="grid grid-cols-2 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-[#121316] font-label-mono-bold text-label-mono-bold text-center">
+<a class="p-3 bg-surface hover:bg-surface-container text-secondary flex items-center justify-center gap-1" href="#">
+<span class="text-xs">1</span>
+<span class="">ALERT QUEUE</span>
+</a>
+<a class="p-3 bg-surface hover:bg-surface-container text-secondary flex items-center justify-center gap-1" href="#">
+<span class="text-xs">2</span>
+<span class="">ALERT INVESTIGATION</span>
+</a>
+<!-- ACTIVE STEP -->
+<div class="p-3 bg-primary-container text-on-surface font-bold flex items-center justify-center gap-1">
+<span class="text-xs">3</span>
+<span class="">TX INVESTIGATION</span>
+<span class="material-symbols-outlined text-xs">check</span>
+</div>
+<a class="p-3 bg-surface hover:bg-surface-container text-on-surface flex items-center justify-center gap-1" href="#">
+<span class="text-xs">4</span>
+<span class="">NETWORK GRAPH</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+</a>
+<a class="p-3 bg-surface hover:bg-surface-container text-secondary flex items-center justify-center gap-1 col-span-2 md:col-span-1" href="#">
+<span class="text-xs">5</span>
+<span class="">PROVENANCE</span>
+</a>
+</div>
+</section>
+<!-- ==================== EPISTEMIC BOUNDARY & LEGAL SAFEGUARD STATEMENT ==================== -->
+<section class="w-full bg-inverse-surface text-inverse-on-surface structural-border p-4 text-center">
+<div class="font-label-mono-bold text-label-mono-bold text-primary-container tracking-wider uppercase mb-1">
+        LEGAL &amp; EPISTEMIC BOUNDARY DIRECTIVE
+      </div>
+<p class="font-body-md text-body-md max-w-4xl mx-auto">
+        Structural anomaly does not mean criminal activity. CryptoNexus surfaces patterns for human investigation. It does not determine identity, ownership or criminal intent.
+      </p>
+</section>
+</main>
+<!-- ==================== EDITORIAL LEDGER FOOTER ==================== -->
+<footer class="w-full bg-surface structural-border-t px-6 py-6 mt-12 flex flex-col md:flex-row justify-between items-center gap-6">
+<!-- Left: Brand Logo -->
+<div class="flex items-center gap-3">
+<img alt="CryptoNexus" class="h-6 w-auto object-contain" src="assets/image_0.png">
+<span class="hidden sm:inline text-outline">|</span>
+<span class="font-label-mono-sm text-label-mono-sm text-secondary hidden sm:inline">
+        STRICT LOCAL EXECUTION
+      </span>
+</div>
+<!-- Center: Ledger Copyright Text -->
+<div class="font-label-mono-sm text-label-mono-sm text-secondary text-center max-w-xl">© 2026 CRYPTONEXUS. BITCOIN INTELLIGENCE PLATFORM. LOCAL / OFFLINE.</div>
+<!-- Right: Editorial Ledger Links -->
+<div class="flex items-center space-x-4 font-label-mono-sm text-label-mono-sm uppercase text-secondary">
+<a class="hover:text-primary-container transition-none underline underline-offset-4" href="#">DISCLAIMER</a>
+<a class="hover:text-primary-container transition-none" href="#">METHODOLOGY</a>
+<a class="hover:text-primary-container transition-none" href="#">ABOUT</a>
+</div>
+</footer>
+
+
+</body></html>
