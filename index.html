@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoNexus | Project Access</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Oswald:wght@700&display=swap');
+
+        :root {
+            --bg: #F9F8F3;
+            --fg: #0D0D0D;
+            --accent: #F7931A;
+            --border: #121212;
+            --muted: #5A5852;
+            --font-sans: "Space Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --font-title: "Oswald", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: var(--font-sans);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            padding: 60px 20px;
+            box-sizing: border-box;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 30px;
+        }
+        .title {
+            font-family: var(--font-title);
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0 0 5px 0;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .desc {
+            font-size: 1rem;
+            color: var(--muted);
+            margin: 0;
+        }
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .card {
+            display: block;
+            text-decoration: none;
+            background: var(--bg);
+            border: 2px solid var(--border);
+            padding: 24px 20px;
+            color: var(--fg);
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        .card:hover {
+            background: var(--fg);
+            color: var(--bg);
+        }
+        .card:hover .card-title {
+            color: var(--accent);
+        }
+        .card:hover .card-desc {
+            color: var(--bg);
+        }
+        .card-title {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 0 6px 0;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+            letter-spacing: 0.5px;
+        }
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--muted);
+            margin: 0;
+            transition: color 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">CryptoNexus</h1>
+            <h2 class="subtitle">PROJECT ACCESS</h2>
+            <p class="desc">Access the CryptoNexus project resources.</p>
+        </header>
+        <main class="links">
+            <a href="https://github.com/buildwithrehman/Crypto-nexus" class="card" target="_blank" rel="noopener">
+                <h3 class="card-title">GITHUB REPOSITORY</h3>
+                <p class="card-desc">Source code &amp; project repository</p>
+            </a>
+            <a href="https://drive.google.com/file/d/1JNZt2QayR0SaSezuoGuyKTP7vVDaYUYp/view" class="card" target="_blank" rel="noopener">
+                <h3 class="card-title">LIVE PROTOTYPE</h3>
+                <p class="card-desc">Offline prototype demonstration</p>
+            </a>
+            <a href="https://youtu.be/RUJrjKI0dls?si=w8dRgkJ6A_NQTfa3" class="card" target="_blank" rel="noopener">
+                <h3 class="card-title">DEMO VIDEO</h3>
+                <p class="card-desc">Project demonstration video</p>
+            </a>
+        </main>
+    </div>
+</body>
+</html>
